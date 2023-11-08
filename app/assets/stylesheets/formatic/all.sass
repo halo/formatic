@@ -1,0 +1,31 @@
+// html
+//   font-size: 14px // small
+
+$formatic-black: #222
+$formatic-paradise-pink: rgb(240, 30, 80)
+$formatic-neon-yellow: #ffd400
+$formatic-granite-gray: rgb(70, 70, 70)
+$formatic-silver-gray: lighten($formatic-granite-gray, 50)
+$formatic-neon-red: #ec5840
+
+=formatic-scaled-font-size--smaller
+ font-size: 0.7857rem // -10% = 11px (base 14px)
+
+=formatic-scaled-font-size
+ font-size: 1rem // 14px (base 14px)
+
+=formatic-container--large
+  @container (min-width: 768px)
+    @content
+
+=formatic-scaled-font-size
+ font-size: 1rem // 14px (base 14px)
+
+=formatic-scaled-margin-bottom
+  margin-bottom: 1.1428rem // 16px (base 14px)
+
+@import ./utilities/container
+
+@import ./scopes/form
+
+@import ./components/wrapper.sass

@@ -1,0 +1,33 @@
+.u-formatic-container
+  .c-formatic-wrapper class=[('is-required' if required?), ('c-formatic-wrapper--hint-before-input' if hint_before_input?)]
+
+    - if show_label?
+      .c-formatic-wrapper__label
+        - if label_for_id.present?
+          = f.label attribute_name, nil, for: label_for_id
+        - else
+          = f.label attribute_name
+
+    .c-formatic-wrapper__input
+      = input
+
+    - if error?
+      .c-formatic-wrapper__error
+        => helpers.ensicon :exclamation_triangle
+        = error_messages.to_sentence
+        - unless error_messages.to_sentence.end_with?('.')
+          ' .
+
+    - if show_hint?
+      .c-formatic-wrapper__hint
+
+        / TODO: This can be removed once we got rid of the `simple_form` gem.
+        - if f.respond_to?(:hint)
+          = strip_tags f.hint attribute_name
+
+        // See https://github.com/rails/rails/blob/main/actionview/lib/action_view/helpers/tags/placeholderable.rb
+        = hint
+
+    - if prevent_submit_on_enter
+      // See https://stackoverflow.com/a/51507806
+      = f.submit 'Dummy to prevent submit on Enter', disabled: true, class: 'c-formatic-wrapper__prevent-submit-on-enter'
