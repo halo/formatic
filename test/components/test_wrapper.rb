@@ -1,49 +1,110 @@
 # frozen_string_literal: true
 
-class RocketModel
-  include ActiveModel::API
+require 'test_helper'
+
+class StoneModel
+  attr_accessor :name
 end
 
-class RocketModelPolicy < ActionPolicy::Base
-  def new?
-    user == :yes
-  end
+class RocketModel
+  include ActiveModel::API
+
+  attr_accessor :name
+end
+
+class MandatoryHouseModel
+  include ActiveModel::Validations
+
+  attr_accessor :house, :street_id
+
+  validates_presence_of :house
+  validates_length_of :house, minimum: 3
+  validates_presence_of :street_id
+end
+
+class OptionalTreeModel
+  include ActiveModel::Validations
+
+  attr_accessor :tree
 end
 
 class TestWrapper < ViewComponent::TestCase
-  def test_disallowed
-    model = RocketModel.new
-    current_user = :no
+  def test_value_without_object
+    f = ::Data.define(:object).new(object: nil)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    component = Formatic::Wrapper.new(url: :home, model:, current_user:)
-    ouput = render_inline(component) { 'Hello, World!' }
-
-    assert_equal('Hello, World!', ouput.to_html)
+    assert_nil(wrapper.value)
   end
 
-  def test_allowed
-    model = RocketModel.new
-    current_user = :yes
+  def test_value
+    object = StoneModel.new
+    object.name = 'Rocky'
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    component = Formatic::New.new(url: :home, model:, current_user:)
-    ouput = render_inline(component) { 'Hello, World!' }
-
-    expected_html = <<~HTML.strip
-      <a title="Add Rocket model" class="c-action-link " href="/home">Hello, World! <i class="o-acticon o-acticon--plus-circle"></i></a>
-    HTML
-    assert_equal(expected_html, ouput.to_html)
+    assert_equal('Rocky', wrapper.value)
   end
 
-  def test_extra_options
-    model = RocketModel.new
-    current_user = :yes
+  def test_param_key
+    object = RocketModel.new
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    component = Formatic::New.new(url: :home, model:, current_user:, data: { cool: :thing })
-    ouput = render_inline(component) { 'Hello, World!' }
+    assert_equal('rocket_model', wrapper.param_key)
+  end
 
-    expected_html = <<~HTML.strip
-      <a title="Add Rocket model" class="c-action-link " data-cool="thing" href="/home">Hello, World! <i class="o-acticon o-acticon--plus-circle"></i></a>
-    HTML
-    assert_equal(expected_html, ouput.to_html)
+  def test_input_name
+    object = RocketModel.new
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+    assert_equal('rocket_model[name]', wrapper.input_name)
+  end
+
+  def test_error_messages_without_errors
+    object = RocketModel.new
+
+    assert_predicate(object, :valid?)
+
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+    assert_empty(wrapper.error_messages)
+  end
+
+  def test_error_messages_with_errors
+    object = MandatoryHouseModel.new
+
+    assert_not(object.valid?)
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :house)
+
+    assert_equal(["House can't be blank", 'House is too short (minimum is 3 characters)'],
+                 wrapper.error_messages)
+  end
+
+  def test_overriding_required
+    object = MandatoryOwnerModel.new
+    f = ::Data.define(:object).new(object:)
+
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :owner)
+
+    assert_predicate(wrapper, :required?)
+
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :owner, required: false)
+
+    assert_not_predicate(wrapper, :required?)
+  end
+
+  def test_overriding_optional
+    object = OptionalTreeModel.new
+    f = ::Data.define(:object).new(object:)
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :tree)
+
+    assert_not_predicate(wrapper, :required?)
+
+    wrapper = Formatic::Wrapper.new(f:, attribute_name: :tree, required: true)
+
+    assert_predicate(wrapper, :required?)
   end
 end

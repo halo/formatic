@@ -1,7 +1,7 @@
 .u-formatic-container
   .c-formatic-wrapper class=[('is-required' if required?), ('c-formatic-wrapper--hint-before-input' if hint_before_input?)]
 
-    - if show_label?
+    - if label?
       .c-formatic-wrapper__label
         - if label_for_id.present?
           = f.label attribute_name, nil, for: label_for_id
@@ -18,7 +18,7 @@
         - unless error_messages.to_sentence.end_with?('.')
           ' .
 
-    - if show_hint?
+    - if hint?
       .c-formatic-wrapper__hint
 
         / TODO: This can be removed once we got rid of the `simple_form` gem.

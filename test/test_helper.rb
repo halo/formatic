@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resource :home
 end
 
-I18n.load_path += Dir[Rails.root.join('config/locales/*.yml')]
+# I18n.load_path += Dir[Rails.root.join('config/locales/*.yml')]
 
 require 'action_controller'
 class ApplicationController < ActionController::Base; end
@@ -48,6 +48,11 @@ require 'action_policy'
 # -----------------------------
 # Now we can load this very gem
 # -----------------------------
+
+# Poor man's solution to avoiding global state during tests.
+I18n.load_path << File.expand_path('locales/formatic.fr.yml', __dir__)
+I18n.load_path << File.expand_path('locales/formatic.it.yml', __dir__)
+I18n.load_path << File.expand_path('locales/formatic.sv.yml', __dir__)
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'formatic'

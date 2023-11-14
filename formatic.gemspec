@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['halo']
   spec.email = ['github@posteo.org']
 
-  spec.summary = 'A set of ViewComponents for common links (show, edit, delete, etc.)'
-  spec.description = 'Every action has an icon, such as a "plus-sign" for the "new" action'
+  spec.summary = 'A set of ViewComponents for form elements'
+  spec.description = 'A little bit like simple_form but as VewComponents and more minimalistic.'
   spec.homepage = 'https://github.com/halo/formatic'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.2.0'
@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'actionview' # Needed by `view_component`
+  spec.add_dependency 'calls'
   spec.add_dependency 'dry-initializer'
   spec.add_dependency 'view_component'
 

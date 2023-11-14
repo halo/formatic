@@ -1,0 +1,5 @@
+it:
+  helpers:
+    placeholder:
+      model_naming_namespace/holding_model:
+        specifics: 'Highest specificity'
