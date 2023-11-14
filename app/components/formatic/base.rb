@@ -30,7 +30,7 @@ module Formatic
       result = {
         placeholder: wrapper.placeholder,
         autofocus: !autofocus.nil?,
-        class: (css_classes << 'c-input-string-component__input')
+        class: css_classes
       }
 
       (result[:value] = value) if value

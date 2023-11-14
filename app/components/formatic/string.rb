@@ -5,17 +5,30 @@ module Formatic
   class String < ::Formatic::Base
     option :terminal, default: -> { false }
 
-    def input_options
-      result = {
-        placeholder: wrapper.placeholder,
-        autofocus: !autofocus.nil?,
-        class: (css_classes << 'c-input-string-component__input')
-      }
+    erb_template <<~ERB
+      <%= render wrapper do |input| %>
 
-      (result[:value] = value) if value
+        <% input.with_input do %>
+          <div class="c-formatic-string s-formatic">
 
-      result
-    end
+          <% if readonly? %>
+            <div class="s-markdown">
+              <p>
+                <% if terminal? %>
+                  <tt><%= input.value %></tt>
+                <% else %>
+                  <%= input.value %>
+                <% end %>
+              </p>
+            </div>
+          <% else %>
+            <%= f.text_field(attribute_name, **input_options) %>
+          <% end %>
+
+          </div>
+        <% end %>
+      <% end %>
+    ERB
 
     def css_classes
       terminal? ? ['is-terminal'] : []

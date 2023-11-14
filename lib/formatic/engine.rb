@@ -21,6 +21,8 @@ module Formatic
       # That's right here and now.
       require_relative '../../app/components/formatic/application_component'
       require_relative '../../app/components/formatic/wrapper'
+      require_relative '../../app/components/formatic/base'
+      require_relative '../../app/components/formatic/string'
     end
   end
 end
