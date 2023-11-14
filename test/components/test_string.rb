@@ -17,11 +17,11 @@ class RedFormBuilder
     nil
   end
 
-  def label(_, **args)
+  def label(_, **_args)
     'THELABEL'
   end
 
-  def text_field(_, **args)
+  def text_field(_, **_args)
     'THEFIELD'
   end
 end
@@ -30,17 +30,10 @@ class TestString < ViewComponent::TestCase
   def test_value_without_object
     f = RedFormBuilder.new
     component = Formatic::String.new(f:, attribute_name: :name)
-    output = render_inline(component) { 'Hello, World!' }
+    output = render_inline(component)
 
-    assert_equal('Hello, World!', output.to_html)
+    root = output.at_css('div.u-formatic-container')
+
+    assert_equal 'THELABEL THEFIELD', root.content.squish
   end
-
-  # def test_value
-  #   object = StoneModel.new
-  #   object.name = 'Rocky'
-  #   f = ::Data.define(:object).new(object:)
-  #   wrapper = Formatic::String.new(f:, attribute_name: :name)
-
-  #   assert_equal('Rocky', wrapper.value)
-  # end
 end
