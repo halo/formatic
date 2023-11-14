@@ -81,7 +81,7 @@ module Formatic
     # -----------
 
     def placeholder
-      @placeholder ||= ::Formatic::Wrappers::Lookup.call(
+      @placeholder ||= ::Formatic::Wrappers::Translate.call(
         prefix: :'helpers.placeholder',
         object:,
         attribute_name:,
@@ -90,7 +90,7 @@ module Formatic
     end
 
     def hint
-      @hint ||= ::Formatic::Wrappers::Lookup.call(
+      @hint ||= ::Formatic::Wrappers::Translate.call(
         prefix: :'helpers.hint',
         object:,
         attribute_name:,
@@ -99,7 +99,7 @@ module Formatic
     end
 
     def toggle_on
-      @toggle_on ||= ::Formatic::Wrappers::Lookup.call(
+      @toggle_on ||= ::Formatic::Wrappers::Translate.call(
         prefix: :'helpers.hint',
         object:,
         attribute_name: :"#{attribute_name}_active",
@@ -108,7 +108,7 @@ module Formatic
     end
 
     def toggle_off
-      @toggle_off ||= ::Formatic::Wrappers::Lookup.call(
+      @toggle_off ||= ::Formatic::Wrappers::Translate.call(
         prefix: :'helpers.hint',
         object:,
         attribute_name: :"#{attribute_name}_inactive",

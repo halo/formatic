@@ -61,6 +61,47 @@ class TestWrapper < ViewComponent::TestCase
     assert_equal('rocket_model[name]', wrapper.input_name)
   end
 
+  def test_placeholder
+    I18n.with_locale(:es) do
+      object = RocketModel.new
+      object_name = :the_rocket
+      f = ::Data.define(:object, :object_name).new(object:, object_name:)
+      wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+      assert_equal('El Rocket', wrapper.placeholder)
+    end
+  end
+
+  def test_hint
+    I18n.with_locale(:es) do
+      object = RocketModel.new
+      f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
+      wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+      assert_equal('El Hint', wrapper.hint)
+    end
+  end
+
+  def test_toggle_on
+    I18n.with_locale(:es) do
+      object = RocketModel.new
+      f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
+      wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+      assert_equal('El On', wrapper.toggle_on)
+    end
+  end
+
+  def test_toggle_off
+    I18n.with_locale(:es) do
+      object = RocketModel.new
+      f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
+      wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+
+      assert_equal('El Off', wrapper.toggle_off)
+    end
+  end
+
   def test_error_messages_without_errors
     object = RocketModel.new
 

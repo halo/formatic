@@ -50,9 +50,9 @@ require 'action_policy'
 # -----------------------------
 
 # Poor man's solution to avoiding global state during tests.
-I18n.load_path << File.expand_path('locales/formatic.fr.yml', __dir__)
-I18n.load_path << File.expand_path('locales/formatic.it.yml', __dir__)
-I18n.load_path << File.expand_path('locales/formatic.sv.yml', __dir__)
+Dir.glob("#{File.expand_path('locales', __dir__)}/*.yml").each do |path|
+  I18n.load_path << path
+end
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'formatic'

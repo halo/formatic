@@ -1,0 +1,12 @@
+es:
+  helpers:
+
+    placeholder:
+      the_rocket:
+        name: 'El Rocket'
+
+    hint:
+      rocket_model:
+        name: 'El Hint'
+        name_active: 'El On'
+        name_inactive: 'El Off'
