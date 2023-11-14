@@ -6,7 +6,7 @@ module Formatic
     module Wrapper
       TEMPLATE = <<~ERB
         <div class="u-formatic-container">
-          <div class="<%= [('is-required' if required?), ('c-formatic-wrapper--hint-before-input' if hint_before_input?)].join(' ') %>">
+          <div class="c-formatic-wrapper <%= [('is-required' if required?), ('c-formatic-wrapper--hint-before-input' if hint_before_input?)].join(' ') %>">
 
           <% if label? %>
             <div class="c-formatic-wrapper__label">

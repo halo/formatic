@@ -30,7 +30,7 @@ module Formatic
       result = {
         placeholder: wrapper.placeholder,
         autofocus: !autofocus.nil?,
-        class: css_classes
+        class: _css_classes
       }
 
       (result[:value] = value) if value
@@ -39,10 +39,14 @@ module Formatic
     end
 
     def css_classes
-      terminal? ? ['is-terminal'] : []
+      []
     end
 
     private
+
+    def _css_classes
+      Array(css_classes).join(' ')
+    end
 
     def readonly?
       !!@readonly

@@ -31,7 +31,9 @@ module Formatic
     ERB
 
     def css_classes
-      terminal? ? ['is-terminal'] : []
+      classes = %i[c-formatic-string__input]
+      classes.push(:'is-terminal') if terminal?
+      classes
     end
 
     private

@@ -9,6 +9,8 @@ class BlueModel
 end
 
 class RedFormBuilder
+  include ActionView::Helpers::FormTagHelper
+
   def object
     BlueModel.new
   end
@@ -21,19 +23,22 @@ class RedFormBuilder
     'THELABEL'
   end
 
-  def text_field(_, **_args)
-    'THEFIELD'
+  def text_field(attribute_name, **)
+    text_field_tag(attribute_name, nil, **)
   end
 end
 
 class TestString < ViewComponent::TestCase
   def test_value_without_object
-    f = RedFormBuilder.new
-    component = Formatic::String.new(f:, attribute_name: :name)
+    component = Formatic::String.new(f: RedFormBuilder.new, attribute_name: :the_name)
     output = render_inline(component)
 
-    root = output.at_css('div.u-formatic-container')
+    text_field = output.at_css('.u-formatic-container ' \
+                               '.c-formatic-wrapper ' \
+                               '.c-formatic-wrapper__input ' \
+                               '.c-formatic-string ' \
+                               '.c-formatic-string__input')
 
-    assert_equal 'THELABEL THEFIELD', root.content.squish
+    assert_equal 'the_name', text_field[:name]
   end
 end
