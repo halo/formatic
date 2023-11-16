@@ -29,7 +29,7 @@ module Formatic
     def input_options
       result = {
         placeholder: wrapper.placeholder,
-        autofocus: !autofocus.nil?,
+        autofocus:,
         class: _css_classes
       }
 

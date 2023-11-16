@@ -37,4 +37,36 @@ class TestString < ViewComponent::TestCase
     assert_equal 'zipcode', text_field[:name]
     assert_equal 'predefined', text_field[:value]
   end
+
+  # TODO: This is common functionality that is not really associated with this input.
+
+  def test_autofocus
+    f = TestFormBuilder.for(BlueModel.new)
+    component = Formatic::String.new(f:, attribute_name: :the_name, autofocus: true)
+    output = render_inline(component)
+
+    text_field = output.at_css('.c-formatic-string__input')
+
+    assert_equal 'autofocus', text_field[:autofocus]
+  end
+
+  def test_autofocus_deactivated
+    f = TestFormBuilder.for(BlueModel.new)
+    component = Formatic::String.new(f:, attribute_name: :the_name, autofocus: false)
+    output = render_inline(component)
+
+    text_field = output.at_css('.c-formatic-string__input')
+
+    assert_nil text_field[:autofocus]
+  end
+
+  def test_autofocus_default
+    f = TestFormBuilder.for(BlueModel.new)
+    component = Formatic::String.new(f:, attribute_name: :the_name)
+    output = render_inline(component)
+
+    text_field = output.at_css('.c-formatic-string__input')
+
+    assert_nil text_field[:autofocus]
+  end
 end

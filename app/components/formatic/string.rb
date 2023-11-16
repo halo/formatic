@@ -38,8 +38,6 @@ module Formatic
 
     private
 
-    attr_reader :autofocus
-
     def terminal?
       !!@terminal
     end
