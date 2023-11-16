@@ -45,14 +45,20 @@ require 'view_component/test_case'
 require 'active_model'
 require 'action_policy'
 
+# --------------------
+# Loading Test Support
+# --------------------
+
+require_relative 'support/form_builder'
+
+# Poor man's solution to avoiding global state during tests.
+Dir.glob("#{File.expand_path('support/locales', __dir__)}/*.yml").each do |path|
+  I18n.load_path << path
+end
+
 # -----------------------------
 # Now we can load this very gem
 # -----------------------------
-
-# Poor man's solution to avoiding global state during tests.
-Dir.glob("#{File.expand_path('locales', __dir__)}/*.yml").each do |path|
-  I18n.load_path << path
-end
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'formatic'

@@ -12,7 +12,11 @@ module Formatic
       option :attribute_name
 
       def call
-        I18n.t optimal_key, default: ([optimal_key] + fallback_keys), raise: true
+        if optimal_key
+          I18n.t optimal_key, default: ([optimal_key] + fallback_keys), raise: true
+        else
+          I18n.t fallback_keys.first, default: fallback_keys[1..], raise: true
+        end
       rescue I18n::MissingTranslationData
         nil
       end
@@ -20,6 +24,8 @@ module Formatic
       private
 
       def optimal_key
+        return unless object
+
         :"#{prefix}.#{object.model_name.i18n_key}.#{attribute_name}"
       end
 
