@@ -6,7 +6,7 @@ module Formatic
   # Combines label, input, error and hint.
   # See also https://github.com/rails/rails/blob/main/actionview/lib/action_view/helpers/tags/base.rb
   class Wrapper < ApplicationComponent
-    # Rails form builder. Usually with a model as `f.object`.
+    # Passing on the form builder.
     option :f
 
     # The attribute of the record to be edited. E.g. `:name`.
@@ -18,10 +18,14 @@ module Formatic
     # Manually decide to hide the label.
     option :label, as: :manual_label, default: -> { true }
 
-    # Manually decide to hint the label.
+    # Manually decide to hide the hint.
     option :hint, as: :manual_hint, default: -> { true }
 
+    # Autocompletion + Enter should not submit the form.
     option :prevent_submit_on_enter, default: -> { false }
+
+    # Multiple inputs can belong to one label (e.g. select day, month, year).
+    # With this you can specify the ID of one first input to couple the label to it.
     option :label_for_id, default: -> {}
 
     renders_one :input

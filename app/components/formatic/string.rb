@@ -6,9 +6,9 @@ module Formatic
     option :terminal, default: -> { false }
 
     erb_template <<~ERB
-      <%= render wrapper do |input| %>
+      <%= render wrapper do |wrap| %>
 
-        <% input.with_input do %>
+        <% wrap.with_input do %>
           <div class="c-formatic-string s-formatic">
 
           <% if readonly? %>

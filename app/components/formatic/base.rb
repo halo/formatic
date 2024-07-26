@@ -3,18 +3,33 @@
 module Formatic
   # All inputs inherit from this class.
   class Base < ApplicationComponent
+    # Rails form builder. Usually with a model as `f.object`.
     option :f
 
+    # -- Both Wrapper and Input --
+
+    # The method that is called on the form object.
+    #
+    # This is uncontroversial,  both Rails and SimpleForm have this.
+    #  Rails:      `f.text_field(:title)`
+    #  SimpleForm: `f.input(:title)`
+    #
     option :attribute_name, type: proc(&:to_sym)
-    option :autofocus, default: -> { false }
+
+    # -- Mostly Input --
     option :value, default: -> {}
-    option :label, default: -> { true }
+    option :class, as: :css_class, default: -> {}
+    option :autofocus, default: -> { false }
+
+    # -- Mostly Wrapper --
     option :readonly, default: -> { false }
     option :required, default: -> {}
+    option :async_submit, default: -> { false }
+
+    # -- Only Wrapper
+    option :label, default: -> { true }
     option :prevent_submit_on_enter, default: -> { false }
     option :label_for_id, default: -> {}
-    option :class, as: :css_class, default: -> {}
-    option :async_submit, default: -> { false }
 
     def wrapper
       @wrapper ||= ::Formatic::Wrapper.new(
@@ -22,7 +37,8 @@ module Formatic
         attribute_name:,
         label:,
         required:,
-        prevent_submit_on_enter:
+        prevent_submit_on_enter:,
+        label_for_id:
       )
     end
 
@@ -38,6 +54,7 @@ module Formatic
       result
     end
 
+    # Override in subclass.
     def css_classes
       []
     end

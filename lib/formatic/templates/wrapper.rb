@@ -24,7 +24,7 @@ module Formatic
 
           <% if error? %>
             <div class="c-formatic-wrapper__error">
-              <%= helpers.ensicon :exclamation_triangle %>
+              <%= :exclamation_triangle %>
               <%= error_messages.to_sentence %>
               <% unless error_messages.to_sentence.end_with?('.') %>.<% end %>
             </div>
@@ -42,6 +42,8 @@ module Formatic
           </div>
         </div>
       ERB
+
+      private_constant :TEMPLATE
 
       def self.call
         TEMPLATE
