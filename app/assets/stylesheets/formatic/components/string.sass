@@ -1,10 +1,12 @@
+@use "formatic/settings/colors"
+
 .c-formatic-string
 
   &__input
 
     &.is-terminal
-      font-family: "Inconsolata", "Roboto Mono", "Monaco", "Courier New" !important
+      font-family: Inconsolata, "Roboto Mono", "Source Code Pro", "SF Mono", Monaco, "Fira Mono", "Droid Sans Mono", monospace !important
 
     .c-formatic-wrapper.is-required &
-      border-left-color: $formatic-neon-red
+      border-left-color: colors.$neon-red
       border-left-width: 2px

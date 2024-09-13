@@ -20,9 +20,9 @@ module Formatic
     #           content_tag(:div, input.toggle_off, class: 'is-inactive')
 
     erb_template <<~ERB
-      <%= render wrapper do |input| %>
+      <%= render wrapper do |wrap| %>
 
-        <% input.with_input do %>
+        <% wrap.with_input do %>
           <div class="c-formatic-toggle s-formatic">
 
           <% if readonly? %>
@@ -36,9 +36,9 @@ module Formatic
               <%
                 f.check_box(attribute_name, { id: dom_id }, checked_value) +
                   content_tag(:i) +
-                  content_tag(:div, input.human_attribute_name, class: 'c-input-toggle-component__label-caption-dummy') +
-                  content_tag(:div, input.toggle_on, class: 'is-active') +
-                  content_tag(:div, input.toggle_off, class: 'is-inactive')
+                  content_tag(:div, "wrap.human_attribute_name", class: 'c-formatic-toggle__label-caption-dummy') +
+                  content_tag(:div, wrap.toggle_on, class: 'is-active') +
+                  content_tag(:div, wrap.toggle_off, class: 'is-inactive')
               %>
             <% end %>
           <% end %>

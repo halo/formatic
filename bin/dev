@@ -1,0 +1,11 @@
+
+# Exit when any command fails
+set -e
+
+bundle exec sass app/assets/stylesheets/formatic/index.sass preview/app/assets/stylesheets/application.css --load-path ~/code/2-areas/formatic/formatic/app/assets/stylesheets --load-path ~/code/1-projects/iglu/iglu
+
+cd preview
+bundle check || bundle install
+bundle exec rails server -p 3005
+
+# open http://127.0.0.1:3005

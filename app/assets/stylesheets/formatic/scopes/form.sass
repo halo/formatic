@@ -1,3 +1,6 @@
+@use "iglu/font-size"
+@use "formatic/settings/colors"
+
 .s-formatic
   input[type="email"],
   input[type="number"],
@@ -8,15 +11,15 @@
   input[type="url"],
   textarea,
   select
-    +formatic-scaled-font-size
+    +font-size.default
     -webkit-appearance: none
     -moz-appearance: none
     font-family: 'Roboto Condensed'
     width: 100%
     outline-offset: 0
-    outline-color: $formatic-neon-yellow
-    border: 1px solid $formatic-silver-gray
-    color: $formatic-black
+    outline-color: colors.$neon-yellow
+    border: 1px solid colors.$silver-gray
+    color: colors.$black
     height: 2em
     padding-top: 0.2em
     padding-right: 0.4em
@@ -25,7 +28,7 @@
     box-sizing: border-box
 
     .formatic-wrapper.is-required &
-      border-left-color: $formatic-neon-red
+      border-left-color: colors.$neon-red
       border-left-width: 2px
 
   textarea
@@ -39,4 +42,4 @@
     box-shadow: none
 
   ::placeholder
-    color: $formatic-silver-gray
+    color: colors.$silver-gray

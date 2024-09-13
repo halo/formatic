@@ -1,6 +1,11 @@
+@use "iglu/font-size"
+@use 'iglu/spacing'
+@use "formatic/settings/colors"
+@use "iglu/responsive/settings/breakpoints"
+
 .c-formatic-wrapper
-  +formatic-scaled-font-size
-  +formatic-scaled-margin-bottom
+  +font-size.default
+  +spacing.margin-bottom
   display: grid
   grid-row-gap: 0.2rem
   grid-template-columns: auto
@@ -9,21 +14,20 @@
   &--hint-before-input
     grid-template-areas: 'label' 'hint' 'input' 'error'
 
-
   @each $column in label input error hint address
     &__#{$column}
       grid-area: #{$column}
 
   &__error
-    color: $formatic-paradise-pink
+    color: colors.$paradise-pink
 
     i
       display: inline-block
       animation: formatic-flip 4s infinite
 
   &__hint
-    // +formatic-scaled-margin-bottom--tiny
-    +formatic-scaled-font-size--smaller
+    +spacing.margin-bottom--tiny
+    +font-size.smaller
     opacity: 0.5
 
   &__prevent-submit-on-enter
@@ -32,7 +36,7 @@
     visibility: hidden
 
 
-+formatic-container--large
+@container (min-width: #{breakpoints.$large})
   .c-formatic-wrapper
     grid-template-columns: 1fr 1fr
     grid-template-rows: min-content min-content min-content
