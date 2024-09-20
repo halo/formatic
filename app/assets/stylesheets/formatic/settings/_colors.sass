@@ -1,3 +1,5 @@
+@use "sass:color"
+
 $black: #222
 $white: #fff
 
@@ -6,5 +8,6 @@ $neon-yellow: #ffd400
 $jade-green: rgb(0, 190, 130)
 
 $granite-gray: rgb(70, 70, 70)
-$silver-gray: lighten($granite-gray, 50)
+$silver-gray: color.adjust($granite-gray, $lightness: 50%)
+
 // $neon-red: #ec5840
