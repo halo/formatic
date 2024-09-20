@@ -54,8 +54,85 @@
   font-family: Inconsolata, "Roboto Mono", "Source Code Pro", "SF Mono", Monaco, "Fira Mono", "Droid Sans Mono", monospace !important;
 }
 .c-formatic-wrapper.is-required .c-formatic-string__input {
-  border-left-color: #ec5840;
+  border-left-color: rgb(240, 30, 80);
   border-left-width: 2px;
+}
+
+.c-formatic-toggle {
+  font-size: 1rem;
+  display: grid;
+}
+.c-formatic-toggle label {
+  display: inline-grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-areas: "switch caption" "status status";
+}
+.c-formatic-toggle i {
+  grid-area: switch;
+  display: inline-block;
+  width: 2.8em;
+  height: 1.5em;
+  border-radius: 1.5em;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
+  background: #c6c6c6;
+}
+.c-formatic-toggle i:before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 0.1em;
+  left: 0.1em;
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: left 0.1s;
+}
+.c-formatic-toggle input {
+  position: absolute;
+  visibility: hidden;
+}
+.c-formatic-toggle input:checked + i {
+  background-color: rgb(0, 190, 130);
+}
+.c-formatic-toggle input:checked + i.is-alert {
+  background-color: rgb(240, 30, 80);
+}
+.c-formatic-toggle input:checked + i:before {
+  left: 1.4em;
+  background-color: #fff;
+}
+.c-formatic-toggle input:not(:checked) ~ .is-active {
+  display: none;
+}
+.c-formatic-toggle input:checked ~ .is-active {
+  display: block;
+}
+.c-formatic-toggle input:not(:checked) ~ .is-inactive {
+  display: block;
+}
+.c-formatic-toggle input:checked ~ .is-inactive {
+  display: none;
+}
+.c-formatic-toggle span {
+  grid-area: caption;
+  margin-left: 0.5em;
+  position: relative;
+  top: 2px;
+}
+.c-formatic-toggle .is-inactive,
+.c-formatic-toggle .is-active {
+  font-size: 0.7857rem;
+  grid-area: status;
+  margin-top: 0.5em;
+  color: #c6c6c6;
+}
+.c-formatic-toggle__label-caption-dummy {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
 }
 
 .u-formatic-container {
@@ -96,7 +173,7 @@
 .formatic-wrapper.is-required .s-formatic input[type=url],
 .formatic-wrapper.is-required .s-formatic textarea,
 .formatic-wrapper.is-required .s-formatic select {
-  border-left-color: #ec5840;
+  border-left-color: rgb(240, 30, 80);
   border-left-width: 2px;
 }
 .s-formatic textarea {

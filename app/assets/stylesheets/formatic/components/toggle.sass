@@ -1,0 +1,89 @@
+@use "iglu/font-size"
+@use "formatic/settings/colors"
+
+.c-formatic-toggle
+  +font-size.default
+  // Having grid in the wrapper and the <label>
+  // makes the caption width 100% (increases the click area)
+  display: grid
+
+  label
+    display: inline-grid
+    // This component may be used as part of the plural `InputTogglesComponent`.
+    // There we may have multi-line captions per toggle. This is to align them.
+    grid-template-columns: max-content 1fr
+    grid-template-areas: 'switch caption' 'status status'
+
+  i // Slider
+    grid-area: switch
+    display: inline-block
+    width: 2.8em
+    height: 1.5em
+    border-radius: 1.5em
+    position: relative
+    vertical-align: middle
+    transition: background 0.25s
+    background: colors.$silver-gray
+
+    &:before // Pin
+      display: block
+      position: absolute
+      content: ""
+      top: 0.1em
+      left: 0.1em
+      width: 1.3em
+      height: 1.3em
+      border-radius: 50%
+      background-color: colors.$white
+      transition: left 0.1s
+
+  // Checkbox
+  input
+    position: absolute
+    visibility: hidden
+
+    // Active Slider
+    &:checked + i
+      background-color: colors.$jade-green
+
+      &.is-alert
+        background-color: colors.$paradise-pink
+
+    // Active Pin
+    &:checked + i:before
+      left: 1.4em
+      background-color: colors.$white
+
+    // Active Status
+    &:not(:checked) ~ .is-active
+      display: none
+    &:checked ~ .is-active
+      display: block
+
+    // Inactive Status
+    &:not(:checked) ~ .is-inactive
+      display: block
+    &:checked ~ .is-inactive
+      display: none
+
+  // Caption
+  span
+    grid-area: caption
+    margin-left: 0.5em
+    position: relative
+    top: 2px
+
+  // Status
+  .is-inactive,
+  .is-active
+    +font-size.smaller
+    grid-area: status
+    margin-top: 0.5em
+    color: colors.$silver-gray
+
+  // So that CI has a label with content to find and click on
+  // See https://www.rubydoc.info/github/jnicklas/capybara/Capybara%2FNode%2FActions:choose
+  &__label-caption-dummy
+    position: absolute
+    margin-left: -9999px
+    visibility: hidden

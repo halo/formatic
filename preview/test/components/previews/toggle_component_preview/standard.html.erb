@@ -1,0 +1,3 @@
+<%= form_for(House.new, url: '#') do |f| %>
+  <%= render Formatic::Toggle.new(f:, attribute_name: :floors) %>
+<% end %>
