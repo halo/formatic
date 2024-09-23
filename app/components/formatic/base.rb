@@ -10,7 +10,7 @@ module Formatic
 
     # The method that is called on the form object.
     #
-    # This is uncontroversial,  both Rails and SimpleForm have this.
+    # This is uncontroversial, both Rails and SimpleForm have this.
     #  Rails:      `f.text_field(:title)`
     #  SimpleForm: `f.input(:title)`
     #
@@ -27,6 +27,7 @@ module Formatic
     option :async_submit, default: -> { false }
 
     # -- Only Wrapper
+    option :wrapper_class, default: -> {}
     option :label, default: -> { true }
     option :prevent_submit_on_enter, default: -> { false }
     option :label_for_id, default: -> {}
@@ -38,7 +39,8 @@ module Formatic
         label:,
         required:,
         prevent_submit_on_enter:,
-        label_for_id:
+        label_for_id:,
+        class: wrapper_class
       )
     end
 

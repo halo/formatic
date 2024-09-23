@@ -21,7 +21,7 @@ module Formatic
           <% else %>
             <%= f.label attribute_name, nil, { for: dom_id } do |builder| %>
               <%
-                f.check_box(attribute_name, { id: dom_id }, checked_value) +
+                f.check_box(attribute_name, { id: dom_id, class: css_classes }, checked_value) +
                   content_tag(:i) +
                   content_tag(:div, "wrap.human_attribute_name", class: 'c-formatic-toggle__label-caption-dummy') +
                   content_tag(:div, wrap.toggle_on, class: 'is-active') +
@@ -36,7 +36,7 @@ module Formatic
     ERB
 
     def css_classes
-      %i[c-formatic-toggle__input]
+      ['c-formatic-toggle__input', css_class].flatten.compact
     end
 
     # There can be multiple checkboxes with the same attribute name on the page.

@@ -24,7 +24,7 @@ module Formatic
 
       # Checking options
       unknown_options = opts.keys - __defined_options
-      message = "Key(s) #{unknown_options} not found in #{__defined_options}"
+      message = "Key(s) #{unknown_options} not found in #{__defined_options} of #{self.class}"
       raise KeyError, message if unknown_options.any?
     end
 

@@ -4,12 +4,12 @@
 @use "iglu/responsive/settings/breakpoints"
 
 .c-formatic-wrapper
-  +font-size.default
-  +spacing.margin-bottom
   display: grid
   grid-row-gap: 0.2rem
   grid-template-columns: auto
   grid-template-areas: 'label' 'input' 'error' 'hint'
+  +font-size.default
+  +spacing.margin-bottom
 
   &--hint-before-input
     grid-template-areas: 'label' 'hint' 'input' 'error'
@@ -26,9 +26,9 @@
       animation: formatic-flip 4s infinite
 
   &__hint
+    opacity: 0.5
     +spacing.margin-bottom--tiny
     +font-size.smaller
-    opacity: 0.5
 
   &__prevent-submit-on-enter
     position: absolute

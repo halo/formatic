@@ -1,10 +1,14 @@
 .c-formatic-wrapper {
-  font-size: 1rem;
-  margin-bottom: 1.1429rem;
   display: grid;
   grid-row-gap: 0.2rem;
   grid-template-columns: auto;
   grid-template-areas: "label" "input" "error" "hint";
+}
+.c-formatic-wrapper {
+  font-size: 1rem;
+}
+.c-formatic-wrapper {
+  margin-bottom: 1.1429rem;
 }
 .c-formatic-wrapper--hint-before-input {
   grid-template-areas: "label" "hint" "input" "error";
@@ -32,9 +36,13 @@
   animation: formatic-flip 4s infinite;
 }
 .c-formatic-wrapper__hint {
-  margin-bottom: 0.2857rem;
-  font-size: 0.7857rem;
   opacity: 0.5;
+}
+.c-formatic-wrapper__hint {
+  margin-bottom: 0.2857rem;
+}
+.c-formatic-wrapper__hint {
+  font-size: 0.7857rem;
 }
 .c-formatic-wrapper__prevent-submit-on-enter {
   position: absolute;
@@ -59,8 +67,10 @@
 }
 
 .c-formatic-toggle {
-  font-size: 1rem;
   display: grid;
+}
+.c-formatic-toggle {
+  font-size: 1rem;
 }
 .c-formatic-toggle label {
   display: inline-grid;
@@ -124,10 +134,13 @@
 }
 .c-formatic-toggle .is-inactive,
 .c-formatic-toggle .is-active {
-  font-size: 0.7857rem;
   grid-area: status;
   margin-top: 0.5em;
   color: #c6c6c6;
+}
+.c-formatic-toggle .is-inactive,
+.c-formatic-toggle .is-active {
+  font-size: 0.7857rem;
 }
 .c-formatic-toggle__label-caption-dummy {
   position: absolute;
@@ -148,7 +161,6 @@
 .s-formatic input[type=url],
 .s-formatic textarea,
 .s-formatic select {
-  font-size: 1rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   font-family: "Roboto Condensed";
@@ -163,6 +175,17 @@
   padding-left: 0.4em;
   box-shadow: 0 1px 2px rgba(10, 10, 10, 0.1) inset;
   box-sizing: border-box;
+}
+.s-formatic input[type=email],
+.s-formatic input[type=number],
+.s-formatic input[type=password],
+.s-formatic input[type=search],
+.s-formatic input[type=tel],
+.s-formatic input[type=text],
+.s-formatic input[type=url],
+.s-formatic textarea,
+.s-formatic select {
+  font-size: 1rem;
 }
 .formatic-wrapper.is-required .s-formatic input[type=email],
 .formatic-wrapper.is-required .s-formatic input[type=number],

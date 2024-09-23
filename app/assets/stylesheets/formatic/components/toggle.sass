@@ -2,10 +2,10 @@
 @use "formatic/settings/colors"
 
 .c-formatic-toggle
-  +font-size.default
   // Having grid in the wrapper and the <label>
   // makes the caption width 100% (increases the click area)
   display: grid
+  +font-size.default
 
   label
     display: inline-grid
@@ -76,10 +76,10 @@
   // Status
   .is-inactive,
   .is-active
-    +font-size.smaller
     grid-area: status
     margin-top: 0.5em
     color: colors.$silver-gray
+    +font-size.smaller
 
   // So that CI has a label with content to find and click on
   // See https://www.rubydoc.info/github/jnicklas/capybara/Capybara%2FNode%2FActions:choose

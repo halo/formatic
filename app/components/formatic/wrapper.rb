@@ -28,6 +28,9 @@ module Formatic
     # With this you can specify the ID of one first input to couple the label to it.
     option :label_for_id, default: -> {}
 
+    # CSS
+    option :class, as: :css_class, default: -> {}
+
     renders_one :input
 
     erb_template(::Formatic::Templates::Wrapper.call)
