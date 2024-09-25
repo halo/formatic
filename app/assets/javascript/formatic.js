@@ -1,9 +1,51 @@
 var Formatic;
 (function (Formatic) {
     class Date {
+        constructor(el) {
+            this.el = el;
+            this.setupBindings();
+        }
+        setupBindings() {
+            this.shortcutButtons.forEach((el) => {
+                el.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const shortcut = event.target;
+                    this.dayInput.value = shortcut.dataset.day;
+                    this.monthInput.value = shortcut.dataset.month;
+                    this.yearInput.value = shortcut.dataset.year;
+                });
+            });
+        }
+        get todayDay() {
+            return this.el.dataset.todayDay;
+        }
+        get todayMonth() {
+            return this.el.dataset.todayMonth;
+        }
+        get todayYear() {
+            return this.el.dataset.todayYear;
+        }
+        get dayInput() {
+            return this.el.querySelector('.js-formatic-date__day');
+        }
+        get monthInput() {
+            return this.el.querySelector('.js-formatic-date__month');
+        }
+        get yearInput() {
+            return this.el.querySelector('.js-formatic-date__year');
+        }
+        get shortcutButtons() {
+            return this.el.querySelectorAll('.js-formatic-date__shortcut');
+        }
     }
     Formatic.Date = Date;
 })(Formatic || (Formatic = {}));
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.js-formatic-date').forEach((el) => {
+        console.debug('Instantiating InputDateComponent...');
+        new Formatic.Date(el);
+    });
+});
 var Formatic;
 (function (Formatic) {
     class Toggle {

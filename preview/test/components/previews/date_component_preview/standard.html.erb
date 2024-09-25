@@ -1,0 +1,3 @@
+<%= form_for(House.new(floors: 1.day.ago), url: '#') do |f| %>
+  <%= render Formatic::Date.new(f:, attribute_name: :floors) %>
+<% end %>

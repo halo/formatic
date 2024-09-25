@@ -1,0 +1,28 @@
+@use "formatic/settings/colors"
+
+  .c-formatic-date
+
+  &__date,
+  &__shortcuts
+    display: grid
+    grid-auto-flow: column
+    grid-gap: 0.5em
+
+  &__shortcuts
+    justify-content: space-between
+
+  &__part
+
+    .c-formatic-wrapper.is-required &
+      border-left-color: colors.$paradise-pink
+      border-left-width: 2px
+
+  &__shortcut
+    +scaled-font-size--smaller
+    padding: 0.1em 0.2em 0.2em 0.2em
+
+    +link-states
+      color: colors.$silver-gray
+
+    &:hover
+      color: colors.$black

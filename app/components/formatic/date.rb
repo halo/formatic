@@ -1,39 +1,16 @@
 # frozen_string_literal: true
 
+require 'formatic/templates/date'
+
 module Formatic
-  # Text input for one-liners.
+  # Date/calendar
   class Date < ::Formatic::Base
-    option :terminal, default: -> { false }
+    option :discard_day, default: -> {}
 
-    erb_template <<~ERB
-      <%= render wrapper do |wrap| %>
-
-        <% wrap.with_input do %>
-          <div class="c-formatic-string s-formatic">
-
-          <% if readonly? %>
-            <div class="s-markdown">
-              <p>
-                <% if terminal? %>
-                  <tt><%= input.value %></tt>
-                <% else %>
-                  <%= input.value %>
-                <% end %>
-              </p>
-            </div>
-          <% else %>
-            <%= f.text_field(attribute_name, **input_options) %>
-          <% end %>
-
-          </div>
-        <% end %>
-      <% end %>
-    ERB
+    erb_template(::Formatic::Templates::Date.call)
 
     def css_classes
-      classes = %i[c-formatic-string__input]
-      classes.push(:'is-terminal') if terminal?
-      classes
+      %i[c-formatic-date__input]
     end
 
     def options_for_day
@@ -85,8 +62,8 @@ module Formatic
     end
 
     def collection_for_month
-      result = (1..12).map { [l(Date.new(1, _1), format: '%B  %-m'), _1] }
-      result.prepend([nil, nil]) if wrapper.optional?
+      result = (1..12).map { [l(::Date.new(1, _1), format: '%B  %-m'), _1] }
+      result.prepend([nil, nil]) unless wrapper.required?
       result
     end
 
