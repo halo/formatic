@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+      "outFile": "app/assets/javascript/formatic.js",
+      "noImplicitAny": true,
+      "noEmitOnError": true,
+      "sourceMap": true,
+      "target": "es2021",
+      "skipLibCheck": true,
+      "removeComments": true,
+      "moduleResolution": "node",
+  }
+}

@@ -10,3 +10,5 @@ en:
     hint:
       house:
         floors: I am a short hint.
+        floors_active: Online forever.
+        floors_inactive: Oh no, offline.

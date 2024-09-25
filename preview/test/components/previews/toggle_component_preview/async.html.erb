@@ -1,0 +1,7 @@
+<%= form_for(House.new(id: 42), url: '/toggles/42') do |f| %>
+  <%= render Formatic::Toggle.new(f:,
+                                  async_submit: true,
+                                  attribute_name: :floors,
+                                  class: :inside,
+                                  wrapper_class: :outside) %>
+<% end %>

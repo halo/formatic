@@ -10,7 +10,7 @@ module Formatic
       <%= render wrapper do |wrap| %>
 
         <% wrap.with_input do %>
-          <div class="c-formatic-toggle s-formatic">
+          <div class="c-formatic-toggle s-formatic <%= 'js-formatic-toggle' if async_submit %>">
 
           <% if readonly? %>
             <div class="s-markdown">

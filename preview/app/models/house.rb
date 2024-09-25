@@ -1,4 +1,4 @@
 class House
   include ActiveModel::API
-  attr_accessor :floors
+  attr_accessor :id, :floors
 end
