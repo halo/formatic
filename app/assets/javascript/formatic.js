@@ -16,15 +16,6 @@ var Formatic;
                 });
             });
         }
-        get todayDay() {
-            return this.el.dataset.todayDay;
-        }
-        get todayMonth() {
-            return this.el.dataset.todayMonth;
-        }
-        get todayYear() {
-            return this.el.dataset.todayYear;
-        }
         get dayInput() {
             return this.el.querySelector('.js-formatic-date__day');
         }

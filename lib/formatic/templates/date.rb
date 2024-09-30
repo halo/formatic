@@ -43,7 +43,7 @@ module Formatic
                 <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
                    href='#'
                    data-year=''>
-                   Leer
+                   <%= t('formatic.date.blank') %>
                 </a>
 
                 <a class="c-formatic-date__shortcut js-formatic-date__shortcut"

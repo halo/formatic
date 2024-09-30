@@ -1,4 +1,10 @@
 en:
-  formatic_component:
-    titles:
-      new: Add %{subject}
+  formatic:
+
+    date:
+      blank: Blank
+      yesterday: Yesterday
+      today: Today
+      tomorrow: Tomorrow
+      next_week: Next week
+      next_month: Next month

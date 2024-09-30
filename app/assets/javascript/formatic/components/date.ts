@@ -20,22 +20,6 @@ namespace Formatic {
       })
     }
 
-    // ---------------
-    // Data Attributes
-    // ---------------
-
-    private get todayDay() {
-      return this.el.dataset.todayDay
-    }
-
-    private get todayMonth() {
-      return this.el.dataset.todayMonth
-    }
-
-    private get todayYear() {
-      return this.el.dataset.todayYear
-    }
-
     // ------------
     // DOM Elements
     // ------------

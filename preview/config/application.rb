@@ -38,5 +38,12 @@ module Preview
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.lookbook.preview_display_options = {
+      lang: [
+        %w[English en],
+        %w[German de]
+      ]
+    }
   end
 end

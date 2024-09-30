@@ -1,4 +1,10 @@
-de:
-  formatic_component:
-    titles:
-      new: "%{subject} anlegen"
+en:
+  formatic:
+
+    date:
+      blank: Leer
+      yesterday: Gestern
+      today: Heute
+      tomorrow: Morgen
+      next_week: Nächste Woche
+      next_month: Nächsten Monat

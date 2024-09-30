@@ -4,6 +4,7 @@ en:
     attributes:
       house:
         floors: Floors
+        created_at: Established
 
   helpers:
 
