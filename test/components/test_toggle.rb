@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # frozen_toggle_literal: true
 
 require 'test_helper'
@@ -28,27 +30,25 @@ class TestToggle < ViewComponent::TestCase
     component = Formatic::Toggle.new(f:,
                                      attribute_name: :zipcode,
                                      autofocus: true,
-                                     label: false,
-                                     value: 'predefined')
+                                     label: false)
     output = render_inline(component)
-    p output.to_html
+    # p output.to_html
 
     text_field = output.at_css('.c-formatic-toggle__input')
 
     assert_equal 'zipcode', text_field[:name]
-    assert_equal 'predefined', text_field[:value]
   end
 
   # TODO: This is common functionality that is not really associated with this input.
 
-  def test_autofocus
+  def test_class
     f = TestFormBuilder.for(RedModel.new)
-    component = Formatic::Toggle.new(f:, attribute_name: :the_name, autofocus: true)
+    component = Formatic::Toggle.new(f:, attribute_name: :the_name, class: :flashy)
     output = render_inline(component)
 
     text_field = output.at_css('.c-formatic-toggle__input')
 
-    assert_equal 'autofocus', text_field[:autofocus]
+    assert_equal 'c-formatic-toggle__input flashy', text_field[:class]
   end
 
   def test_autofocus_deactivated

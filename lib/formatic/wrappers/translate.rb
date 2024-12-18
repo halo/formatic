@@ -8,7 +8,7 @@ module Formatic
 
       option :prefix
       option :object
-      option :object_name, default: -> {}
+      option :object_name, optional: true
       option :attribute_name
 
       def call

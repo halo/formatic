@@ -29,37 +29,37 @@ class OptionalTreeModel
 end
 
 class TestWrapper < ViewComponent::TestCase
-  def test_value_without_object
-    f = ::Data.define(:object).new(object: nil)
-    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+  # def test_value_without_object
+  #   f = ::Data.define(:object).new(object: nil)
+  #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    assert_nil(wrapper.value)
-  end
+  #   assert_nil(wrapper.value)
+  # end
 
-  def test_value
-    object = StoneModel.new
-    object.name = 'Rocky'
-    f = ::Data.define(:object).new(object:)
-    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+  # def test_value
+  #   object = StoneModel.new
+  #   object.name = 'Rocky'
+  #   f = ::Data.define(:object).new(object:)
+  #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    assert_equal('Rocky', wrapper.value)
-  end
+  #   assert_equal('Rocky', wrapper.value)
+  # end
 
-  def test_param_key
-    object = RocketModel.new
-    f = ::Data.define(:object).new(object:)
-    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+  # def test_param_key
+  #   object = RocketModel.new
+  #   f = ::Data.define(:object).new(object:)
+  #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    assert_equal('rocket_model', wrapper.param_key)
-  end
+  #   assert_equal('rocket_model', wrapper.param_key)
+  # end
 
-  def test_input_name
-    object = RocketModel.new
-    f = ::Data.define(:object).new(object:)
-    wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
+  # def test_input_name
+  #   object = RocketModel.new
+  #   f = ::Data.define(:object).new(object:)
+  #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
-    assert_equal('rocket_model[name]', wrapper.input_name)
-  end
+  #   assert_equal('rocket_model[name]', wrapper.input_name)
+  # end
 
   def test_placeholder
     I18n.with_locale(:es) do

@@ -6,31 +6,36 @@ module Formatic
     # Rails form builder. Usually with a model as `f.object`.
     option :f
 
-    # -- Both Wrapper and Input --
-
     # The method that is called on the form object.
     #
     # This is uncontroversial, both Rails and SimpleForm have this.
     #  Rails:      `f.text_field(:title)`
     #  SimpleForm: `f.input(:title)`
-    #
     option :attribute_name, type: proc(&:to_sym)
 
-    # -- Mostly Input --
-    option :value, default: -> {}
-    option :class, as: :css_class, default: -> {}
+    # If passed in, used as the `<input value="...">`
+    # If not passed in, it is derived from the form object.
+    option :value, as: :manual_value, default: -> { :_fetch_from_record }
+
+    # CSS class(es) applied to the <input> element
+    # and the wrapper <div> respectively.
+    option :class, as: :manual_class, optional: true
+    option :wrapper_class, optional: true
+
+    # For inputs that support `<input autofocus=...>`
     option :autofocus, default: -> { false }
 
-    # -- Mostly Wrapper --
-    option :readonly, default: -> { false }
-    option :required, default: -> {}
+    # Some inputs (such as checkboxes and textfields)
+    # can be submitted continously by submitting their <form>
+    # via javascript.
     option :async_submit, default: -> { false }
 
-    # -- Only Wrapper
-    option :wrapper_class, default: -> {}
+    # See `Formatic::Wrapper`
     option :label, default: -> { true }
+    option :label_for_id, optional: true
+    option :readonly, as: :readonly, default: -> { false }
+    option :required, optional: true
     option :prevent_submit_on_enter, default: -> { false }
-    option :label_for_id, default: -> {}
 
     def wrapper
       @wrapper ||= ::Formatic::Wrapper.new(
@@ -44,31 +49,10 @@ module Formatic
       )
     end
 
-    def input_options
-      result = {
-        placeholder: wrapper.placeholder,
-        autofocus:,
-        class: _css_classes
-      }
+    def value
+      return manual_value if manual_value != :_fetch_from_record
 
-      (result[:value] = value) if value
-
-      result
-    end
-
-    # Override in subclass.
-    def css_classes
-      []
-    end
-
-    private
-
-    def _css_classes
-      Array(css_classes).join(' ')
-    end
-
-    def readonly?
-      !!@readonly
+      f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
     end
   end
 end

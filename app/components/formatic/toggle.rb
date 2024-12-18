@@ -3,25 +3,22 @@
 module Formatic
   # Stylish checkbox for a boolean attribute.
   class Toggle < ::Formatic::Base
-    option :checked_value, default: -> { '1' }
-    option :async_submit, default: -> { false }
-
     erb_template <<~ERB
       <%= render wrapper do |wrap| %>
 
         <% wrap.with_input do %>
           <div class="c-formatic-toggle s-formatic <%= 'js-formatic-toggle' if async_submit %>">
 
-          <% if readonly? %>
+          <% if readonly %>
             <div class="s-markdown">
               <p>
-                <%= input.value %>
+                <%= value %>
               </p>
             </div>
           <% else %>
             <%= f.label attribute_name, nil, { for: dom_id } do |builder| %>
               <%
-                f.check_box(attribute_name, { id: dom_id, class: css_classes }, checked_value) +
+                f.check_box(attribute_name, { id: dom_id, class: css_classes }) +
                   content_tag(:i) +
                   content_tag(:div, "wrap.human_attribute_name", class: 'c-formatic-toggle__label-caption-dummy') +
                   content_tag(:div, wrap.toggle_on, class: 'is-active') +
@@ -36,7 +33,7 @@ module Formatic
     ERB
 
     def css_classes
-      ['c-formatic-toggle__input', css_class].flatten.compact
+      ::Formatic::Css.call('c-formatic-toggle__input', manual_class)
     end
 
     # There can be multiple checkboxes with the same attribute name on the page.

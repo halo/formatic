@@ -5,7 +5,7 @@ require 'formatic/templates/date'
 module Formatic
   # Date/calendar
   class Date < ::Formatic::Base
-    option :discard_day, default: -> {}
+    option :discard_day, optional: true
 
     erb_template(::Formatic::Templates::Date.call)
 

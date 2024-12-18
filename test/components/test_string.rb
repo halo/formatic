@@ -38,6 +38,17 @@ class TestString < ViewComponent::TestCase
     assert_equal 'predefined', text_field[:value]
   end
 
+  def test_readonly
+    f = TestFormBuilder.for(BlueModel.new(the_name: 'Static yo'))
+    component = Formatic::String.new(f:, attribute_name: :the_name, readonly: true)
+    output = render_inline(component)
+
+    input_container = output.at_css('.c-formatic-string div')
+    paragraph = input_container.at_css('p')
+
+    assert_equal 'Static yo', paragraph.text.strip
+  end
+
   # TODO: This is common functionality that is not really associated with this input.
 
   def test_autofocus

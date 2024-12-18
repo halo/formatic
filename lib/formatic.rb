@@ -4,6 +4,7 @@ require 'calls'
 require 'dry/initializer'
 
 require 'formatic/version'
+require 'formatic/css'
 require 'formatic/templates/wrapper'
 require 'formatic/wrappers/alternative_attribute_name'
 require 'formatic/wrappers/error_messages'

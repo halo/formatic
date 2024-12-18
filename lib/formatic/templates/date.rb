@@ -10,10 +10,10 @@ module Formatic
           <% wrap.with_input do %>
             <div class="c-formatic-date s-formatic js-formatic-date">
 
-            <% if readonly? %>
+            <% if readonly %>
               <div class="s-markdown">
                 <p>
-                  <%= input.value.to_date %>
+                  <%= value.to_date %>
                 </p>
               </div>
             <% else %>

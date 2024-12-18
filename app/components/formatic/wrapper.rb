@@ -9,11 +9,14 @@ module Formatic
     # Passing on the form builder.
     option :f
 
+    # This is not an actual <input>, but it's the wrapper's container div for the <input>.
+    renders_one :input
+
     # The attribute of the record to be edited. E.g. `:name`.
     option :attribute_name, type: proc(&:to_sym)
 
     # Manually decide whether the form field is optional or not.
-    option :required, as: :manual_required, default: -> {}
+    option :required, as: :manual_required, optional: true
 
     # Manually decide to hide the label.
     option :label, as: :manual_label, default: -> { true }
@@ -26,12 +29,10 @@ module Formatic
 
     # Multiple inputs can belong to one label (e.g. select day, month, year).
     # With this you can specify the ID of one first input to couple the label to it.
-    option :label_for_id, default: -> {}
+    option :label_for_id, optional: true
 
     # CSS
-    option :class, as: :css_class, default: -> {}
-
-    renders_one :input
+    option :class, as: :css_class, optional: true
 
     erb_template(::Formatic::Templates::Wrapper.call)
 
@@ -40,19 +41,19 @@ module Formatic
     # ---------------------------
 
     # Name of the URL param for this record.
-    def param_key
-      f.object.model_name.param_key
-    end
+    # def param_key
+    #   f.object.model_name.param_key
+    # end
 
-    # Name of the URL param for this input.
-    def input_name
-      "#{param_key}[#{attribute_name}]"
-    end
+    # # Name of the URL param for this input.
+    # def input_name
+    #   "#{param_key}[#{attribute_name}]"
+    # end
 
-    # The current value of the attribute.
-    def value
-      f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
-    end
+    # # The current value of the attribute.
+    # def value
+    #   f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
+    # end
 
     # -----------------
     # Querying of slots
