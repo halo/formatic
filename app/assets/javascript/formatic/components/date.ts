@@ -11,7 +11,7 @@ namespace Formatic {
       this.shortcutButtons.forEach((el) => {
         el.addEventListener('click', (event) => {
           event.preventDefault()
-          const shortcut = <HTMLInputElement>event.target
+          const shortcut = <HTMLInputElement>event.currentTarget
 
           this.dayInput.value = shortcut.dataset.day
           this.monthInput.value = shortcut.dataset.month

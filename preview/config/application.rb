@@ -31,6 +31,8 @@ module Preview
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    I18n.available_locales = %i[en de]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -41,6 +43,8 @@ module Preview
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.lookbook.preview_controller = 'PreviewController'
 
     config.lookbook.preview_display_options = {
       lang: [

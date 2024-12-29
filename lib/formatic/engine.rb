@@ -22,6 +22,7 @@ module Formatic
       require_relative '../../app/components/formatic/application_component'
       require_relative '../../app/components/formatic/wrapper'
       require_relative '../../app/components/formatic/base'
+      require_relative '../../app/components/formatic/date'
       require_relative '../../app/components/formatic/string'
       require_relative '../../app/components/formatic/toggle'
     end

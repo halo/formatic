@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'calls'
+require 'holidays'
 require 'dry/initializer'
 
 require 'formatic/version'

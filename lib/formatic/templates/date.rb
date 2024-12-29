@@ -38,53 +38,21 @@ module Formatic
                                  class: 'c-formatic-date__part js-formatic-date__year' %>
                 <% end %>
               </div>
-
-              <div class="c-formatic-date__shortcuts">
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-year=''>
-                   <%= t('formatic.date.blank') %>
-                </a>
-
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-day="<%= 1.day.ago.day %>"
-                   data-month="<%= 1.day.ago.month %>"
-                   data-year="<%= 1.day.ago.year %>">
-                   Gestern
-                </a>
-
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-day="<%= Date.current.day %>"
-                   data-month="<%= Date.current.month %>"
-                   data-year="<%= Date.current.year %>">
-                   Heute
-                </a>
-
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-day="<%= 1.day.from_now.day %>"
-                   data-month="<%= 1.day.from_now.month %>"
-                   data-year="<%= 1.day.from_now.year %>">
-                   Morgen
-                </a>
-
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-day="<%= Time.current.next_week.to_date.day %>"
-                   data-month="<%= Time.current.next_week.to_date.month %>"
-                   data-year="<%= Time.current.next_week.to_date.year %>">
-                   Nächste Woche
-                </a>
-
-                <a class="c-formatic-date__shortcut js-formatic-date__shortcut"
-                   href='#'
-                   data-day="<%= Time.current.next_month.to_date.day %>"
-                   data-month="<%= Time.current.next_month.to_date.month %>"
-                   data-year="<%= Time.current.next_month.to_date.year %>">
-                   Nächsten Monat
-                </a>
+              <div class="c-formatic-date__calendar">
+                <% calendar.each do |day| %>
+                  <a class="c-formatic-date__calendar-date <%= day.classes %> js-formatic-date__shortcut"
+                    href='#'
+                    data-day="<%= day.date.day %>"
+                    data-month="<%= day.date.month %>"
+                    data-year="<%= day.date.year %>"
+                  >
+                  <span class="c-formatic-date__calendar-day"><%= I18n.l(day.date, format: "%e").strip %></span>
+                    <br/>
+                    <span class="c-formatic-date__calendar-month"><%= I18n.l(day.date, format: "%b") %></span>
+                    <br/>
+                    <span class="c-formatic-date__calendar-year"><%= I18n.l(day.date, format: "%y") %></span>
+                  </a>
+                <% end %>
               </div>
             <% end %>
 

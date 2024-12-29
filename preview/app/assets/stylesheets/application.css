@@ -28,6 +28,9 @@
 .c-formatic-wrapper__address {
   grid-area: address;
 }
+.c-formatic-wrapper__input {
+  min-width: 1px;
+}
 .c-formatic-wrapper__error {
   color: rgb(240, 30, 80);
 }
@@ -58,6 +61,62 @@
     grid-template-areas: "label input" "hint input" "error input";
   }
 }
+.c-formatic-date__date {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5em;
+}
+.c-formatic-wrapper.is-required .c-formatic-date__part {
+  border-left-color: rgb(240, 30, 80);
+  border-left-width: 2px;
+}
+.c-formatic-date__date {
+  min-width: 1px;
+  padding-bottom: 1em;
+}
+.c-formatic-date__calendar {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.c-formatic-date__calendar ::-webkit-scrollbar {
+  display: none;
+}
+.c-formatic-date__calendar-date {
+  text-align: center;
+  padding: 0.2em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  flex: none;
+  text-decoration: none;
+}
+.c-formatic-date__calendar-date {
+  font-size: 0.7857rem;
+}
+.c-formatic-date__calendar-month {
+  text-transform: uppercase;
+}
+.c-formatic-date__calendar-year {
+  opacity: 0.5;
+}
+.c-formatic-date .is-saturday {
+  background-color: rgb(197.5, 197.5, 197.5);
+}
+.c-formatic-date .is-sunday {
+  background-color: rgb(70, 70, 70);
+  color: #fff;
+}
+.c-formatic-date .is-holiday {
+  color: rgb(240, 30, 80);
+}
+.c-formatic-date .is-today {
+  border: 3px solid rgb(0, 190, 130);
+  font-weight: bold;
+  color: rgb(0, 190, 130);
+}
+
 .c-formatic-string__input.is-terminal {
   font-family: Inconsolata, "Roboto Mono", "Source Code Pro", "SF Mono", Monaco, "Fira Mono", "Droid Sans Mono", monospace !important;
 }
@@ -86,7 +145,7 @@
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
-  background: #c6c6c6;
+  background: rgb(197.5, 197.5, 197.5);
 }
 .c-formatic-toggle i:before {
   display: block;
@@ -136,7 +195,7 @@
 .c-formatic-toggle .is-active {
   grid-area: status;
   margin-top: 0.5em;
-  color: #c6c6c6;
+  color: rgb(197.5, 197.5, 197.5);
 }
 .c-formatic-toggle .is-inactive,
 .c-formatic-toggle .is-active {
@@ -167,7 +226,7 @@
   width: 100%;
   outline-offset: 0;
   outline-color: #ffd400;
-  border: 1px solid #c6c6c6;
+  border: 1px solid rgb(197.5, 197.5, 197.5);
   color: #222;
   height: 2em;
   padding-top: 0.2em;
@@ -210,7 +269,7 @@
   box-shadow: none;
 }
 .s-formatic ::placeholder {
-  color: #c6c6c6;
+  color: rgb(197.5, 197.5, 197.5);
 }
 
 /*# sourceMappingURL=application.css.map */

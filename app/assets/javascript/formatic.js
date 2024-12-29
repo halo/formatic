@@ -9,7 +9,7 @@ var Formatic;
             this.shortcutButtons.forEach((el) => {
                 el.addEventListener('click', (event) => {
                     event.preventDefault();
-                    const shortcut = event.target;
+                    const shortcut = event.currentTarget;
                     this.dayInput.value = shortcut.dataset.day;
                     this.monthInput.value = shortcut.dataset.month;
                     this.yearInput.value = shortcut.dataset.year;

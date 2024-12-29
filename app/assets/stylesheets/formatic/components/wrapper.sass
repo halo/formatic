@@ -18,6 +18,10 @@
     &__#{$column}
       grid-area: #{$column}
 
+  &__input
+    // Allow for children of this div to autoscroll-x
+    min-width: 1px
+
   &__error
     color: colors.$paradise-pink
 

@@ -5,6 +5,29 @@ require 'formatic/templates/date'
 module Formatic
   # Date/calendar
   class Date < ::Formatic::Base
+    class Day
+      extend Dry::Initializer
+
+      option :date
+
+      def classes
+        [
+          ('is-today' if date.today?),
+          ('is-saturday' if date.saturday?),
+          ('is-sunday' if date.sunday?),
+          ('is-holiday' if holiday?)
+        ].join(' ')
+      end
+
+      private
+
+      def holiday?
+        return false if date.saturday? || date.sunday?
+
+        ::Holidays.on(date, :de_nw).present?
+      end
+    end
+
     option :discard_day, optional: true
 
     erb_template(::Formatic::Templates::Date.call)
@@ -51,6 +74,15 @@ module Formatic
 
     def year_input_id
       "#{f.object.model_name.param_key}_#{attribute_name}_1i"
+    end
+
+    def calendar(now: Time.current)
+      from = 5.days.ago.to_date
+      till = now.beginning_of_month.advance(months: 2).end_of_month.to_date
+
+      (from..till).map do |date|
+        ::Formatic::Date::Day.new(date:)
+      end
     end
 
     private

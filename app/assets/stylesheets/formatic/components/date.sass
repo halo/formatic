@@ -1,28 +1,62 @@
+@use "iglu/font-size"
 @use "formatic/settings/colors"
+@use "formatic/tools/terminal"
 
-  .c-formatic-date
+.c-formatic-date
 
-  &__date,
-  &__shortcuts
+  &__date
     display: grid
     grid-auto-flow: column
     grid-gap: 0.5em
 
-  &__shortcuts
-    justify-content: space-between
-
   &__part
-
     .c-formatic-wrapper.is-required &
       border-left-color: colors.$paradise-pink
       border-left-width: 2px
 
-  &__shortcut
-    +scaled-font-size--smaller
-    padding: 0.1em 0.2em 0.2em 0.2em
+  &__date
+    min-width: 1px
+    padding-bottom: 1em
 
-    +link-states
-      color: colors.$silver-gray
+  // See https://kevinyank.com/posts/horizontal-scrolling/
+  &__calendar
+    overflow-x: scroll
+    overflow-y: hidden
+    display: flex
+    scrollbar-width: none
+    -ms-overflow-style: none
 
-    &:hover
-      color: colors.$black
+    ::-webkit-scrollbar
+      display: none
+
+  &__calendar-date
+    +font-size.smaller
+    text-align: center
+    padding: 0.2em
+    padding-right: 0.5em
+    padding-left: 0.5em
+    flex: none
+    text-decoration: none
+
+  &__calendar-day
+
+  &__calendar-month
+    text-transform: uppercase
+
+  &__calendar-year
+    opacity: 0.5
+
+  & .is-saturday
+    background-color: colors.$silver-gray
+
+  & .is-sunday
+    background-color: colors.$granite-gray
+    color: colors.$white
+
+  & .is-holiday
+    color: colors.$paradise-pink
+
+  & .is-today
+    border: 3px solid colors.$jade-green
+    font-weight: bold
+    color: colors.$jade-green
