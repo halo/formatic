@@ -1,15 +1,15 @@
 en:
-  active_model:
+  models:
+    animal: Best friend
 
-    attributes:
-      house:
-        floors: Floors
-        created_at: Established
+  attributes:
+    animal:
+      four_legged: Has four legs?
 
   helpers:
 
     hint:
-      house:
-        floors: I am a short hint.
-        floors_active: Online forever.
-        floors_inactive: Oh no, offline.
+      animal:
+        four_legged: Whether or not this animal has four legs.
+        four_legged_active: I have four legs.
+        four_legged_inactive: I am not four legged.
