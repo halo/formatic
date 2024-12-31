@@ -214,7 +214,7 @@
 .c-formatic-toggle .is-active {
   grid-area: status;
   margin-top: 0.5em;
-  color: rgb(197.5, 197.5, 197.5);
+  color: rgb(70, 70, 70);
 }
 .c-formatic-toggle .is-inactive,
 .c-formatic-toggle .is-active {
