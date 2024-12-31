@@ -61,60 +61,79 @@
     grid-template-areas: "label input" "hint input" "error input";
   }
 }
-.c-formatic-date__date {
+.c-formatic-date__inputs {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 0.5em;
 }
-.c-formatic-wrapper.is-required .c-formatic-date__part {
+.c-formatic-date__inputs {
+  margin-bottom: 0.8571rem;
+}
+.c-formatic-wrapper.is-required .c-formatic-date__select {
   border-left-color: rgb(240, 30, 80);
   border-left-width: 2px;
 }
-.c-formatic-date__date {
-  min-width: 1px;
-  padding-bottom: 1em;
-}
 .c-formatic-date__calendar {
+  display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  display: flex;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .c-formatic-date__calendar ::-webkit-scrollbar {
   display: none;
 }
-.c-formatic-date__calendar-date {
+.c-formatic-date__flick {
+  background-color: rgb(244.8, 244.8, 244.8);
   text-align: center;
-  padding: 0.2em;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-  flex: none;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #222;
+  padding: 0.2857rem;
 }
-.c-formatic-date__calendar-date {
-  font-size: 0.7857rem;
+.c-formatic-date__flick {
+  margin-right: 0.5714rem;
+}
+.c-formatic-date__clear {
+  padding: 0.8571rem;
+}
+.c-formatic-date__clear {
+  font-size: 1.0714rem;
+}
+.c-formatic-date__calendar-day-number {
+  font-family: Inconsolata, "Roboto Mono", "Source Code Pro", "SF Mono", Monaco, "Fira Mono", "Droid Sans Mono", monospace !important;
+}
+.c-formatic-date__calendar-day-number {
+  font-size: 1rem;
 }
 .c-formatic-date__calendar-month {
   text-transform: uppercase;
 }
+.c-formatic-date__calendar-month {
+  font-size: 0.7857rem;
+}
 .c-formatic-date__calendar-year {
-  opacity: 0.5;
+  opacity: 0.4;
+  font-family: Inconsolata, "Roboto Mono", "Source Code Pro", "SF Mono", Monaco, "Fira Mono", "Droid Sans Mono", monospace !important;
+}
+.c-formatic-date__calendar-year {
+  font-size: 0.7857rem;
 }
 .c-formatic-date .is-saturday {
-  background-color: rgb(197.5, 197.5, 197.5);
+  background-color: rgb(178.5, 178.5, 178.5);
 }
 .c-formatic-date .is-sunday {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(127.5, 127.5, 127.5);
   color: #fff;
 }
 .c-formatic-date .is-holiday {
   color: rgb(240, 30, 80);
 }
 .c-formatic-date .is-today {
-  border: 3px solid rgb(0, 190, 130);
+  border: 3px solid #222;
   font-weight: bold;
-  color: rgb(0, 190, 130);
 }
 
 .c-formatic-string__input.is-terminal {

@@ -18,38 +18,43 @@ module Formatic
               </div>
             <% else %>
 
-              <div class="c-formatic-date__date">
+              <div class="c-formatic-date__inputs">
                 <% if discard_day %>
                   = hidden_field_tag day_attribute_name, (day_value || 1)
                 <% else %>
                   <%= select_tag day_attribute_name,
                                  options_for_day,
                                  id: day_input_id,
-                                 class: 'c-formatic-date__part js-formatic-date__day' %>
+                                 class: 'c-formatic-date__select js-formatic-date__day' %>
 
                   <%= select_tag month_attribute_name,
                                  options_for_month,
                                  id: month_input_id,
-                                 class: 'c-formatic-date__part js-formatic-date__month' %>
+                                 class: 'c-formatic-date__select js-formatic-date__month' %>
 
                   <%= select_tag year_attribute_name,
                                  options_for_year,
                                  id: year_input_id,
-                                 class: 'c-formatic-date__part js-formatic-date__year' %>
+                                 class: 'c-formatic-date__select js-formatic-date__year' %>
                 <% end %>
               </div>
               <div class="c-formatic-date__calendar">
+                <a class="c-formatic-date__flick c-formatic-date__clear js-formatic-date__shortcut" href="#"
+                   data-day=""
+                   data-month=""
+                   data-year=""
+                >
+                  X
+                </a>
                 <% calendar.each do |day| %>
-                  <a class="c-formatic-date__calendar-date <%= day.classes %> js-formatic-date__shortcut"
+                  <a class="c-formatic-date__flick <%= day.classes %> js-formatic-date__shortcut"
                     href='#'
                     data-day="<%= day.date.day %>"
                     data-month="<%= day.date.month %>"
                     data-year="<%= day.date.year %>"
                   >
-                  <span class="c-formatic-date__calendar-day"><%= I18n.l(day.date, format: "%e").strip %></span>
-                    <br/>
+                  <span class="c-formatic-date__calendar-day-number"><%= I18n.l(day.date, format: "%e").strip %></span>
                     <span class="c-formatic-date__calendar-month"><%= I18n.l(day.date, format: "%b") %></span>
-                    <br/>
                     <span class="c-formatic-date__calendar-year"><%= I18n.l(day.date, format: "%y") %></span>
                   </a>
                 <% end %>

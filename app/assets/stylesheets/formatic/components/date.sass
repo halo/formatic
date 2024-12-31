@@ -1,62 +1,70 @@
+@use "sass:color"
 @use "iglu/font-size"
+@use "iglu/spacing"
 @use "formatic/settings/colors"
 @use "formatic/tools/terminal"
 
 .c-formatic-date
 
-  &__date
+  &__inputs
     display: grid
     grid-auto-flow: column
     grid-gap: 0.5em
+    +spacing.margin-bottom--small
 
-  &__part
+  &__select
     .c-formatic-wrapper.is-required &
       border-left-color: colors.$paradise-pink
       border-left-width: 2px
 
-  &__date
-    min-width: 1px
-    padding-bottom: 1em
-
-  // See https://kevinyank.com/posts/horizontal-scrolling/
   &__calendar
+    display: flex
+    // See https://kevinyank.com/posts/horizontal-scrolling/
     overflow-x: scroll
     overflow-y: hidden
-    display: flex
     scrollbar-width: none
     -ms-overflow-style: none
-
     ::-webkit-scrollbar
       display: none
 
-  &__calendar-date
-    +font-size.smaller
+  &__flick
+    background-color: color.adjust(#000, $lightness: 96%)
     text-align: center
-    padding: 0.2em
-    padding-right: 0.5em
-    padding-left: 0.5em
-    flex: none
     text-decoration: none
+    display: flex
+    flex-direction: column
+    justify-content: center
+    color: colors.$black
+    +spacing.margin-right--smaller
+    +spacing.padding-tiny
 
-  &__calendar-day
+  &__clear
+    +font-size.large
+    +spacing.padding-small
+
+  &__calendar-day-number
+    +font-size.default
+    +terminal.terminal
 
   &__calendar-month
     text-transform: uppercase
+    +font-size.smaller
 
   &__calendar-year
-    opacity: 0.5
+    opacity: 0.4
+    +terminal.terminal
+    +font-size.smaller
 
   & .is-saturday
-    background-color: colors.$silver-gray
+    background-color: color.adjust(#000, $lightness: 70%)
 
   & .is-sunday
-    background-color: colors.$granite-gray
+    background-color: color.adjust(#000, $lightness: 50%)
     color: colors.$white
 
   & .is-holiday
     color: colors.$paradise-pink
 
   & .is-today
-    border: 3px solid colors.$jade-green
+    border: 3px solid colors.$black
     font-weight: bold
-    color: colors.$jade-green
