@@ -54,5 +54,19 @@ module Formatic
 
       f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
     end
+
+    # ---------------------------
+    # ActiveModel and Rails slugs
+    # ---------------------------
+
+    # Name of the URL param for this record.
+    def param_key
+      f.object.model_name.param_key
+    end
+
+    # # Name of the URL param for this input.
+    def input_name
+      "#{param_key}[#{attribute_name}]"
+    end
   end
 end

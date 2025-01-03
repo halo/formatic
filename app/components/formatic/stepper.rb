@@ -10,15 +10,15 @@ module Formatic
         <%= link_to '#', class: 'c-formatic-stepper__step js-formatic-stepper__decrement' do %>
           &minus;
         <% end %>
-        <%= f.text_field_tag input_name,
-                             value.to_i,
-                             { \
-                               min: minimum,
-                               inputmode: :numeric,
-                               pattern: '-?[0-9]*',
-                               class: 'c-formatic-stepper__number js-formatic-stepper__number',
-                               placeholder: wrapper.placeholder,
-                              } %>
+        <%= text_field_tag input_name,
+                            value.to_i,
+                            { \
+                              min: minimum,
+                              inputmode: :numeric,
+                              pattern: '-?[0-9]*',
+                              class: 'c-formatic-stepper__number js-formatic-stepper__number',
+                              placeholder: wrapper.placeholder,
+                            } %>
         <%= link_to '#', class: 'c-formatic-stepper__step js-formatic-stepper__increment' do %>
           &plus;
         <% end %>

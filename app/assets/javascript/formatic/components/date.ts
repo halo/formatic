@@ -48,7 +48,7 @@ namespace Formatic {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll<HTMLElement>('.js-formatic-date').forEach((el) => {
-    console.debug('Instantiating InputDateComponent...')
+    console.debug('Instantiating Formatic.Date...')
     new Formatic.Date(el)
   })
 })
