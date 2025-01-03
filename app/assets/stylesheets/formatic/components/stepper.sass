@@ -1,0 +1,41 @@
+@use "iglu/font-size"
+@use "iglu/spacing"
+@use "formatic/settings/colors"
+
+.c-formatic-stepper
+  display: grid
+  align-items: stretch
+  justify-content: center
+  grid-auto-flow: column
+
+  &__step
+    display: inline-block
+    border: 1px solid $silver-gray
+    vertical-align: middle
+    padding-right: 1em
+    padding-left: 1em
+    padding-top: 0.5em
+    padding-bottom: 0.5em
+    border-radius: 0.3em
+    +font-size.huge
+
+  &__number
+    -webkit-appearance: none
+    -moz-appearance: none
+    font-family: 'Roboto Condensed'
+    width: 7em
+    height: 100%
+    outline-offset: 0
+    color: $black
+    text-align: center
+    vertical-align: middle
+    border: 0
+    +font-size.large
+    +spacing.margin-bottom--small
+
+    .c-input.is-required &
+      border-left-color: colors.$paradise-pink
+      border-left-width: 2px
+
+  ::placeholder
+    color: colors.$silver-gray
