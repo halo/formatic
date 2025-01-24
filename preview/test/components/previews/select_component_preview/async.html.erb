@@ -1,0 +1,7 @@
+<%= form_for(House.new(id: 1), url: '/selects/42') do |f| %>
+  <%= render Formatic::Select.new(f:,
+                                  attribute_name: :pet,
+                                  async_submit: true,
+                                  records: [Animal.new(id: 1, name: 'Rabbit'), Animal.new(id: 2, name: 'Kitty')])
+  %>
+<% end %>

@@ -1,0 +1,9 @@
+nl:
+  helpers:
+
+    options:
+      dog_model:
+        name:
+          first_key: 'The Dog'
+          second_key: 'Jimmy'
+          third_key: 'Frank'

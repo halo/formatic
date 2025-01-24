@@ -1,3 +1,0 @@
-<%= form_for(House.new(created_at: 1.month.ago), url: '#') do |f| %>
-  <%= render Formatic::Stepper.new(f: f, attribute_name: :stepper, minimum: -3) %>
-<% end %>

@@ -8,7 +8,7 @@ class ModelNamingNamespace
   end
 end
 
-class TestTranslate < ViewComponent::TestCase
+class TestTranslate < Minitest::Test
   def test_highest_specificity
     I18n.with_locale(:it) do
       translation = Formatic::Wrappers::Translate.call(

@@ -77,6 +77,10 @@ module Formatic
       @required ||= ::Formatic::Wrappers::Required.call(manual_required:, object:, attribute_name:)
     end
 
+    def optional?
+      !required?
+    end
+
     def hint_before_input?
       manual_hint == :before_input
     end

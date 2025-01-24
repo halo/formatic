@@ -18,7 +18,7 @@ class OptionalNameModel
   attr_accessor :name
 end
 
-class TestValidators < ViewComponent::TestCase
+class TestValidators < Minitest::Test
   def test_required_attribute
     object = MandatoryOwnerModel.new
 

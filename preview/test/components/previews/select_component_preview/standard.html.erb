@@ -1,0 +1,3 @@
+<%= form_for(House.new(id: 1), url: '#') do |f| %>
+  <%= render Formatic::Select.new(f:, attribute_name: :pet, records: [Animal.new(id: 1, name: 'Rabbit'), Animal.new(id: 2, name: 'Kitty')]) %>
+<% end %>

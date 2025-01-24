@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'actionview' # Needed by `view_component`
   spec.add_dependency 'calls'
+  spec.add_dependency 'countries'
   spec.add_dependency 'dry-initializer'
   spec.add_dependency 'holidays'
   spec.add_dependency 'view_component'
