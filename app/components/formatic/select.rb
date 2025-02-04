@@ -24,6 +24,7 @@ module Formatic
       ::Formatic::Selects::Choices.call(
         f:,
         attribute_name:,
+        options:,
         records:,
         slugs:,
         include_blank: include_blank?
