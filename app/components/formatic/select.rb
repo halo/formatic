@@ -34,7 +34,10 @@ module Formatic
     end
 
     def current_choice_name
-      choices.detect { _1.last == f.object&.id }&.first
+      return unless f.object
+
+      choices.detect { _1.last == f.object.id }&.first ||
+        f.object.presenters.for_select.first
     end
 
     def include_blank?
