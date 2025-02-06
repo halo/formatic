@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # frozen_toggle_literal: true
 
 require 'test_helper'

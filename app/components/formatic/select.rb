@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'formatic/templates/select'
+
 module Formatic
   # Dropdown box
   class Select < ::Formatic::Base
@@ -32,7 +34,7 @@ module Formatic
     end
 
     def current_choice_name
-      choices.detect { _1.last == record&.id }&.first
+      choices.detect { _1.last == f.object&.id }&.first
     end
 
     def include_blank?
