@@ -2,6 +2,8 @@
 
 class StepperComponentPreview < ViewComponent::Preview
   class Dummy
+    include ActiveModel::API
+
     def object
       House.new
     end
