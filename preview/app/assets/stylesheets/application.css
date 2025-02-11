@@ -168,7 +168,7 @@
 .c-formatic-stepper {
   display: grid;
   align-items: stretch;
-  justify-content: center;
+  justify-content: left;
   grid-auto-flow: column;
 }
 .c-formatic-stepper__step {
