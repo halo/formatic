@@ -2,7 +2,23 @@
 
 require 'test_helper'
 
-class GreenModel
+class ManModel
+  include ActiveModel::API
+
+  attr_reader :mouse, :mouse_id
+
+  def mouse=(record)
+    @mouse = record
+    @mouse_id = record.id
+  end
+
+  # Mocking ActiveRecord
+  def self.reflect_on_all_associations(*)
+    [Data.define(:foreign_key, :name).new('mouse_id', :mouse)]
+  end
+end
+
+class MouseModel
   include ActiveModel::API
 
   attr_accessor :id, :name
@@ -15,17 +31,17 @@ end
 module Formatic
   class SelectTest < ViewComponent::TestCase
     def test_current_choice_name_with_match
-      f = TestFormBuilder.for(GreenModel.new(id: 2))
-      component = Formatic::Select.new(f:, attribute_name: :the_size,
-                                       options: [['Alpha', 1], ['Beta', 2]])
+      f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 2, name: 'Beta')))
+      records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]
+      component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:)
 
       assert_equal 'Beta', component.current_choice_name
     end
 
     def test_current_choice_name_without_match
-      f = TestFormBuilder.for(GreenModel.new(id: 99, name: 'Outlaw'))
-      component = Formatic::Select.new(f:, attribute_name: :the_size,
-                                       options: [['Alpha', 1], ['Beta', 2]])
+      f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 99, name: 'Outlaw')))
+      records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]
+      component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:)
 
       assert_equal 'Outlaw', component.current_choice_name
     end

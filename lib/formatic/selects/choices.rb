@@ -41,6 +41,7 @@ module Formatic
 
         # The currently selected association should be in the list of choosable records.
         # Otherwise a pristine form update would modify this value.
+        # Arguably, this only works when you pass in records to choose from. Not raw options.
         candidates.prepend currently_associated_record.presenters.for_select
         candidates
       end
