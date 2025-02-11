@@ -1,0 +1,7 @@
+<%
+  record = House.new(floors: 'many')
+  record.errors.add(:floors, :invalid)
+%>
+<%= form_for(record, url: '#') do |f| %>
+  <%= render Formatic::String.new(f:, attribute_name: :floors) %>
+<% end %>

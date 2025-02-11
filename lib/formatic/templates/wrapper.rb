@@ -24,7 +24,7 @@ module Formatic
 
           <% if error? %>
             <div class="c-formatic-wrapper__error">
-              <%= :exclamation_triangle %>
+              <i></i>
               <%= error_messages.to_sentence %>
               <% unless error_messages.to_sentence.end_with?('.') %>.<% end %>
             </div>

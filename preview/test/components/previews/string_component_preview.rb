@@ -2,4 +2,5 @@
 
 class StringComponentPreview < ViewComponent::Preview
   def standard; end
+  def error; end
 end

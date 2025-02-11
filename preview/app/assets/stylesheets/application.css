@@ -1,3 +1,8 @@
+@keyframes formatic-flip {
+  0%, 80% {
+    transform: rotateY(360deg);
+  }
+}
 .c-formatic-wrapper {
   display: grid;
   grid-row-gap: 0.2rem;
@@ -36,7 +41,11 @@
 }
 .c-formatic-wrapper__error i {
   display: inline-block;
+  height: 1em;
+  width: 1em;
   animation: formatic-flip 4s infinite;
+  background-size: 1em 1em;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1024" height="1024" viewBox="0 0 1024 1024"><path d="M512 220.885l368.256 675.115h-736.512l368.256-675.115zM512 42.667l-512 938.667h1024l-512-938.667zM469.333 426.667h85.333v256h-85.333v-256zM512 842.667c-29.397 0-53.333-23.893-53.333-53.333s23.936-53.333 53.333-53.333 53.333 23.893 53.333 53.333-23.936 53.333-53.333 53.333z" style="fill: rgb(240, 30, 80)"></path></svg>');
 }
 .c-formatic-wrapper__hint {
   opacity: 0.5;
