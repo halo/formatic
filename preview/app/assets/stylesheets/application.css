@@ -149,6 +149,10 @@
   font-weight: bold;
 }
 
+.c-formatic-wrapper.is-required .c-formatic-select {
+  border-left-color: rgb(240, 30, 80);
+  border-left-width: 2px;
+}
 .c-formatic-select.is-loading, .c-formatic-select.is-saved, .c-formatic-select.is-failed {
   background-repeat: no-repeat;
   background-size: 24px 33px;

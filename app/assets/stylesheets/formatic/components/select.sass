@@ -1,4 +1,10 @@
+@use "formatic/settings/colors"
+
 .c-formatic-select
+
+  .c-formatic-wrapper.is-required &
+    border-left-color: colors.$paradise-pink
+    border-left-width: 2px
 
   &.is-loading,
   &.is-saved,
