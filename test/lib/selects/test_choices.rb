@@ -78,7 +78,7 @@ module Formatic
         record.friend = CatModel.new(id: 42, name: 'Jack')
 
         f = TestFormBuilder.for(record)
-        choices = Choices.send(:new, f:, attribute_name: :friend_id).call
+        choices = Choices.send(:new, f:, attribute_name: :friend_id, include_current: false).call
 
         assert_empty choices
       end
@@ -93,16 +93,28 @@ module Formatic
         assert_equal [['Jack', 42]], choices
       end
 
+      def test_associated_record_with_additional_choices_with_implicit_current
+        record = DogModel.new
+        record.friend = CatModel.new(id: 42, name: 'Jack')
+        records = [CatModel.new(id: 1, name: 'Bob'),
+                   CatModel.new(id: 2, name: 'Will'),
+                   CatModel.new(id: 3, name: 'Smith')]
+        f = TestFormBuilder.for(record)
+        choices = Choices.send(:new, f:, attribute_name: :friend_id, records:,
+                                     include_current: false).call
+
+        assert_equal [['Bob', 1], ['Will', 2], ['Smith', 3]], choices
+      end
+
       def test_associated_record_with_additional_choices_without_current
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
-        records = [
-          CatModel.new(id: 1, name: 'Bob'),
-          CatModel.new(id: 2, name: 'Will'),
-          CatModel.new(id: 3, name: 'Smith')
-        ]
+        records = [CatModel.new(id: 1, name: 'Bob'),
+                   CatModel.new(id: 2, name: 'Will'),
+                   CatModel.new(id: 3, name: 'Smith')]
         f = TestFormBuilder.for(record)
-        choices = Choices.send(:new, f:, attribute_name: :friend_id, records:).call
+        choices = Choices.send(:new, f:, attribute_name: :friend_id, records:,
+                                     include_current: false).call
 
         assert_equal [['Bob', 1], ['Will', 2], ['Smith', 3]], choices
       end

@@ -13,11 +13,15 @@ module Formatic
 
       def call
         candidates = records_to_options || []
-        return candidates unless currently_associated_record && include_current
+        return candidates unless currently_associated_record && include_current?
         return candidates if records&.include?(currently_associated_record)
 
         candidates.prepend currently_associated_record.presenters.for_select
         candidates
+      end
+
+      def include_current?
+        include_current != false
       end
 
       def records_to_options
