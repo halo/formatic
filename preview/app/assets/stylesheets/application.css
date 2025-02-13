@@ -243,6 +243,9 @@
 .c-formatic-toggle label small {
   opacity: 0.5;
 }
+.c-formatic-toggle label small {
+  font-size: 0.9286rem;
+}
 .c-formatic-toggle i {
   grid-area: switch;
   display: inline-block;
