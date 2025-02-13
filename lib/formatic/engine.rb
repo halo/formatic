@@ -24,11 +24,12 @@ module Formatic
       require_relative '../../app/components/formatic/base'
 
       # Components
+      require_relative '../../app/components/formatic/toggle'
+      require_relative '../../app/components/formatic/checklist'
       require_relative '../../app/components/formatic/date'
       require_relative '../../app/components/formatic/select'
       require_relative '../../app/components/formatic/string'
       require_relative '../../app/components/formatic/stepper'
-      require_relative '../../app/components/formatic/toggle'
     end
   end
 end

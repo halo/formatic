@@ -2,5 +2,5 @@
 
 class House
   include ActiveModel::API
-  attr_accessor :id, :floors, :pet, :created_at
+  attr_accessor :id, :floors, :pet, :created_at, :kinds
 end

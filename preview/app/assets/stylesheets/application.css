@@ -70,6 +70,11 @@
     grid-template-areas: "label input" "hint input" "error input";
   }
 }
+.c-formatic-checklist {
+  display: grid;
+  grid-row-gap: 0.4em;
+}
+
 .c-formatic-date__inputs {
   display: grid;
   grid-auto-flow: column;

@@ -41,7 +41,8 @@ module Formatic
     def test_current_choice_name_without_match
       f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 99, name: 'Outlaw')))
       records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]
-      component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:)
+      component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:,
+                                       include_current: true)
 
       assert_equal 'Outlaw', component.current_choice_name
     end

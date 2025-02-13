@@ -14,21 +14,24 @@ module Formatic
     option :records, optional: true
 
     # Alternative 3:
-    # Key to lookup in i18n translations.
-    option :slugs, optional: true
+    # Keys to lookup in i18n translations.
+    option :keys, optional: true
 
     # Whether or not to show an empty (nil) option.
     option :include_blank, default: -> { :guess }
 
+    option :include_current, optional: true
+
     erb_template(::Formatic::Templates::Select.call)
 
     def choices
-      ::Formatic::Selects::Choices.call(
+      ::Formatic::Choices.call(
         f:,
         attribute_name:,
         options:,
         records:,
-        slugs:,
+        keys:,
+        include_current:,
         include_blank: include_blank?
       )
     end

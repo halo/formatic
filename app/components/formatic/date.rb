@@ -5,6 +5,7 @@ require 'formatic/templates/date'
 module Formatic
   # Date/calendar
   class Date < ::Formatic::Base
+    # Represents one element in the calendar.
     class Day
       extend Dry::Initializer
 

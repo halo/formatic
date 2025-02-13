@@ -9,8 +9,8 @@ gem 'formatic', path: '../'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'propshaft'
 gem 'rails', '~> 7.1.4'
-gem 'sass-embedded'
 gem 'rails-i18n'
+gem 'sass-embedded'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 

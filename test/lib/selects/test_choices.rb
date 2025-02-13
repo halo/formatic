@@ -62,28 +62,38 @@ module Formatic
         assert_equal %w[Zimbabwe ZW], choices.last
       end
 
-      def test_slugs
+      def test_keys
         I18n.with_locale(:nl) do
           f = TestFormBuilder.for(DogModel.new)
-          slugs = %i[first_key second_key unknown_key]
-          choices = Choices.send(:new, f:, attribute_name: :name, slugs:).call
+          keys = %i[first_key second_key unknown_key]
+          choices = Choices.send(:new, f:, attribute_name: :name, keys:).call
 
           assert_equal [['The Dog', 'first_key'], ['Jimmy', 'second_key'], [nil, 'unknown_key']],
                        choices
         end
       end
 
-      def test_associated_record_without_choices
+      def test_associated_record_without_choices_without_current
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
 
         f = TestFormBuilder.for(record)
         choices = Choices.send(:new, f:, attribute_name: :friend_id).call
 
+        assert_empty choices
+      end
+
+      def test_associated_record_without_choices_with_current
+        record = DogModel.new
+        record.friend = CatModel.new(id: 42, name: 'Jack')
+
+        f = TestFormBuilder.for(record)
+        choices = Choices.send(:new, f:, attribute_name: :friend_id, include_current: true).call
+
         assert_equal [['Jack', 42]], choices
       end
 
-      def test_associated_record_with_additional_choices
+      def test_associated_record_with_additional_choices_without_current
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
         records = [
@@ -93,6 +103,19 @@ module Formatic
         ]
         f = TestFormBuilder.for(record)
         choices = Choices.send(:new, f:, attribute_name: :friend_id, records:).call
+
+        assert_equal [['Bob', 1], ['Will', 2], ['Smith', 3]], choices
+      end
+
+      def test_associated_record_with_additional_choices_with_current
+        record = DogModel.new
+        record.friend = CatModel.new(id: 42, name: 'Jack')
+        records = [CatModel.new(id: 1, name: 'Bob'),
+                   CatModel.new(id: 2, name: 'Will'),
+                   CatModel.new(id: 3, name: 'Smith')]
+        f = TestFormBuilder.for(record)
+        choices = Choices.send(:new, f:, attribute_name: :friend_id, records:,
+                                     include_current: true).call
 
         assert_equal [['Jack', 42], ['Bob', 1], ['Will', 2], ['Smith', 3]], choices
       end
