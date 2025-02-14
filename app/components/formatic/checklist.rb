@@ -27,7 +27,7 @@ module Formatic
         <% wrap.with_input do %>
           <div class="c-formatic-checklist s-formatic">
 
-          <%= f.collection_check_boxes(attribute_name, choices, :last, :first) do |builder| %>
+          <% f.collection_check_boxes(attribute_name, choices, :last, :first) do |builder| %>
 
             <%= content_tag :div,
                             builder.label { builder.check_box(class: manual_class) + content_tag(:i) + content_tag(:span, split_and_wrap(builder.object.first)) },
