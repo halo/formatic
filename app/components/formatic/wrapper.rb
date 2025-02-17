@@ -36,25 +36,6 @@ module Formatic
 
     erb_template(::Formatic::Templates::Wrapper.call)
 
-    # ---------------------------
-    # ActiveModel and Rails slugs
-    # ---------------------------
-
-    # Name of the URL param for this record.
-    # def param_key
-    #   f.object.model_name.param_key
-    # end
-
-    # # Name of the URL param for this input.
-    # def input_name
-    #   "#{param_key}[#{attribute_name}]"
-    # end
-
-    # # The current value of the attribute.
-    # def value
-    #   f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
-    # end
-
     # -----------------
     # Querying of slots
     # -----------------

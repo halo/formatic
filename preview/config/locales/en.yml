@@ -2,9 +2,10 @@ en:
   models:
     animal: Best friend
 
-  attributes:
-    animal:
-      four_legged: Has four legs?
+  activemodel:
+    attributes:
+      animal:
+        four_legged: Has four legs?
 
   helpers:
 
