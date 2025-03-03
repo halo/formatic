@@ -402,4 +402,20 @@
   color: rgb(197.5, 197.5, 197.5);
 }
 
+@media (prefers-color-scheme: dark) {
+  .s-formatic textarea {
+    background-color: rgb(70, 70, 70);
+    color: #fff;
+  }
+}
+body {
+  background-color: pink;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #444;
+  }
+}
+
 /*# sourceMappingURL=application.css.map */

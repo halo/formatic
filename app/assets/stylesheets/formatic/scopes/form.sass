@@ -1,5 +1,6 @@
 @use "iglu/font-size"
 @use "formatic/settings/colors"
+@use "formatic/tools/theme"
 
 .s-formatic
   input[type="email"],
@@ -43,3 +44,9 @@
 
   ::placeholder
     color: colors.$silver-gray
+
++theme.dark
+  .s-formatic
+    textarea
+      background-color: colors.$granite-gray
+      color: colors.$white
