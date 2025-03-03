@@ -9,10 +9,6 @@ module Formatic
     isolate_namespace Formatic
 
     config.to_prepare do
-      require_formatic_components
-    end
-
-    def self.require_formatic_components
       # Our Formatic components are subclasses of `ViewComponent::Base`.
       # When `ViewComponent::Base` is subclassed, two things happen:
       #
