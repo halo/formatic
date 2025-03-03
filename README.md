@@ -1,12 +1,12 @@
 # Formatic
 
-Intuitive ViewComponents for CRUD resource link actions in Rails.
+Opinionated ViewComponents for building forms.
 
 ## Usage
 
 ```ruby
 # In Rails view
-= render Formatic::Show.new(url: [:admin, @post], current_user:)
+= render Formatic::String.new(f:, attribute_name: :first_name)
 ```
 
 ## Installation
@@ -21,7 +21,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/ci` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
 
