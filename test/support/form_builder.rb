@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TestTemplate
-  include ActionView::Helpers::FormHelper
+  include ::ActionView::Helpers::FormHelper
 end
 
 class TestFormBuilder < ActionView::Helpers::FormBuilder

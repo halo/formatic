@@ -3,7 +3,7 @@
 module Formatic
   # Joins multiple html safe strings, retaining html safety.
   class SafeJoin
-    include ActionView::Helpers::OutputSafetyHelper
+    include ::ActionView::Helpers::OutputSafetyHelper
 
     def self.call(...)
       new(...).call

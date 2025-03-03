@@ -2,10 +2,13 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+require 'action_view'
 require 'formatic'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+require 'rails'
+require 'view_component'
+require 'formatic/engine'
+Formatic::Engine.require_formatic_components
 
 require 'irb'
 IRB.start(__FILE__)
