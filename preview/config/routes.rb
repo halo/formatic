@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :toggles
   resources :selects
+  resources :textareas
 
   root 'application#index'
 end

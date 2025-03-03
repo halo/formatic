@@ -25,8 +25,7 @@ module Formatic
           <% if error? %>
             <div class="c-formatic-wrapper__error">
               <i></i>
-              <%= error_messages.to_sentence %>
-              <% unless error_messages.to_sentence.end_with?('.') %>.<% end %>
+              <%= error_messages.to_sentence %><% unless error_messages.to_sentence.end_with?('.') %>.<% end %>
             </div>
           <% end %>
 

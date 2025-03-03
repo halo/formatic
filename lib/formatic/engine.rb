@@ -30,6 +30,7 @@ module Formatic
       require_relative '../../app/components/formatic/select'
       require_relative '../../app/components/formatic/string'
       require_relative '../../app/components/formatic/stepper'
+      require_relative '../../app/components/formatic/textarea'
     end
   end
 end
