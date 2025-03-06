@@ -43,8 +43,9 @@ module Formatic
     end
 
     def css_classes
-      classes = %i[c-formatic-string__input]
+      classes = %i[c-formatic-string__input js-formatic-string]
       classes.push(:'is-terminal') if terminal?
+      classes.push(:'is-autosubmit') if async_submit
       classes
     end
 

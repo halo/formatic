@@ -1,13 +1,16 @@
 @use "formatic/settings/colors"
 @use "formatic/tools/terminal"
+@use "formatic/tools/cloud"
+@use "formatic/tools/mandatory"
 
 .c-formatic-string
 
   &__input
 
     &.is-terminal
-      +terminal.terminal
+      +terminal.font
+
+    +cloud.state
 
     .c-formatic-wrapper.is-required &
-      border-left-color: colors.$paradise-pink
-      border-left-width: 2px
+      +mandatory.indicator

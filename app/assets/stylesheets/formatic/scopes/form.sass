@@ -1,6 +1,7 @@
 @use "iglu/font-size"
 @use "formatic/settings/colors"
 @use "formatic/tools/theme"
+@use "formatic/tools/mandatory"
 
 .s-formatic
   input[type="email"],
@@ -29,8 +30,7 @@
     +font-size.default
 
     .formatic-wrapper.is-required &
-      border-left-color: colors.$paradise-pink
-      border-left-width: 2px
+      +mandatory.indicator
 
   textarea
     min-height: 7em

@@ -1,6 +1,7 @@
 @use "iglu/font-size"
 @use "iglu/spacing"
 @use "formatic/settings/colors"
+@use "formatic/tools/mandatory"
 
 .c-formatic-stepper
   display: grid
@@ -36,8 +37,7 @@
     +spacing.margin-bottom--small
 
     .c-input.is-required &
-      border-left-color: colors.$paradise-pink
-      border-left-width: 2px
+    +mandatory.indicator
 
   ::placeholder
     color: colors.$silver-gray

@@ -1,0 +1,3 @@
+<%= form_for(House.new(id: 42), url: '/strings/42') do |f| %>
+  <%= render Formatic::String.new(f:, attribute_name: :floors, async_submit: true, required: true) %>
+<% end %>

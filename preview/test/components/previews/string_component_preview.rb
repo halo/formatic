@@ -3,4 +3,5 @@
 class StringComponentPreview < ViewComponent::Preview
   def standard; end
   def error; end
+  def async; end
 end
