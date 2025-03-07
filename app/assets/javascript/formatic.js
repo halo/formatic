@@ -84,7 +84,11 @@ var Formatic;
             const form = this.el.closest('form');
             const data = new FormData(form);
             data.set('_method', 'patch');
-            fetch(form.action, { method: 'POST', body: data })
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'text/javascript' },
+                body: data
+            })
                 .then(response => {
                 if (response.status == 201) {
                     console.debug('Select content saved');
@@ -244,7 +248,11 @@ var Formatic;
             const form = this.el.closest('form');
             const data = new FormData(form);
             data.set('_method', 'patch');
-            fetch(form.action, { method: 'POST', body: data })
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'text/javascript' },
+                body: data
+            })
                 .then(response => {
                 if (response.status == 201) {
                     console.debug('String content saved');
@@ -321,7 +329,11 @@ var Formatic;
             const form = this.el.closest('form');
             const data = new FormData(form);
             data.set('_method', 'patch');
-            fetch(form.action, { method: 'POST', body: data })
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'text/javascript' },
+                body: data
+            })
                 .then(response => {
                 if (response.status == 201) {
                     console.debug('Textarea content saved');
@@ -377,7 +389,11 @@ var Formatic;
             const form = box.closest('form');
             const data = new FormData(form);
             data.set('_method', 'patch');
-            fetch(form.action, { method: 'POST', body: data })
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'text/javascript' },
+                body: data
+            })
                 .then(response => {
                 if (response.status == 201) {
                     console.debug('Activation confirmed');
@@ -396,7 +412,11 @@ var Formatic;
             const form = box.closest('form');
             const data = new FormData(form);
             data.set('_method', 'delete');
-            fetch(form.action, { method: 'POST', body: data })
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'text/javascript' },
+                body: data
+            })
                 .then(response => {
                 if (response.status == 204) {
                     console.debug('Deactivation confirmed');

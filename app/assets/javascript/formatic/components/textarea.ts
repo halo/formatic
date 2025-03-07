@@ -64,7 +64,11 @@ namespace Formatic {
       const data = new FormData(form)
       data.set('_method', 'patch')
 
-      fetch(form.action, { method: 'POST', body: data })
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'text/javascript' },
+        body: data
+      })
         .then(response => {
           if (response.status == 201) {
             console.debug('Textarea content saved')

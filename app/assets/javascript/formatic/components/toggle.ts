@@ -21,7 +21,11 @@ namespace Formatic {
       const data = new FormData(form)
       data.set('_method', 'patch')
 
-      fetch(form.action, { method: 'POST', body: data })
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'text/javascript' },
+        body: data
+      })
         .then(response => {
           // For accurate user feedback, we make sure this is not an accidental 200.
           // Your controller needs to respond with 201 on create/update.
@@ -43,7 +47,11 @@ namespace Formatic {
       const data = new FormData(form)
       data.set('_method', 'delete')
 
-      fetch(form.action, { method: 'POST', body: data })
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'text/javascript' },
+        body: data
+      })
         .then(response => {
           // Your controller needs to respond with 204 on destroy.
           if (response.status == 204) {

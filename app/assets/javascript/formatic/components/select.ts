@@ -64,19 +64,23 @@ namespace Formatic {
       const data = new FormData(form)
       data.set('_method', 'patch')
 
-      fetch(form.action, { method: 'POST', body: data })
-      .then(response => {
-        if (response.status == 201) {
-          console.debug('Select content saved')
-          this.guiSaved()
-        } else {
-          console.debug('Select content not saved')
-          this.guiFailed()
-        }
-      }).catch(err => {
-        console.warn(err)
-        console.debug('Failed badly to save')
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'text/javascript' },
+        body: data
       })
+        .then(response => {
+          if (response.status == 201) {
+            console.debug('Select content saved')
+            this.guiSaved()
+          } else {
+            console.debug('Select content not saved')
+            this.guiFailed()
+          }
+        }).catch(err => {
+          console.warn(err)
+          console.debug('Failed badly to save')
+        })
     }
 
     private debounce(fn: Function) {
