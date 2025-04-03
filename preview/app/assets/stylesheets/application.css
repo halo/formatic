@@ -260,6 +260,19 @@
   border-left-width: 2px;
 }
 
+.c-formatic-time__inputs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5em;
+}
+.c-formatic-time__inputs {
+  margin-bottom: 0.8571rem;
+}
+.c-formatic-wrapper.is-required .c-formatic-time__select {
+  border-left-color: rgb(240, 30, 80);
+  border-left-width: 2px;
+}
+
 .c-formatic-toggle {
   display: grid;
 }

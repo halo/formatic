@@ -77,7 +77,7 @@ module Formatic
       "#{f.object.model_name.param_key}_#{attribute_name}_1i"
     end
 
-    def calendar(now: Time.current)
+    def calendar(now: ::Time.current)
       from = 5.days.ago.to_date
       till = now.beginning_of_month.advance(months: 2).end_of_month.to_date
 

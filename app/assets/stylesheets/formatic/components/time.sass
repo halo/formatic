@@ -1,0 +1,15 @@
+@use "sass:color"
+@use "iglu/spacing"
+@use "formatic/tools/mandatory"
+
+.c-formatic-time
+
+  &__inputs
+    display: grid
+    grid-auto-flow: column
+    grid-gap: 0.5em
+    +spacing.margin-bottom--small
+
+  &__select
+    .c-formatic-wrapper.is-required &
+      +mandatory.indicator
