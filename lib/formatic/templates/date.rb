@@ -38,7 +38,7 @@ module Formatic
                                 id: year_input_id,
                                 class: 'c-formatic-date__select js-formatic-date__year' %>
               </div>
-              <% unless discard_day %>
+              <% if calendar? %>
                 <div class="c-formatic-date__calendar">
                   <a class="c-formatic-date__flick c-formatic-date__clear js-formatic-date__shortcut" href="#"
                      data-day=""

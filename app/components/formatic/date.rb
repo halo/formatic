@@ -5,6 +5,8 @@ require 'formatic/templates/date'
 module Formatic
   # Date/calendar
   class Date < ::Formatic::Base
+    option :calendar, as: :show_calendar, default: -> { true }
+
     # Represents one element in the calendar.
     class Day
       extend Dry::Initializer
@@ -35,6 +37,13 @@ module Formatic
 
     def css_classes
       %i[c-formatic-date__input]
+    end
+
+    def calendar?
+      return false if show_calendar == false
+      return false if discard_day
+
+      true
     end
 
     def options_for_day

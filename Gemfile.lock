@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formatic (0.1.5)
+    formatic (0.1.6)
       actionview
       calls
       countries
