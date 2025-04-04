@@ -5,7 +5,7 @@ require 'formatic/templates/date'
 module Formatic
   # Date/calendar
   class Time < ::Formatic::Base
-    option :minute_step, default: -> { 5 }
+    option :minute_step, default: -> { 1 }
 
     erb_template <<~ERB
       <%= render wrapper do |wrap| -%>
@@ -70,6 +70,11 @@ module Formatic
 
     private
 
+    def minute_value
+      candidate = f.object.public_send(attribute_name)
+      candidate.min if candidate&.between?(0, 59)
+    end
+
     def collection_for_hour
       result = (0..23).map { [_1, _1] }
       result.prepend([nil, nil]) if wrapper.optional?
@@ -79,7 +84,14 @@ module Formatic
     def collection_for_minute
       sanitized_minute_step = minute_step.clamp(1, 60)
       steps = (0..59).step(sanitized_minute_step).to_a
-      result = steps.map { [_1, _1] }
+
+      # Add the current minute if it's not already in the steps
+      if minute_value
+        steps.push(minute_value)
+        steps.sort!
+      end
+
+      result = steps.map { [_1.to_s.rjust(2, '0'), _1] }
       result.prepend([nil, nil]) if wrapper.optional?
       result
     end
