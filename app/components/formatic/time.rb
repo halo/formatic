@@ -13,27 +13,27 @@ module Formatic
         <% wrap.with_input do -%>
           <div class="c-formatic-time s-formatic">
 
-          <% if readonly %>
-            <div class="s-markdown">
-              <p>
-                <%= value.to_fs(:time) %>
-              </p>
-            </div>
-          <% else %>
+            <% if readonly %>
+              <div class="s-markdown">
+                <p>
+                  <%= value.to_fs(:time) %>
+                </p>
+              </div>
+            <% else %>
+              <div class="c-formatic-time__inputs">
+                <%= select_tag hour_attribute_name,
+                              options_for_hour,
+                              id: hour_input_id,
+                              class: 'c-formatic-time__select' %>
 
-            <div class="c-formatic-time__inputs">
-              <%= select_tag hour_attribute_name,
-                             options_for_hour,
-                             id: hour_input_id,
-                             class: 'c-formatic-time__select' %>
+                <%= select_tag minute_attribute_name,
+                              options_for_minute,
+                              id: minute_input_id,
+                              class: 'c-formatic-time__select' %>
+              </div>
+            <% end -%>
+          </div>
 
-              <%= select_tag minute_attribute_name,
-                             options_for_minute,
-                             id: minute_input_id,
-                             class: 'c-formatic-time__select' %>
-            </div>
-
-          <% end -%>
         <% end -%>
       <% end -%>
     ERB
