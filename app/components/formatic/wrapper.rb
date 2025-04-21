@@ -87,6 +87,8 @@ module Formatic
     end
 
     def hint
+      return manual_hint if manual_hint != true && manual_hint != false
+
       @hint ||= ::Formatic::Wrappers::Translate.call(
         prefix: :'helpers.hint',
         object:,

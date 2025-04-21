@@ -1,0 +1,8 @@
+<%= form_for(House.new(floors: 'many'), url: '#') do |f| %>
+  <%= render Formatic::String.new(f:, attribute_name: :floors, hint: 'I am totally custom!') %>
+<% end %>
+
+
+<%= form_for(House.new(floors: 'many'), url: '#') do |f| %>
+  <%= render Formatic::String.new(f:, attribute_name: :floors, hint: 'I am <u>totally</u> custom!'.html_safe) %>
+<% end %>

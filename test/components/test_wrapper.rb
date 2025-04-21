@@ -72,13 +72,23 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_hint
+  def test_hint_from_i18n
     I18n.with_locale(:es) do
       object = RocketModel.new
       f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
       wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
       assert_equal('El Hint', wrapper.hint)
+    end
+  end
+
+  def test_manual_hint
+    I18n.with_locale(:es) do
+      object = RocketModel.new
+      f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
+      wrapper = Formatic::Wrapper.new(f:, attribute_name: :name, hint: 'Totally custom')
+
+      assert_equal('Totally custom', wrapper.hint)
     end
   end
 

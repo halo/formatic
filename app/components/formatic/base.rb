@@ -32,6 +32,7 @@ module Formatic
 
     # See `Formatic::Wrapper`
     option :label, default: -> { true }
+    option :hint, optional: true
     option :label_for_id, optional: true
     option :readonly, as: :readonly, default: -> { false }
     option :required, optional: true
@@ -42,6 +43,7 @@ module Formatic
         f:,
         attribute_name:,
         label:,
+        hint:,
         required:,
         prevent_submit_on_enter:,
         label_for_id:,
