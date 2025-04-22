@@ -51,7 +51,7 @@ module Formatic
     end
 
     def options_for_day
-      options_for_select collection_for_day, day_value
+      options_for_select collection_for_day, f.object.public_send(attribute_name)&.day
     end
 
     def options_for_month
