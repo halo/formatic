@@ -17,12 +17,21 @@ module Formatic
         return false if manual_required == false
         return false if validators.empty?
 
-        validators.any? { _1.kind == :presence }
+        validators.any? { applicable?(_1) }
       end
+
+      private
 
       # All applicable validatiors of this attribute.
       def validators
         @validators ||= ::Formatic::Wrappers::Validators.call(object:, attribute_name:)
+      end
+
+      def applicable?(validator)
+        validator.options.keys.exclude?(:if) &&
+          validator.options.keys.exclude?(:unless) &&
+          validator.options.keys.exclude?(:on) &&
+          validator.kind == :presence
       end
     end
   end

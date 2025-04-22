@@ -13,15 +13,21 @@ Opinionated ViewComponents for building forms.
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add formatic
+    bundle add formatic
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install formatic
+    gem install formatic
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/ci` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+## Testing
+
+Run one test individually with:
+
+    bundle exec ruby -I test test/lib/wrappers/test_required.rb
 
 ## Contributing
 
