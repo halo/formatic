@@ -20,7 +20,7 @@ module Formatic
 
               <div class="c-formatic-date__inputs">
                 <% if discard_day %>
-                  <%= hidden_field_tag day_attribute_name, (day_value || 1) %>
+                  <%= hidden_field_tag day_attribute_name, 1 %>
                 <% else %>
                   <%= select_tag day_attribute_name,
                                  options_for_day,

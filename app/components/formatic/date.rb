@@ -31,6 +31,10 @@ module Formatic
       end
     end
 
+    # When this is set, we always submit `1` as the day.
+    #
+    # We could also assume the currently set day, but that could lead to switching months on submit:
+    # If 2016-12-31 is set and the form changes to 2016-11, it becomes 2016-11-31 (i.e. 2016-12-01).
     option :discard_day, optional: true
 
     erb_template(::Formatic::Templates::Date.call)
@@ -68,10 +72,6 @@ module Formatic
 
     def year_attribute_name
       "#{f.object.model_name.param_key}[#{attribute_name}(1i)]"
-    end
-
-    def day_value
-      f.object.public_send(attribute_name)&.day
     end
 
     def day_input_id
