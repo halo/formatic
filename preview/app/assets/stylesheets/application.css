@@ -275,6 +275,8 @@
 
 .c-formatic-toggle {
   display: grid;
+  height: 100%;
+  align-content: center;
 }
 .c-formatic-toggle {
   font-size: 1rem;

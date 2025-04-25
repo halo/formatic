@@ -6,6 +6,8 @@ en:
     attributes:
       animal:
         four_legged: Has four legs?
+      house:
+        longthing: This is a very long attribute name. Actually so long that it may cause all sorts of line breaks here and there. It is not sure where exactly, but it will be there at some point.
 
   helpers:
 
