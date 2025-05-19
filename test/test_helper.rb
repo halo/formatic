@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resource :home
 end
 
-# I18n.load_path += Dir[Rails.root.join('config/locales/*.yml')]
-
 require 'action_controller'
 class ApplicationController < ActionController::Base; end
 
@@ -64,3 +62,5 @@ $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'formatic'
 
 require 'minitest/autorun'
+require 'minitest/focus'
+require 'minitest/pride'

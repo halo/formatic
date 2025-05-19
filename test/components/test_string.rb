@@ -8,6 +8,12 @@ class BlueModel
   attr_accessor :the_name
 end
 
+class ExplanatoryModel
+  include ActiveModel::API
+
+  attr_accessor :created_at
+end
+
 class TestString < ViewComponent::TestCase
   def test_value_without_object
     f = TestFormBuilder.for(BlueModel.new)
@@ -79,5 +85,19 @@ class TestString < ViewComponent::TestCase
     text_field = output.at_css('.c-formatic-string__input')
 
     assert_nil text_field[:autofocus]
+  end
+
+  # The Wrapper already has intensive tests for hints,
+  # but the integration with the Wrapper is tested here.
+  def test_hint
+    I18n.with_locale(:es) do
+      f = TestFormBuilder.for(ExplanatoryModel.new)
+      component = Formatic::String.new(f:, attribute_name: :created_at)
+      output = render_inline(component)
+
+      hint_container = output.at_css('.c-formatic-wrapper__hint')
+
+      assert_equal 'Behold the time.', hint_container.text.strip
+    end
   end
 end

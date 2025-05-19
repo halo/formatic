@@ -10,3 +10,5 @@ es:
         name: 'El Hint'
         name_active: 'El On'
         name_inactive: 'El Off'
+      explanatory_model:
+        created_at: Behold the time.

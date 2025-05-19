@@ -4,4 +4,4 @@
 set -e
 
 bundle exec rake test
-bundle exec rubocop
+bundle exec rubocop --color

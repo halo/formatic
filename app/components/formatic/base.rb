@@ -32,7 +32,7 @@ module Formatic
 
     # See `Formatic::Wrapper`
     option :label, default: -> { true }
-    option :hint, optional: true
+    option :hint, optional: true, default: -> { true }
     option :label_for_id, optional: true
     option :readonly, as: :readonly, default: -> { false }
     option :required, optional: true

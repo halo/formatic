@@ -13,12 +13,6 @@ class MandatoryNameModel
   validates_presence_of :maybe_on, on: :create
 end
 
-class OptionalNameModel
-  include ActiveModel::Validations
-
-  attr_accessor :name
-end
-
 class TestRequired < ViewComponent::TestCase
   def test_when_directly_required
     object = MandatoryNameModel.new

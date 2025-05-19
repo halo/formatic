@@ -1,3 +1,6 @@
+# Remember that this file is NOT used in tests.
+# There are separate locale files for testing.
+
 en:
   models:
     animal: Best friend
@@ -16,3 +19,5 @@ en:
         four_legged: Whether or not this animal has four legs.
         four_legged_active: I have four legs.
         four_legged_inactive: I am not four legged.
+      wink:
+        created_at: When was this made?
