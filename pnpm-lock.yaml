@@ -1,0 +1,40 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@types/autosize':
+        specifier: ^4.0.3
+        version: 4.0.3
+      iglu:
+        specifier: ^2.0.5
+        version: 2.0.5
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+packages:
+
+  '@types/autosize@4.0.3':
+    resolution: {integrity: sha512-o0ZyU3ePp3+KRbhHsY4ogjc+ZQWgVN5h6j8BHW5RII4cFKi6PEKK9QPAcphJVkD0dGpyFnD3VRR0WMvHVjCv9w==}
+
+  iglu@2.0.5:
+    resolution: {integrity: sha512-Qj9HxvneZ4+QF6m3/AjtpF6c/w1tPeNHMZMcw3rHnq2zeFj3CI44TpHy3xO1g0P3eAU7zPTSeosCxOzGNHdU0A==}
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+snapshots:
+
+  '@types/autosize@4.0.3': {}
+
+  iglu@2.0.5: {}
+
+  typescript@5.9.3: {}

@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "app/assets/javascript/formatic": true,
+    "app/assets/javascript/declarations": true
+  }
+}

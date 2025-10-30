@@ -4,4 +4,7 @@ IFS=$'\n\t'
 set -vx
 
 bundle install
-yarn install
+pnpm install
+
+cd preview
+bundle install

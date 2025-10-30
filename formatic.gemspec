@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'countries'
   spec.add_dependency 'dry-initializer'
   spec.add_dependency 'holidays'
+  spec.add_dependency 'importmap-rails'
   spec.add_dependency 'view_component'
 
   spec.metadata['rubygems_mfa_required'] = 'true'

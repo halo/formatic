@@ -7,6 +7,18 @@ module Formatic
   # :nodoc:
   class Engine < ::Rails::Engine
     isolate_namespace Formatic
+    config.autoload_paths << root.join('lib')
+
+    initializer 'formatic.importmap', before: 'importmap' do |app|
+      app.config.importmap.paths << Engine.root.join('config/importmap.rb')
+      # Watch JS changes in development
+      app.config.importmap.cache_sweepers << Engine.root.join('app/assets/javascript')
+    end
+
+    initializer 'formatic.assets' do |app|
+      app.config.assets.paths << Engine.root.join('app/javascript')
+      app.config.assets.paths << Engine.root.join('app/stylesheets')
+    end
 
     config.to_prepare do
       # Our Formatic components are subclasses of `ViewComponent::Base`.

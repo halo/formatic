@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+sass \
+  --fatal-deprecation $(sass --version) \
+  --color \
+  --watch \
+  --load-path ./node_modules/iglu \
+  --load-path app/assets/stylesheets \
+  app/assets/stylesheets/formatic.sass:app/assets/stylesheets/formatic/formatic.css

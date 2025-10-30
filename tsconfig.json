@@ -1,12 +1,28 @@
 {
   "compilerOptions": {
-      "outFile": "app/assets/javascript/formatic.js",
-      "noImplicitAny": true,
-      "noEmitOnError": true,
-      "sourceMap": true,
-      "target": "es2021",
-      "skipLibCheck": true,
-      "removeComments": true,
-      "moduleResolution": "node",
-  }
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "target": "es2021",
+    "strict": false,
+    "removeComments": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "app/assets/javascript/formatic",
+    // Defines the root directory of input files (e.g., src), used to determine the output structure relative to outDir.
+    "rootDir": "app/assets/javascript/src",
+    // Sets the base directory for resolving non-relative module imports (e.g., formatic/stepper), overriding node_modules resolution; works with paths
+    "baseUrl": "app/assets/javascript/src",
+    "paths": {
+      // Mapping import "formatic/something" to file "app/assets/javascript/src/something.ts
+      "formatic/*": [
+        "*"
+      ]
+    },
+    "declaration": true,
+    "declarationDir": "app/assets/javascript/declarations",
+  },
+  "include": [
+    "app/assets/javascript/src/*"
+  ]
 }

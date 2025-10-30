@@ -1,3 +1,3 @@
 typescript: ./node_modules/.bin/tsc --project tsconfig.json --watch --preserveWatchOutput
-sass: bundle exec sass preview/app/assets/stylesheets/application.sass:preview/app/assets/stylesheets/application.css --load-path ~/code/2-areas/formatic/formatic/app/assets/stylesheets --load-path ~/code/1-projects/iglu/iglu --watch
+css: bin/css
 lookbook: cd preview; bundle exec rails server -p 3006

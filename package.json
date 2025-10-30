@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@types/autosize": "^4.0.1",
-    "typescript": "^5.6.2"
+    "@types/autosize": "^4.0.3",
+    "iglu": "^2.0.5",
+    "typescript": "^5.9.3"
   }
 }
