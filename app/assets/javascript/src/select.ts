@@ -1,4 +1,4 @@
-import * as autosize from 'autosize'
+import autosize from "autosize"
 
 export class Select {
   private el: HTMLElement

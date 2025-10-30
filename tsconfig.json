@@ -8,21 +8,22 @@
     "removeComments": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "outDir": "app/assets/javascript/formatic",
     // Defines the root directory of input files (e.g., src), used to determine the output structure relative to outDir.
     "rootDir": "app/assets/javascript/src",
     // Sets the base directory for resolving non-relative module imports (e.g., formatic/stepper), overriding node_modules resolution; works with paths
-    "baseUrl": "app/assets/javascript/src",
+    "baseUrl": ".",
     "paths": {
       // Mapping import "formatic/something" to file "app/assets/javascript/src/something.ts
-      "formatic/*": [
-        "*"
-      ]
+      "formatic/*": ["app/assets/javascript/src/*"],
+      "autosize": ["preview/vendor/javascript/autosize"]
     },
     "declaration": true,
     "declarationDir": "app/assets/javascript/declarations",
   },
   "include": [
-    "app/assets/javascript/src/*"
+    "app/assets/javascript/src/*",
+    "preview/vendor/javascript/*"
   ]
 }

@@ -1,4 +1,4 @@
-import * as autosize from 'autosize';
+import autosize from "autosize";
 export class Textarea {
     constructor(el) {
         this.el = el;
