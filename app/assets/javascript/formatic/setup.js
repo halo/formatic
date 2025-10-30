@@ -4,9 +4,11 @@ import { Stepper } from 'formatic/stepper';
 import { String } from 'formatic/string';
 import { Textarea } from 'formatic/textarea';
 import { Toggle } from 'formatic/toggle';
+import { File } from 'formatic/file';
 export var Formatic;
 (function (Formatic) {
     function setup() {
+        File.setup();
         document.querySelectorAll('.js-formatic-date').forEach((el) => {
             console.debug('[Formatic] Instantiating Date...');
             new Date(el);

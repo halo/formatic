@@ -11,6 +11,9 @@ importers:
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
+      filepond:
+        specifier: ^4.32.10
+        version: 4.32.10
       iglu:
         specifier: ^2.0.5
         version: 2.0.5
@@ -23,6 +26,9 @@ packages:
   '@types/autosize@4.0.3':
     resolution: {integrity: sha512-o0ZyU3ePp3+KRbhHsY4ogjc+ZQWgVN5h6j8BHW5RII4cFKi6PEKK9QPAcphJVkD0dGpyFnD3VRR0WMvHVjCv9w==}
 
+  filepond@4.32.10:
+    resolution: {integrity: sha512-uflpIL+rfAgsYk7HgXugh7ELlHNHLTPtIHfvuq0gv3x2qNfVxdGA6T7RPxMh9Vji8ysXstXkDHVXQ4hY38MPTQ==}
+
   iglu@2.0.5:
     resolution: {integrity: sha512-Qj9HxvneZ4+QF6m3/AjtpF6c/w1tPeNHMZMcw3rHnq2zeFj3CI44TpHy3xO1g0P3eAU7zPTSeosCxOzGNHdU0A==}
 
@@ -34,6 +40,8 @@ packages:
 snapshots:
 
   '@types/autosize@4.0.3': {}
+
+  filepond@4.32.10: {}
 
   iglu@2.0.5: {}
 

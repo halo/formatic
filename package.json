@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@types/autosize": "^4.0.3",
+    "filepond": "^4.32.10",
     "iglu": "^2.0.5",
     "typescript": "^5.9.3"
   }
