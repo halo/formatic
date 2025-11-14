@@ -25,6 +25,9 @@ module Formatic
     # For inputs that support `<input autofocus=...>`
     option :autofocus, default: -> { false }
 
+    # Multiple records are submitted via one input.
+    option :multiple, default: -> { false }
+
     # Some inputs (such as checkboxes and textfields)
     # can be submitted continously by submitting their <form>
     # via javascript.
@@ -68,7 +71,7 @@ module Formatic
 
     # # Name of the URL param for this input.
     def input_name
-      "#{param_key}[#{attribute_name}]"
+      "#{param_key}[#{attribute_name}]#{'[]' if multiple}"
     end
   end
 end

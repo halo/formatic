@@ -8,8 +8,8 @@ class ModelNamingNamespace
   end
 end
 
-class TestTranslate < Minitest::Test
-  def test_highest_specificity
+class TestTranslate < Megatest::Test
+  test 'test_highest_specificity' do
     I18n.with_locale(:it) do
       translation = Formatic::Wrappers::Translate.call(
         prefix: 'helpers.placeholder',
@@ -21,7 +21,7 @@ class TestTranslate < Minitest::Test
     end
   end
 
-  def test_fallback_to_object_name
+  test 'test_fallback_to_object_name' do
     I18n.with_locale(:sv) do
       translation = Formatic::Wrappers::Translate.call(
         prefix: 'helpers.placeholder',
@@ -34,7 +34,7 @@ class TestTranslate < Minitest::Test
     end
   end
 
-  def test_fallback_to_default
+  test 'test_fallback_to_default' do
     I18n.with_locale(:fr) do
       translation = Formatic::Wrappers::Translate.call(
         prefix: 'helpers.placeholder',
@@ -46,7 +46,7 @@ class TestTranslate < Minitest::Test
     end
   end
 
-  def test_fallback_to_default_with_object_name
+  test 'test_fallback_to_default_with_object_name' do
     I18n.with_locale(:fr) do
       translation = Formatic::Wrappers::Translate.call(
         prefix: 'helpers.placeholder',
@@ -59,7 +59,7 @@ class TestTranslate < Minitest::Test
     end
   end
 
-  def test_nothing
+  test 'test_nothing' do
     I18n.with_locale(:fr) do
       translation = Formatic::Wrappers::Translate.call(
         prefix: 'helpers.placeholder',

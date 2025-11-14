@@ -32,7 +32,7 @@ module Formatic
         return false unless model_klass.respond_to?(:reflect_on_all_associations)
 
         model_klass.reflect_on_all_associations(:belongs_to)
-                   .detect { _1.foreign_key == attribute_name.to_s }
+                   .detect { it.foreign_key == attribute_name.to_s }
       end
     end
   end

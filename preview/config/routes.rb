@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :selects
   resources :textareas
   resources :strings
+  resources :winks
 
   root 'application#index'
 end

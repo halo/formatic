@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
 class FileComponentPreview < ViewComponent::Preview
-  def standard; end
+  def single; end
+  def multiple; end
 end

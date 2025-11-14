@@ -17,7 +17,8 @@
     "paths": {
       // Mapping import "formatic/something" to file "app/assets/javascript/src/something.ts
       "formatic/*": ["app/assets/javascript/src/*"],
-      "autosize": ["preview/vendor/javascript/autosize"]
+      "autosize": ["preview/vendor/javascript/autosize"],
+      "@rails/activestorage": ["preview/vendor/javascript/@rails--activestorage"]
     },
     "declaration": true,
     "declarationDir": "app/assets/javascript/declarations",

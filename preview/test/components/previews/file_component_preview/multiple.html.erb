@@ -1,0 +1,5 @@
+<%= form_for(Wink.new(id: 42)) do |f| %>
+  <%= f.text_field :custom_thing, value: 'My Test' %>
+  <%= render Formatic::Files.new(f:, attribute_name: :avatar) %>
+  <%= f.submit %>
+<% end %>

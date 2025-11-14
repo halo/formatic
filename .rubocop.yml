@@ -1,10 +1,9 @@
 plugins:
   - rubocop-rake
-  - rubocop-minitest
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.4
   Exclude:
     - 'preview/**/*'
 
@@ -12,6 +11,10 @@ AllCops:
 # 80 is too much pain, but many disagree.
 Layout/LineLength:
   Max: 100
+
+# Automatically add frozen string safety comments.
+Style/FrozenStringLiteralComment:
+  SafeAutoCorrect: true
 
 # # Tests and Rake tasks may have long blocks.
 # Metrics/BlockLength:

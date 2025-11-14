@@ -8,8 +8,8 @@ class RedModel
   attr_accessor :the_name
 end
 
-class TestToggle < ViewComponent::TestCase
-  def test_value_without_object
+class TestToggle < ApplicationTest
+  test 'test_value_without_object' do
     f = TestFormBuilder.for(RedModel.new)
     component = Formatic::Toggle.new(f:, attribute_name: :the_name)
     output = render_inline(component)
@@ -23,7 +23,7 @@ class TestToggle < ViewComponent::TestCase
     assert_equal 'the_name', text_field[:name]
   end
 
-  def test_without_object
+  test 'test_without_object' do
     f = TestFormBuilder.for(nil)
     component = Formatic::Toggle.new(f:,
                                      attribute_name: :zipcode,
@@ -39,7 +39,7 @@ class TestToggle < ViewComponent::TestCase
 
   # TODO: This is common functionality that is not really associated with this input.
 
-  def test_class
+  test 'test_class' do
     f = TestFormBuilder.for(RedModel.new)
     component = Formatic::Toggle.new(f:, attribute_name: :the_name, class: :flashy)
     output = render_inline(component)
@@ -49,7 +49,7 @@ class TestToggle < ViewComponent::TestCase
     assert_equal 'c-formatic-toggle__input flashy', text_field[:class]
   end
 
-  def test_autofocus_deactivated
+  test 'test_autofocus_deactivated' do
     f = TestFormBuilder.for(RedModel.new)
     component = Formatic::Toggle.new(f:, attribute_name: :the_name, autofocus: false)
     output = render_inline(component)
@@ -59,7 +59,7 @@ class TestToggle < ViewComponent::TestCase
     assert_nil text_field[:autofocus]
   end
 
-  def test_autofocus_default
+  test 'test_autofocus_default' do
     f = TestFormBuilder.for(RedModel.new)
     component = Formatic::Toggle.new(f:, attribute_name: :the_name)
     output = render_inline(component)

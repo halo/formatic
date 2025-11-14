@@ -104,7 +104,7 @@ module Formatic
     end
 
     def collection_for_month
-      result = (1..12).map { [l(::Date.new(1, _1), format: '%B  %-m'), _1] }
+      result = (1..12).map { [l(::Date.new(1, it), format: '%B  %-m'), it] }
       result.prepend([nil, nil]) if wrapper.optional?
       result
     end

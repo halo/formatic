@@ -2,5 +2,5 @@
 
 require 'test_helper'
 
-class DateTest < ViewComponent::TestCase
+class DateTest < ApplicationTest
 end

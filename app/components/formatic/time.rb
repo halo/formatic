@@ -40,7 +40,7 @@ module Formatic
 
     # Usually the time component is used below the date component (for a DateTime attribute).
     # So, normally we don't want the label to be shown twice.
-    def label
+    def label # rubocop:disable Naming/PredicateMethod
       false
     end
 
@@ -76,7 +76,7 @@ module Formatic
     end
 
     def collection_for_hour
-      result = (0..23).map { [_1, _1] }
+      result = (0..23).map { [it, it] }
       result.prepend([nil, nil]) if wrapper.optional?
       result
     end
@@ -91,7 +91,7 @@ module Formatic
         steps.sort!
       end
 
-      result = steps.map { [_1.to_s.rjust(2, '0'), _1] }
+      result = steps.map { [it.to_s.rjust(2, '0'), it] }
       result.prepend([nil, nil]) if wrapper.optional?
       result
     end

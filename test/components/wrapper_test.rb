@@ -28,15 +28,15 @@ class OptionalTreeModel
   attr_accessor :tree
 end
 
-class TestWrapper < ViewComponent::TestCase
-  # def test_value_without_object
+class TestWrapper < ApplicationTest
+  # test 'test_value_without_object' do
   #   f = ::Data.define(:object).new(object: nil)
   #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
 
   #   assert_nil(wrapper.value)
   # end
 
-  # def test_value
+  # test 'test_value' do
   #   object = StoneModel.new
   #   object.name = 'Rocky'
   #   f = ::Data.define(:object).new(object:)
@@ -45,7 +45,7 @@ class TestWrapper < ViewComponent::TestCase
   #   assert_equal('Rocky', wrapper.value)
   # end
 
-  # def test_param_key
+  # test 'test_param_key' do
   #   object = RocketModel.new
   #   f = ::Data.define(:object).new(object:)
   #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
@@ -53,7 +53,7 @@ class TestWrapper < ViewComponent::TestCase
   #   assert_equal('rocket_model', wrapper.param_key)
   # end
 
-  # def test_input_name
+  # test 'test_input_name' do
   #   object = RocketModel.new
   #   f = ::Data.define(:object).new(object:)
   #   wrapper = Formatic::Wrapper.new(f:, attribute_name: :name)
@@ -61,7 +61,7 @@ class TestWrapper < ViewComponent::TestCase
   #   assert_equal('rocket_model[name]', wrapper.input_name)
   # end
 
-  def test_placeholder
+  test 'test_placeholder' do
     I18n.with_locale(:es) do
       object = RocketModel.new
       object_name = :the_rocket
@@ -72,7 +72,7 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_hint_from_i18n
+  test 'test_hint_from_i18n' do
     I18n.with_locale(:es) do
       object = RocketModel.new
       f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
@@ -82,7 +82,7 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_manual_hint
+  test 'test_manual_hint' do
     I18n.with_locale(:es) do
       object = RocketModel.new
       f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
@@ -92,7 +92,7 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_toggle_on
+  test 'test_toggle_on' do
     I18n.with_locale(:es) do
       object = RocketModel.new
       f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
@@ -102,7 +102,7 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_toggle_off
+  test 'test_toggle_off' do
     I18n.with_locale(:es) do
       object = RocketModel.new
       f = ::Data.define(:object, :object_name).new(object:, object_name: nil)
@@ -112,7 +112,7 @@ class TestWrapper < ViewComponent::TestCase
     end
   end
 
-  def test_error_messages_without_errors
+  test 'test_error_messages_without_errors' do
     object = RocketModel.new
 
     assert_predicate(object, :valid?)
@@ -123,10 +123,10 @@ class TestWrapper < ViewComponent::TestCase
     assert_empty(wrapper.error_messages)
   end
 
-  def test_error_messages_with_errors
+  test 'test_error_messages_with_errors' do
     object = MandatoryHouseModel.new
 
-    assert_not(object.valid?)
+    refute(object.valid?)
     f = ::Data.define(:object).new(object:)
     wrapper = Formatic::Wrapper.new(f:, attribute_name: :house)
 
@@ -134,7 +134,7 @@ class TestWrapper < ViewComponent::TestCase
                  wrapper.error_messages)
   end
 
-  def test_overriding_required
+  test 'test_overriding_required' do
     object = MandatoryOwnerModel.new
     f = ::Data.define(:object).new(object:)
 
@@ -144,15 +144,15 @@ class TestWrapper < ViewComponent::TestCase
 
     wrapper = Formatic::Wrapper.new(f:, attribute_name: :owner, required: false)
 
-    assert_not_predicate(wrapper, :required?)
+    refute_predicate(wrapper, :required?)
   end
 
-  def test_overriding_optional
+  test 'test_overriding_optional' do
     object = OptionalTreeModel.new
     f = ::Data.define(:object).new(object:)
     wrapper = Formatic::Wrapper.new(f:, attribute_name: :tree)
 
-    assert_not_predicate(wrapper, :required?)
+    refute_predicate(wrapper, :required?)
 
     wrapper = Formatic::Wrapper.new(f:, attribute_name: :tree, required: true)
 

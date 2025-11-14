@@ -37,7 +37,7 @@ module Formatic
     end
 
     def current_choice_name
-      choices.detect { _1.last == value }&.first
+      choices.detect { it.last == value }&.first
     end
 
     def include_blank?

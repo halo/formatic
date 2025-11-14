@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-pin 'formatic', to: 'formatic/setup.js'
+pin 'formatic', to: 'src/setup.js'
 
 pin 'formatic/date', to: 'formatic/date.js'
 pin 'formatic/file', to: 'formatic/file.js'

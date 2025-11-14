@@ -14,8 +14,8 @@ class ExplanatoryModel
   attr_accessor :created_at
 end
 
-class TestString < ViewComponent::TestCase
-  def test_value_without_object
+class TestString < ApplicationTest
+  test 'test_value_without_object' do
     f = TestFormBuilder.for(BlueModel.new)
     component = Formatic::String.new(f:, attribute_name: :the_name)
     output = render_inline(component)
@@ -29,7 +29,7 @@ class TestString < ViewComponent::TestCase
     assert_equal 'the_name', text_field[:name]
   end
 
-  def test_without_object
+  test 'test_without_object' do
     f = TestFormBuilder.for(nil)
     component = Formatic::String.new(f:,
                                      attribute_name: :zipcode,
@@ -44,7 +44,7 @@ class TestString < ViewComponent::TestCase
     assert_equal 'predefined', text_field[:value]
   end
 
-  def test_readonly
+  test 'test_readonly' do
     f = TestFormBuilder.for(BlueModel.new(the_name: 'Static yo'))
     component = Formatic::String.new(f:, attribute_name: :the_name, readonly: true)
     output = render_inline(component)
@@ -57,7 +57,7 @@ class TestString < ViewComponent::TestCase
 
   # TODO: This is common functionality that is not really associated with this input.
 
-  def test_autofocus
+  test 'test_autofocus' do
     f = TestFormBuilder.for(BlueModel.new)
     component = Formatic::String.new(f:, attribute_name: :the_name, autofocus: true)
     output = render_inline(component)
@@ -67,7 +67,7 @@ class TestString < ViewComponent::TestCase
     assert_equal 'autofocus', text_field[:autofocus]
   end
 
-  def test_autofocus_deactivated
+  test 'test_autofocus_deactivated' do
     f = TestFormBuilder.for(BlueModel.new)
     component = Formatic::String.new(f:, attribute_name: :the_name, autofocus: false)
     output = render_inline(component)
@@ -77,7 +77,7 @@ class TestString < ViewComponent::TestCase
     assert_nil text_field[:autofocus]
   end
 
-  def test_autofocus_default
+  test 'test_autofocus_default' do
     f = TestFormBuilder.for(BlueModel.new)
     component = Formatic::String.new(f:, attribute_name: :the_name)
     output = render_inline(component)
@@ -89,7 +89,7 @@ class TestString < ViewComponent::TestCase
 
   # The Wrapper already has intensive tests for hints,
   # but the integration with the Wrapper is tested here.
-  def test_hint
+  test 'test_hint' do
     I18n.with_locale(:es) do
       f = TestFormBuilder.for(ExplanatoryModel.new)
       component = Formatic::String.new(f:, attribute_name: :created_at)

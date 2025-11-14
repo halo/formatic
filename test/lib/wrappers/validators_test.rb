@@ -18,8 +18,8 @@ class OptionalNameModel
   attr_accessor :name
 end
 
-class TestValidators < Minitest::Test
-  def test_required_attribute
+class TestValidators < Megatest::Test
+  test 'test_required_attribute' do
     object = MandatoryOwnerModel.new
 
     validators = Formatic::Wrappers::Validators.call(object:, attribute_name: :owner)
@@ -27,7 +27,7 @@ class TestValidators < Minitest::Test
     assert_equal([:presence], validators.map(&:kind))
   end
 
-  def test_required_association
+  test 'test_required_association' do
     object = MandatoryOwnerModel.new
 
     validators = Formatic::Wrappers::Validators.call(object:, attribute_name: :owner_id)
@@ -35,7 +35,7 @@ class TestValidators < Minitest::Test
     assert_equal([:presence], validators.map(&:kind))
   end
 
-  def test_optional_attribute
+  test 'test_optional_attribute' do
     object = OptionalNameModel.new
 
     validators = Formatic::Wrappers::Validators.call(object:, attribute_name: :owner)
@@ -43,7 +43,7 @@ class TestValidators < Minitest::Test
     assert_empty(validators)
   end
 
-  def test_optional_association
+  test 'test_optional_association' do
     object = OptionalNameModel.new
 
     validators = Formatic::Wrappers::Validators.call(object:, attribute_name: :owner_id)
@@ -51,7 +51,7 @@ class TestValidators < Minitest::Test
     assert_empty(validators)
   end
 
-  def test_no_validation
+  test 'test_no_validation' do
     object = DumbModel.new
 
     validators = Formatic::Wrappers::Validators.call(object:, attribute_name: :owner_id)

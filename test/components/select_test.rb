@@ -29,8 +29,8 @@ class MouseModel
 end
 
 module Formatic
-  class SelectTest < ViewComponent::TestCase
-    def test_current_choice_name_with_match
+  class SelectTest < ApplicationTest
+    test 'test_current_choice_name_with_match' do
       f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 2, name: 'Beta')))
       records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]
       component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:)
@@ -38,7 +38,7 @@ module Formatic
       assert_equal 'Beta', component.current_choice_name
     end
 
-    def test_current_choice_name_without_match
+    test 'test_current_choice_name_without_match' do
       f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 99, name: 'Outlaw')))
       records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]
       component = Formatic::Select.new(f:, attribute_name: :mouse_id, records:,

@@ -34,9 +34,9 @@ ViewComponent::Base.config.view_component_path = File.expand_path('../app/compon
 require 'formatic/engine'
 Formatic::Engine.config.to_prepare_blocks.each(&:call)
 
-# ----------------------------------------------
-# Now we can load whatever we need for our tests
-# ----------------------------------------------
+# ------------------------------------------
+# Now we can load dependencies for our tests
+# ------------------------------------------
 
 require 'view_component/test_helpers'
 require 'view_component/test_case'
@@ -47,6 +47,7 @@ require 'action_policy'
 # Loading Test Support
 # --------------------
 
+require_relative 'application_test'
 require_relative 'support/form_builder'
 
 # Poor man's solution to avoiding global state during tests.
@@ -61,6 +62,4 @@ end
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'formatic'
 
-require 'minitest/autorun'
-require 'minitest/focus'
-require 'minitest/pride'
+require 'megatest'

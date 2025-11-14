@@ -17,7 +17,7 @@ module Formatic
         return false if manual_required == false
         return false if validators.empty?
 
-        validators.any? { applicable?(_1) }
+        validators.any? { applicable?(it) }
       end
 
       private

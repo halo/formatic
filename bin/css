@@ -7,4 +7,5 @@ sass \
   --load-path ./node_modules/iglu \
   --load-path ./node_modules/filepond/dist \
   --load-path app/assets/stylesheets \
-  app/assets/stylesheets/formatic.sass:app/assets/stylesheets/formatic/formatic.css
+  app/assets/stylesheets/formatic.sass:app/assets/stylesheets/formatic/formatic.css \
+  app/assets/stylesheets/vendor.sass:app/assets/stylesheets/formatic/vendor.css

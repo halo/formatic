@@ -39,22 +39,22 @@ end
 
 module Formatic
   module Selects
-    class TestChoices < Minitest::Test
-      def test_with_blank
+    class TestChoices < Megatest::Test
+      test 'test_with_blank' do
         f = TestFormBuilder.for(DogModel.new)
         choices = Choices.send(:new, f:, attribute_name: :test, include_blank: true).call
 
         assert_equal [[nil, nil]], choices
       end
 
-      def test_without_blank
+      test 'test_without_blank' do
         f = TestFormBuilder.for(DogModel.new)
         choices = Choices.send(:new, f:, attribute_name: :test).call
 
         assert_empty choices
       end
 
-      def test_country_code
+      test 'test_country_code' do
         f = TestFormBuilder.for(DogModel.new)
         choices = Choices.send(:new, f:, attribute_name: :attribute_akin_to_country_code).call
 
@@ -62,7 +62,7 @@ module Formatic
         assert_equal %w[Zimbabwe ZW], choices.last
       end
 
-      def test_keys
+      test 'test_keys' do
         I18n.with_locale(:nl) do
           f = TestFormBuilder.for(DogModel.new)
           keys = %i[first_key second_key unknown_key]
@@ -73,7 +73,7 @@ module Formatic
         end
       end
 
-      def test_associated_record_without_choices_without_current
+      test 'test_associated_record_without_choices_without_current' do
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
 
@@ -83,7 +83,7 @@ module Formatic
         assert_empty choices
       end
 
-      def test_associated_record_without_choices_with_current
+      test 'test_associated_record_without_choices_with_current' do
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
 
@@ -93,7 +93,7 @@ module Formatic
         assert_equal [['Jack', 42]], choices
       end
 
-      def test_associated_record_with_additional_choices_with_implicit_current
+      test 'test_associated_record_with_additional_choices_with_implicit_current' do
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
         records = [CatModel.new(id: 1, name: 'Bob'),
@@ -106,7 +106,7 @@ module Formatic
         assert_equal [['Bob', 1], ['Will', 2], ['Smith', 3]], choices
       end
 
-      def test_associated_record_with_additional_choices_without_current
+      test 'test_associated_record_with_additional_choices_without_current' do
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
         records = [CatModel.new(id: 1, name: 'Bob'),
@@ -119,7 +119,7 @@ module Formatic
         assert_equal [['Bob', 1], ['Will', 2], ['Smith', 3]], choices
       end
 
-      def test_associated_record_with_additional_choices_with_current
+      test 'test_associated_record_with_additional_choices_with_current' do
         record = DogModel.new
         record.friend = CatModel.new(id: 42, name: 'Jack')
         records = [CatModel.new(id: 1, name: 'Bob'),
@@ -132,7 +132,7 @@ module Formatic
         assert_equal [['Jack', 42], ['Bob', 1], ['Will', 2], ['Smith', 3]], choices
       end
 
-      def test_associated_record_with_intersecting_choices
+      test 'test_associated_record_with_intersecting_choices' do
         record = DogModel.new
         record.friend = CatModel.new(id: 2, name: 'Associated Will')
         records = [

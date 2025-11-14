@@ -8,8 +8,8 @@ class OrangeModel
   attr_accessor :the_name
 end
 
-class TestTextarea < ViewComponent::TestCase
-  def test_value_without_object
+class TestTextarea < ApplicationTest
+  test 'value withoutobject' do
     f = TestFormBuilder.for(OrangeModel.new)
     component = Formatic::Textarea.new(f:, attribute_name: :the_name)
     output = render_inline(component)
@@ -21,10 +21,10 @@ class TestTextarea < ViewComponent::TestCase
                               '.c-formatic-textarea__input')
 
     assert_equal 'the_name', text_area[:name]
-    assert_equal "\n", text_area.content
+    assert_equal '', text_area.content
   end
 
-  def test_without_object
+  test 'without object' do
     f = TestFormBuilder.for(nil)
     component = Formatic::Textarea.new(f:,
                                        attribute_name: :zipcode,
@@ -36,10 +36,10 @@ class TestTextarea < ViewComponent::TestCase
     text_area = output.at_css('.c-formatic-textarea__input')
 
     assert_equal 'zipcode', text_area[:name]
-    assert_equal "\npredefined", text_area.content
+    assert_equal 'predefined', text_area.content
   end
 
-  def test_readonly
+  test 'readonly' do
     f = TestFormBuilder.for(OrangeModel.new(the_name: 'Static yo'))
     component = Formatic::Textarea.new(f:, attribute_name: :the_name, readonly: true)
     output = render_inline(component)
@@ -52,7 +52,7 @@ class TestTextarea < ViewComponent::TestCase
 
   # TODO: This is common functionality that is not really associated with this input.
 
-  def test_autofocus
+  test 'autofocus' do
     f = TestFormBuilder.for(OrangeModel.new)
     component = Formatic::Textarea.new(f:, attribute_name: :the_name, autofocus: true)
     output = render_inline(component)
@@ -62,7 +62,7 @@ class TestTextarea < ViewComponent::TestCase
     assert_equal 'autofocus', text_area[:autofocus]
   end
 
-  def test_autofocus_deactivated
+  test 'autofocus_deactivated' do
     f = TestFormBuilder.for(OrangeModel.new)
     component = Formatic::Textarea.new(f:, attribute_name: :the_name, autofocus: false)
     output = render_inline(component)
@@ -72,7 +72,7 @@ class TestTextarea < ViewComponent::TestCase
     assert_nil text_area[:autofocus]
   end
 
-  def test_autofocus_default
+  test 'autofocus_default' do
     f = TestFormBuilder.for(OrangeModel.new)
     component = Formatic::Textarea.new(f:, attribute_name: :the_name)
     output = render_inline(component)

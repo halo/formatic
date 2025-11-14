@@ -2,26 +2,26 @@
 
 require 'test_helper'
 
-class TestVersion < Minitest::Test
-  def test_string
+class CssTest < Megatest::Test
+  test 'test_string' do
     output = Formatic::Css.call('one')
 
     assert_equal 'one', output
   end
 
-  def test_array
+  test 'test_array' do
     output = Formatic::Css.call(%w[one two])
 
     assert_equal 'one two', output
   end
 
-  def test_nil
+  test 'test_nil' do
     output = Formatic::Css.call([:one, 2, nil])
 
     assert_equal 'one 2', output
   end
 
-  def test_array_of_arrays
+  test 'test_array_of_arrays' do
     output = Formatic::Css.call([:one, :two, [:three]])
 
     assert_equal 'one two three', output

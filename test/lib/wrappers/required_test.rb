@@ -13,8 +13,8 @@ class MandatoryNameModel
   validates_presence_of :maybe_on, on: :create
 end
 
-class TestRequired < ViewComponent::TestCase
-  def test_when_directly_required
+class TestRequired < ApplicationTest
+  test 'test_when_directly_required' do
     object = MandatoryNameModel.new
     requirement = Formatic::Wrappers::Required.call(manual_required: nil,
                                                     object:,
@@ -23,39 +23,39 @@ class TestRequired < ViewComponent::TestCase
     assert requirement
   end
 
-  def test_when_not_required
+  test 'test_when_not_required' do
     object = MandatoryNameModel.new
     requirement = Formatic::Wrappers::Required.call(manual_required: nil,
                                                     object:,
                                                     attribute_name: :free)
 
-    assert_not requirement
+    refute requirement
   end
 
-  def test_when_conditonally_required_if
+  test 'test_when_conditonally_required_if' do
     object = MandatoryNameModel.new
     requirement = Formatic::Wrappers::Required.call(manual_required: nil,
                                                     object:,
                                                     attribute_name: :maybe_if)
 
-    assert_not requirement
+    refute requirement
   end
 
-  def test_when_conditonally_required_unless
+  test 'test_when_conditonally_required_unless' do
     object = MandatoryNameModel.new
     requirement = Formatic::Wrappers::Required.call(manual_required: nil,
                                                     object:,
                                                     attribute_name: :maybe_unless)
 
-    assert_not requirement
+    refute requirement
   end
 
-  def test_when_conditonally_required_on
+  test 'test_when_conditonally_required_on' do
     object = MandatoryNameModel.new
     requirement = Formatic::Wrappers::Required.call(manual_required: nil,
                                                     object:,
                                                     attribute_name: :maybe_on)
 
-    assert_not requirement
+    refute requirement
   end
 end

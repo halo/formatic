@@ -11,6 +11,9 @@ importers:
       '@types/autosize':
         specifier: ^4.0.3
         version: 4.0.3
+      '@types/rails__activestorage':
+        specifier: ^8.0.1
+        version: 8.0.1
       filepond:
         specifier: ^4.32.10
         version: 4.32.10
@@ -26,6 +29,9 @@ packages:
   '@types/autosize@4.0.3':
     resolution: {integrity: sha512-o0ZyU3ePp3+KRbhHsY4ogjc+ZQWgVN5h6j8BHW5RII4cFKi6PEKK9QPAcphJVkD0dGpyFnD3VRR0WMvHVjCv9w==}
 
+  '@types/rails__activestorage@8.0.1':
+    resolution: {integrity: sha512-gwUZjLHyllzSEmegCXfkL11PrpZ/3Z+vCXBbYWgIdtX0ChfjtZcKq7HGfXYO5v5UYGLYenjGH3u8U+PpnA3dhg==}
+
   filepond@4.32.10:
     resolution: {integrity: sha512-uflpIL+rfAgsYk7HgXugh7ELlHNHLTPtIHfvuq0gv3x2qNfVxdGA6T7RPxMh9Vji8ysXstXkDHVXQ4hY38MPTQ==}
 
@@ -40,6 +46,8 @@ packages:
 snapshots:
 
   '@types/autosize@4.0.3': {}
+
+  '@types/rails__activestorage@8.0.1': {}
 
   filepond@4.32.10: {}
 
