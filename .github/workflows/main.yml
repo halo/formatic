@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  test:
+  build:
+    name: Test Suite
     runs-on: ubuntu-latest
 
     steps:
