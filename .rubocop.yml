@@ -1,5 +1,10 @@
-inherit_from: https://raw.githubusercontent.com/halo/dotfiles/refs/heads/master/.rubocop.yml
-
 AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.4
+  SuggestExtensions: false
   Exclude:
     - 'preview/**/*'
+
+# Automatically add frozen string safety comments.
+Style/FrozenStringLiteralComment:
+  SafeAutoCorrect: true
