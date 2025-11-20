@@ -27,10 +27,10 @@ module Formatic
         <% wrap.with_input do %>
           <div class="c-formatic-checklist s-formatic">
 
-          <% f.collection_check_boxes(attribute_name, choices, :last, :first) do |builder| %>
+          <%= f.collection_check_boxes(attribute_name, choices, :last, :first) do |builder| %>
 
             <%= content_tag :div,
-                            builder.label { builder.check_box(class: manual_class) + content_tag(:i) + content_tag(:span, split_and_wrap(builder.object.first)) },
+                            builder.label { builder.check_box(class: manual_class, data:) + content_tag(:i) + content_tag(:span, split_and_wrap(builder.object.first)) },
                             class: 'c-formatic-toggle' %>
 
           <% end %>
@@ -50,6 +50,10 @@ module Formatic
         include_current:,
         include_blank: false
       )
+    end
+
+    def data
+      manual_data
     end
 
     def split_and_wrap(string)

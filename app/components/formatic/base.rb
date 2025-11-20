@@ -3,6 +3,9 @@
 module Formatic
   # All inputs inherit from this class.
   class Base < ApplicationComponent
+    # You can render something within the wrapper, after the input.
+    renders_one :footer
+
     # Rails form builder. Usually with a model as `f.object`.
     option :f
 
@@ -16,6 +19,9 @@ module Formatic
     # If passed in, used as the `<input value="...">`
     # If not passed in, it is derived from the form object.
     option :value, as: :manual_value, default: -> { :_fetch_from_record }
+
+    # Custom Data-attributes for the <input>
+    option :data, as: :manual_data, default: -> { {} }
 
     # CSS class(es) applied to the <input> element
     # and the wrapper <div> respectively.

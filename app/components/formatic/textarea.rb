@@ -3,8 +3,6 @@
 module Formatic
   # Text input for multi-line text.
   class Textarea < ::Formatic::Base
-    renders_one :footer
-
     erb_template <<~ERB
       <%= render wrapper do |wrap| -%>
 
@@ -21,6 +19,8 @@ module Formatic
             <%= f.text_area(attribute_name, **input_options) -%>
           <% end -%>
 
+          <%= footer -%>
+
           </div>
         <% end -%>
       <% end -%>
@@ -29,7 +29,7 @@ module Formatic
     def input_options
       result = {
         placeholder: wrapper.placeholder,
-        data: { '1p-ignore' => true },
+        data:,
         autofocus:,
         class: css_classes
       }
@@ -37,6 +37,10 @@ module Formatic
       (result[:value] = value) if value
 
       result
+    end
+
+    def data
+      { '1p-ignore' => true }.merge(manual_data)
     end
 
     def css_classes
