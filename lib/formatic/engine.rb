@@ -20,6 +20,18 @@ module Formatic
       app.config.assets.paths << Engine.root.join('app/stylesheets')
     end
 
+    initializer 'formatic.vscode_snippets', group: :all do |app|
+      app.config.after_initialize do
+        vscode_dir = Rails.root.join('.vscode')
+        next unless vscode_dir.directory?
+
+        target = vscode_dir.join('formatic.code-snippets')
+        source = Engine.root.join('vscode/formatic.code-snippets')
+
+        FileUtils.ln_s(source, target, force: true)
+      end
+    end
+
     config.to_prepare do
       # Our Formatic components are subclasses of `ViewComponent::Base`.
       # When `ViewComponent::Base` is subclassed, two things happen:

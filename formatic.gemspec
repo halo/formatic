@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.metadata['source_code_uri'] = 'https://github.com/halo/formatic'
   spec.metadata['changelog_uri'] = 'https://github.com/halo/halo/blob/main/CHANGELOG.md'
 
-  spec.files = Dir['CHANGELOG.md', 'LICENSE.txt', 'README.md',
+  spec.files = Dir['CHANGELOG.md', 'LICENSE.txt', 'README.md', 'vscode/formatic.code-snippets',
                    'app/**/*', 'lib/**/*', 'config/**/*'] & `git ls-files -z`.split("\0")
 
   spec.require_paths = ['lib']

@@ -1,0 +1,58 @@
+{
+  "render Formatic::Checklist": {
+    "prefix": [
+      "fchecklist"
+    ],
+    "body": [
+      "= render Formatic::Checklist.new(f:, attribute_name: $0)",
+    ]
+  },
+  "render Formatic::String": {
+    "prefix": [
+      "fstring"
+    ],
+    "body": [
+      "= render Formatic::String.new(f:, attribute_name: $0)",
+    ]
+  },
+  "render Formatic::Stepper": {
+    "prefix": [
+      "fstepper"
+    ],
+    "body": [
+      "= render Formatic::Stepper.new(f:, attribute_name: $0)",
+    ]
+  },
+  "render Formatic::Textarea": {
+    "prefix": [
+      "ftextarea"
+    ],
+    "body": [
+      "= render Formatic::Textarea.new(f:, attribute_name: $0)",
+    ]
+  },
+  "render Formatic::Toggle": {
+    "prefix": [
+      "ftoggle"
+    ],
+    "body": [
+      "= render Formatic::Toggle.new(f:, attribute_name: $0)",
+    ]
+  },
+  "render Formatic::Select": {
+    "prefix": [
+      "fselect"
+    ],
+    "body": [
+      "= render Formatic::Select.new(f:, attribute_name: $0, records:)",
+    ]
+  },
+  "render Formatic::Date": {
+    "prefix": [
+      "fdate"
+    ],
+    "body": [
+      "= render Formatic::Date.new(f:, attribute_name: $0)",
+    ]
+  }
+}
