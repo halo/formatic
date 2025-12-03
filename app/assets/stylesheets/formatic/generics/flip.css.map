@@ -1,1 +1,0 @@
-{"version":3,"sourceRoot":"","sources":["file:///Users/orange/Code/2-Areas/formatic/formatic/app/assets/stylesheets/formatic/generics/flip.sass"],"names":[],"mappings":"AAAA,yBACE,OACE","file":"flip.css","sourcesContent":["@keyframes formatic-flip\n  0%, 80%\n    transform: rotateY(360deg)\n"]}

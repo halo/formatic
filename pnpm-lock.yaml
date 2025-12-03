@@ -18,8 +18,8 @@ importers:
         specifier: ^4.32.10
         version: 4.32.10
       iglu:
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^3.1.0
+        version: 3.1.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -35,8 +35,8 @@ packages:
   filepond@4.32.10:
     resolution: {integrity: sha512-uflpIL+rfAgsYk7HgXugh7ELlHNHLTPtIHfvuq0gv3x2qNfVxdGA6T7RPxMh9Vji8ysXstXkDHVXQ4hY38MPTQ==}
 
-  iglu@2.0.5:
-    resolution: {integrity: sha512-Qj9HxvneZ4+QF6m3/AjtpF6c/w1tPeNHMZMcw3rHnq2zeFj3CI44TpHy3xO1g0P3eAU7zPTSeosCxOzGNHdU0A==}
+  iglu@3.1.0:
+    resolution: {integrity: sha512-sv/8juL11n2H74YhI/hhIqTHjFQHUY2HyyoM+IjS28j58Lsn4lVi93k8csQt+zzNGlMfyhwkGiVvdQ4Q5cFQqA==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -51,6 +51,6 @@ snapshots:
 
   filepond@4.32.10: {}
 
-  iglu@2.0.5: {}
+  iglu@3.1.0: {}
 
   typescript@5.9.3: {}
