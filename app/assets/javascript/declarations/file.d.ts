@@ -3,8 +3,10 @@ export declare class FormaticFile {
     private url;
     private pond;
     private busyStatuses;
+    private inputID;
     constructor(el: HTMLElement);
     private setupBindings;
+    private updateLabelId;
     private updateSubmit;
     private enableSubmit;
     private disableSubmit;

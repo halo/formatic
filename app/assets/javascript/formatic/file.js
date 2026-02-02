@@ -7,8 +7,10 @@ export class FormaticFile {
             FilePond.FileStatus.PROCESSING_QUEUED,
             FilePond.FileStatus.PROCESSING,
         ]);
+        this.inputID = null;
         this.el = el;
         this.url = this.input.dataset.directUploadUrl;
+        this.inputID = this.input.id;
         this.setupBindings();
     }
     setupBindings() {
@@ -53,7 +55,22 @@ export class FormaticFile {
                     'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.content
                 }
             },
+            oninit: () => this.updateLabelId(),
         });
+    }
+    updateLabelId() {
+        if (!this.inputID)
+            return;
+        const labels = this.form.querySelectorAll(`label[for="${this.inputID}"]`);
+        if (labels.length === 0)
+            return;
+        const pondInput = this.input.querySelector('input[type="file"]');
+        if (!pondInput)
+            return;
+        const pondInputId = pondInput.id;
+        if (!pondInputId)
+            return;
+        labels.forEach(label => label.setAttribute('for', pondInputId));
     }
     updateSubmit() {
         const files = this.pond.getFiles();

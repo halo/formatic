@@ -10,10 +10,12 @@ export class FormaticFile {
     FilePond.FileStatus.PROCESSING_QUEUED,
     FilePond.FileStatus.PROCESSING,
   ]);
+  private inputID: string | null = null;
 
   constructor(el: HTMLElement) {
     this.el = el
     this.url = this.input.dataset.directUploadUrl
+    this.inputID = this.input.id
     this.setupBindings()
   }
 
@@ -66,7 +68,26 @@ export class FormaticFile {
           'X-CSRF-Token': document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content
         }
       },
+      oninit: () => this.updateLabelId(),
     })
+  }
+
+  // FilePond replaces the <input id="X"> with <div id="X"><input id="something-new">
+  // But the <form> may have <label for="X"> so we need to update them.
+  // to become <label for="something-new">
+  private updateLabelId() {
+    if (!this.inputID) return
+
+    const labels = this.form.querySelectorAll(`label[for="${this.inputID}"]`)
+    if (labels.length === 0) return
+
+    const pondInput = this.input.querySelector('input[type="file"]')
+    if (!pondInput) return
+
+    const pondInputId = pondInput.id;
+    if (!pondInputId) return
+
+    labels.forEach(label => label.setAttribute('for', pondInputId))
   }
 
   private updateSubmit() {
@@ -88,7 +109,7 @@ export class FormaticFile {
   }
 
   private get input() {
-    return this.el.querySelector<HTMLLinkElement>('.js-formatic-file__input')
+    return this.el.querySelector<HTMLInputElement>('.js-formatic-file__input')
   }
 
   private get form() {
