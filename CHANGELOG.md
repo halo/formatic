@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.5] - 2026-02-04
+
+- Add accept mime for files
+
 ## [0.1.2] - 2025-03-23
 
 - Add experimental dark theme (in particular for <textarea>)

@@ -7,6 +7,7 @@ module Formatic
     option :multiple, default: -> { false }
     option :accept, default: -> {}
 
+    # TODO: Make the hidden_field (form validations) work with multiple: true
     erb_template <<~ERB
       <%= render wrapper do |wrap| %>
 
