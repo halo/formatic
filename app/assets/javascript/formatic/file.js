@@ -14,7 +14,6 @@ export class FormaticFile {
         this.setupBindings();
     }
     setupBindings() {
-        console.log(this.input.dataset.entries);
         this.pond = FilePond.create(this.input, {
             credits: false,
             onwarning: () => this.updateSubmit(),
