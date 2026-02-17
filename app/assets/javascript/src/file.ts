@@ -10,16 +10,19 @@ export class FormaticFile {
     FilePond.FileStatus.PROCESSING_QUEUED,
     FilePond.FileStatus.PROCESSING,
   ]);
-  private inputID: string | null = null;
+  private inputID: string
+  private inputName: string
 
   constructor(el: HTMLElement) {
     this.el = el
-    this.url = this.input.dataset.directUploadUrl
+    this.url = (this.input.dataset.directUploadUrl as string || '')
     this.inputID = this.input.id
+    this.inputName = this.input.name
     this.setupBindings()
   }
 
   private setupBindings() {
+    console.log(this.input.dataset.entries)
     this.pond = FilePond.create(this.input, {
       credits: false,
       onwarning: () => this.updateSubmit(),
@@ -35,10 +38,14 @@ export class FormaticFile {
       onprocessfiles: () => this.updateSubmit(),
       onremovefile: () => this.updateSubmit(),
       onpreparefile: () => this.updateSubmit(),
-      onupdatefiles: () => this.updateSubmit(),
       onactivatefile: () => this.updateSubmit(),
       onreorderfiles: () => this.updateSubmit(),
+      // onremovefile: (error, file) => this.removedFile(error, file),
+      onupdatefiles: () => this.updatedFiles(),
+      files: JSON.parse(this.input.dataset.entries || '[]') as FilePond.FilePondInitialFile[],
       server: {
+        revert: null, // Don't send DELETE request when removing a file on a not-submitted-yet form.
+
         process: (fieldName, file, _metadata, load, error, progress, abort, transfer, options) => {
 
           const uploader = new DirectUpload(file as File, this.url, {
@@ -90,6 +97,35 @@ export class FormaticFile {
     labels.forEach(label => label.setAttribute('for', pondInputId))
   }
 
+  private updatedFiles() {
+    // Showing a <form> for an existing record or submitting an invalid form
+    // where multiple=true does not play well with filepond at all.
+    if (this.pond.allowMultiple) return
+
+    const files = this.pond.getFiles()
+    this.hiddenFieldsContainer.innerHTML = ''
+
+    files.forEach(file => {
+      if (file.serverId) {
+        const h = document.createElement('input')
+        h.type = 'hidden'
+        h.name = this.inputName
+        h.value = file.serverId
+        this.hiddenFieldsContainer.appendChild(h)
+      }
+    })
+
+    if (files.length === 0) {
+      const h = document.createElement('input')
+      h.type = 'hidden'
+      h.name = this.inputName
+      h.value = ''
+      this.hiddenFieldsContainer.appendChild(h)
+    }
+
+    this.updateSubmit()
+  }
+
   private updateSubmit() {
     const files = this.pond.getFiles()
     const busyFiles = files.some(f => this.busyStatuses.has(f.status))
@@ -110,6 +146,10 @@ export class FormaticFile {
 
   private get input() {
     return this.el.querySelector<HTMLInputElement>('.js-formatic-file__input')
+  }
+
+  private get hiddenFieldsContainer() {
+    return this.el.querySelector<HTMLElement>('.js-formatic-file__hidden-fields')
   }
 
   private get form() {

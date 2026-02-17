@@ -4,13 +4,16 @@ export declare class FormaticFile {
     private pond;
     private busyStatuses;
     private inputID;
+    private inputName;
     constructor(el: HTMLElement);
     private setupBindings;
     private updateLabelId;
+    private updatedFiles;
     private updateSubmit;
     private enableSubmit;
     private disableSubmit;
     private get input();
+    private get hiddenFieldsContainer();
     private get form();
     private get submitButtons();
 }

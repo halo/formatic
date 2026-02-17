@@ -7,13 +7,14 @@ export class FormaticFile {
             FilePond.FileStatus.PROCESSING_QUEUED,
             FilePond.FileStatus.PROCESSING,
         ]);
-        this.inputID = null;
         this.el = el;
-        this.url = this.input.dataset.directUploadUrl;
+        this.url = (this.input.dataset.directUploadUrl || '');
         this.inputID = this.input.id;
+        this.inputName = this.input.name;
         this.setupBindings();
     }
     setupBindings() {
+        console.log(this.input.dataset.entries);
         this.pond = FilePond.create(this.input, {
             credits: false,
             onwarning: () => this.updateSubmit(),
@@ -29,10 +30,12 @@ export class FormaticFile {
             onprocessfiles: () => this.updateSubmit(),
             onremovefile: () => this.updateSubmit(),
             onpreparefile: () => this.updateSubmit(),
-            onupdatefiles: () => this.updateSubmit(),
             onactivatefile: () => this.updateSubmit(),
             onreorderfiles: () => this.updateSubmit(),
+            onupdatefiles: () => this.updatedFiles(),
+            files: JSON.parse(this.input.dataset.entries || '[]'),
             server: {
+                revert: null,
                 process: (fieldName, file, _metadata, load, error, progress, abort, transfer, options) => {
                     const uploader = new DirectUpload(file, this.url, {
                         directUploadWillStoreFileWithXHR: (request) => {
@@ -72,6 +75,29 @@ export class FormaticFile {
             return;
         labels.forEach(label => label.setAttribute('for', pondInputId));
     }
+    updatedFiles() {
+        if (this.pond.allowMultiple)
+            return;
+        const files = this.pond.getFiles();
+        this.hiddenFieldsContainer.innerHTML = '';
+        files.forEach(file => {
+            if (file.serverId) {
+                const h = document.createElement('input');
+                h.type = 'hidden';
+                h.name = this.inputName;
+                h.value = file.serverId;
+                this.hiddenFieldsContainer.appendChild(h);
+            }
+        });
+        if (files.length === 0) {
+            const h = document.createElement('input');
+            h.type = 'hidden';
+            h.name = this.inputName;
+            h.value = '';
+            this.hiddenFieldsContainer.appendChild(h);
+        }
+        this.updateSubmit();
+    }
     updateSubmit() {
         const files = this.pond.getFiles();
         const busyFiles = files.some(f => this.busyStatuses.has(f.status));
@@ -89,6 +115,9 @@ export class FormaticFile {
     }
     get input() {
         return this.el.querySelector('.js-formatic-file__input');
+    }
+    get hiddenFieldsContainer() {
+        return this.el.querySelector('.js-formatic-file__hidden-fields');
     }
     get form() {
         return this.el.closest('form');
