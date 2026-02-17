@@ -6,7 +6,8 @@ export declare class FormaticFile {
     private inputID;
     private inputName;
     constructor(el: HTMLElement);
-    private setupBindings;
+    private setupSync;
+    private setupAsync;
     private updateLabelId;
     private updatedFiles;
     private updateSubmit;

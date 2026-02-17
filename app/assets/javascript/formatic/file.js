@@ -8,12 +8,27 @@ export class FormaticFile {
             FilePond.FileStatus.PROCESSING,
         ]);
         this.el = el;
-        this.url = (this.input.dataset.directUploadUrl || '');
+        this.url = this.input.dataset.directUploadUrl;
         this.inputID = this.input.id;
         this.inputName = this.input.name;
-        this.setupBindings();
+        if (this.url) {
+            this.setupAsync();
+        }
+        else {
+            this.setupSync();
+        }
     }
-    setupBindings() {
+    setupSync() {
+        this.pond = FilePond.create(this.input, {
+            storeAsFile: true,
+            credits: false,
+            files: JSON.parse(this.input.dataset.entries || '[]'),
+            server: {
+                revert: null,
+            }
+        });
+    }
+    setupAsync() {
         this.pond = FilePond.create(this.input, {
             credits: false,
             onactivatefile: () => this.updateSubmit(),

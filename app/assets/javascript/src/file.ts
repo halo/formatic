@@ -15,13 +15,29 @@ export class FormaticFile {
 
   constructor(el: HTMLElement) {
     this.el = el
-    this.url = (this.input.dataset.directUploadUrl as string || '')
+    this.url = this.input.dataset.directUploadUrl
     this.inputID = this.input.id
     this.inputName = this.input.name
-    this.setupBindings()
+
+    if (this.url) {
+      this.setupAsync()
+    } else {
+      this.setupSync()
+    }
   }
 
-  private setupBindings() {
+  private setupSync() {
+    this.pond = FilePond.create(this.input, {
+      storeAsFile: true,
+      credits: false,
+      files: JSON.parse(this.input.dataset.entries || '[]') as FilePond.FilePondInitialFile[],
+      server: {
+        revert: null, // Don't send DELETE request when removing a file on a not-submitted-yet form.
+      }
+    })
+  }
+
+  private setupAsync() {
     this.pond = FilePond.create(this.input, {
       credits: false,
       onactivatefile: () => this.updateSubmit(),
@@ -42,7 +58,7 @@ export class FormaticFile {
       onupdatefiles: () => this.updatedFiles(),
       files: JSON.parse(this.input.dataset.entries || '[]') as FilePond.FilePondInitialFile[],
       server: {
-        revert: null, // Don't send DELETE request when removing a file on a not-submitted-yet form.
+        revert: null,
 
         process: (fieldName, file, _metadata, load, error, progress, abort, transfer, options) => {
 
