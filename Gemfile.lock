@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formatic (0.2.6)
+    formatic (0.2.7)
       actionview
       calls
       countries
@@ -192,6 +192,7 @@ PLATFORMS
   arm64-darwin-22
   arm64-darwin-23
   arm64-darwin-24
+  arm64-darwin-25
   x86_64-linux
 
 DEPENDENCIES

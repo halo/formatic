@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.7] - 2026-04-29
+
+- Fix rails complaining about require'ing action_view too early
+
 ## [0.2.6] - 2026-03-31
 
 - Improvement: Use native dark mode scheme instead of fixed colors
