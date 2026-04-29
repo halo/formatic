@@ -43,7 +43,7 @@ module Formatic
       # AND the view_component gem has been fully initialized (configured).
       #
       # That's right here and now.
-      ActiveSupport.on_load(:action_view) do
+      ActiveSupport.on_load(:view_component) do
         require_relative '../../app/components/formatic/application_component'
         require_relative '../../app/components/formatic/wrapper'
         require_relative '../../app/components/formatic/base'
