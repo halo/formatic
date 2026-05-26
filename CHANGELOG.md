@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.9] - 2026-05-26
+
+- Fix vscode snippet file symlink mechanism
+
 ## [0.2.7] - 2026-04-29
 
 - Fix rails complaining about require'ing action_view too early

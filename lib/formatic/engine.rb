@@ -28,7 +28,7 @@ module Formatic
         target = vscode_dir.join('formatic.code-snippets')
         source = Engine.root.join('vscode/formatic.code-snippets')
 
-        FileUtils.ln_s(source, target, force: true)
+        FileUtils.ln_s(source, target, force: true) unless target.symlink? && target.readlink.to_s == source.to_s
       end
     end
 
