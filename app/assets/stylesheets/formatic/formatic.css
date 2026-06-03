@@ -189,7 +189,6 @@
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border-radius: 0.3em;
-  color: #222;
   text-decoration: none;
 }
 .c-formatic-stepper__step {
@@ -202,7 +201,6 @@
   width: 7em;
   height: 100%;
   outline-offset: 0;
-  color: #222;
   text-align: center;
   vertical-align: middle;
   border: 0;
@@ -383,7 +381,6 @@
   outline-offset: 0;
   outline-color: #ffd400;
   border: 1px solid rgb(197.5, 197.5, 197.5);
-  color: #222;
   height: 2em;
   padding-top: 0.2em;
   padding-right: 0.4em;
@@ -425,7 +422,7 @@
   box-shadow: none;
 }
 .s-formatic ::placeholder {
-  color: rgb(197.5, 197.5, 197.5);
+  opacity: 0.4;
 }
 
 @media (prefers-color-scheme: dark) {
