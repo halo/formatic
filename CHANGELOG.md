@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.11] 2026-07-22
+
+- More robust vscode snippet symlinking
+
 ## [0.2.10] 2026-06-03
 
 - Fix Stepper and placeholder colors
