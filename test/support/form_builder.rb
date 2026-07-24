@@ -2,6 +2,7 @@
 
 class TestTemplate
   include ::ActionView::Helpers::FormHelper
+  include ::ActionView::Helpers::FormOptionsHelper
 end
 
 class TestFormBuilder < ActionView::Helpers::FormBuilder

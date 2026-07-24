@@ -66,6 +66,10 @@ module Formatic
       f.object.public_send(attribute_name) if f.object.respond_to?(attribute_name)
     end
 
+    def data
+      manual_data
+    end
+
     # ---------------------------
     # ActiveModel and Rails slugs
     # ---------------------------

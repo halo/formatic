@@ -24,11 +24,13 @@ module Formatic
                 <%= select_tag hour_attribute_name,
                               options_for_hour,
                               id: hour_input_id,
+                              data:,
                               class: 'c-formatic-time__select' %>
 
                 <%= select_tag minute_attribute_name,
                               options_for_minute,
                               id: minute_input_id,
+                              data:,
                               class: 'c-formatic-time__select' %>
               </div>
             <% end -%>

@@ -25,17 +25,20 @@ module Formatic
                   <%= select_tag day_attribute_name,
                                  options_for_day,
                                  id: day_input_id,
+                                 data:,
                                  class: 'c-formatic-date__select js-formatic-date__day' %>
                 <% end %>
 
                 <%= select_tag month_attribute_name,
                                 options_for_month,
                                 id: month_input_id,
+                                data:,
                                 class: 'c-formatic-date__select js-formatic-date__month' %>
 
                 <%= select_tag year_attribute_name,
                                 options_for_year,
                                 id: year_input_id,
+                                data:,
                                 class: 'c-formatic-date__select js-formatic-date__year' %>
               </div>
               <% if calendar? %>

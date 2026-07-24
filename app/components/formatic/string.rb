@@ -33,6 +33,7 @@ module Formatic
     def input_options
       result = {
         placeholder: wrapper.placeholder,
+        data:,
         autofocus:,
         class: css_classes
       }

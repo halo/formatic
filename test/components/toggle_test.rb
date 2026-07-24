@@ -49,6 +49,16 @@ class TestToggle < ApplicationTest
     assert_equal 'c-formatic-toggle__input flashy', text_field[:class]
   end
 
+  test 'custom data attributes' do
+    f = TestFormBuilder.for(RedModel.new)
+    component = Formatic::Toggle.new(f:, attribute_name: :the_name, data: { custom: 'value' })
+    output = render_inline(component)
+
+    checkbox = output.at_css('.c-formatic-toggle__input')
+
+    assert_equal 'value', checkbox['data-custom']
+  end
+
   test 'test_autofocus_deactivated' do
     f = TestFormBuilder.for(RedModel.new)
     component = Formatic::Toggle.new(f:, attribute_name: :the_name, autofocus: false)

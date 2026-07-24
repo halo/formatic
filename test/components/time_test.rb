@@ -2,16 +2,16 @@
 
 require 'test_helper'
 
-class DateModel
+class TimeModel
   include ActiveModel::API
 
-  attr_accessor :the_date
+  attr_accessor :the_time
 end
 
-class DateTest < ApplicationTest
+class FormaticTimeTest < ApplicationTest
   test 'custom data attributes' do
-    f = TestFormBuilder.for(DateModel.new(the_date: Date.new(2025, 6, 15)))
-    component = Formatic::Date.new(f:, attribute_name: :the_date, data: { custom: 'value' })
+    f = TestFormBuilder.for(TimeModel.new(the_time: Time.now))
+    component = Formatic::Time.new(f:, attribute_name: :the_time, data: { custom: 'value' })
     output = render_inline(component)
 
     inputs = output.css('select')

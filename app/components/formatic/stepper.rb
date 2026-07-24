@@ -20,6 +20,7 @@ module Formatic
                                   min: minimum,
                                   inputmode: :numeric,
                                   pattern: '-?[0-9]*',
+                                  data:,
                                   class: 'c-formatic-stepper__number js-formatic-stepper__number',
                                   placeholder: wrapper.placeholder,
                                 } %>

@@ -17,7 +17,7 @@ module Formatic
                 </div>
               <% else %>
 
-                <%= f.select attribute_name, choices, {}, { class: ['c-formatic-select', 'js-formatic-select', ('is-autosubmit' if async_submit)] } %>
+                <%= f.select attribute_name, choices, {}, { data:, class: ['c-formatic-select', 'js-formatic-select', ('is-autosubmit' if async_submit)] } %>
 
               <% end %>
             </div>

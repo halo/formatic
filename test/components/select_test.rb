@@ -38,6 +38,16 @@ module Formatic
       assert_equal 'Beta', component.current_choice_name
     end
 
+    test 'custom data attributes' do
+      f = TestFormBuilder.for(ManModel.new)
+      component = Formatic::Select.new(f:, attribute_name: :mouse_id, data: { custom: 'value' })
+      output = render_inline(component)
+
+      select = output.at_css('select')
+
+      assert_equal 'value', select['data-custom']
+    end
+
     test 'test_current_choice_name_without_match' do
       f = TestFormBuilder.for(ManModel.new(mouse: MouseModel.new(id: 99, name: 'Outlaw')))
       records = [MouseModel.new(id: 1, name: 'Alpha'), MouseModel.new(id: 2, name: 'Beta')]

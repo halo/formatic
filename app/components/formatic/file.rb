@@ -26,11 +26,15 @@ module Formatic
               <%- end -%>
             </div>
 
-            <%= f.file_field attribute_name, class: "js-formatic-file__input", direct_upload:, multiple:, accept:, data: { entries: entries_json } %>
+            <%= f.file_field attribute_name, class: "js-formatic-file__input", direct_upload:, multiple:, accept:, data: %>
           </div>
         <% end %>
       <% end %>
     ERB
+
+    def data
+      { entries: entries_json }.merge(manual_data)
+    end
 
     private
 

@@ -52,6 +52,16 @@ class TestTextarea < ApplicationTest
 
   # TODO: This is common functionality that is not really associated with this input.
 
+  test 'custom data attributes' do
+    f = TestFormBuilder.for(OrangeModel.new)
+    component = Formatic::Textarea.new(f:, attribute_name: :the_name, data: { custom: 'value' })
+    output = render_inline(component)
+
+    text_area = output.at_css('.c-formatic-textarea__input')
+
+    assert_equal 'value', text_area['data-custom']
+  end
+
   test 'autofocus' do
     f = TestFormBuilder.for(OrangeModel.new)
     component = Formatic::Textarea.new(f:, attribute_name: :the_name, autofocus: true)

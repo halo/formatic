@@ -18,7 +18,7 @@ module Formatic
           <% else %>
             <%= f.label attribute_name, nil, { for: dom_id } do |builder| %>
               <%
-                f.check_box(attribute_name, { id: dom_id, class: css_classes }) +
+                f.check_box(attribute_name, { id: dom_id, data:, class: css_classes }) +
                   content_tag(:i) +
                   content_tag(:div, human_attribute_name, class: 'c-formatic-toggle__label-caption-dummy') +
                   content_tag(:div, wrap.toggle_on, class: 'is-active') +

@@ -87,6 +87,16 @@ class TestString < ApplicationTest
     assert_nil text_field[:autofocus]
   end
 
+  test 'custom data attributes' do
+    f = TestFormBuilder.for(BlueModel.new)
+    component = Formatic::String.new(f:, attribute_name: :the_name, data: { custom: 'value' })
+    output = render_inline(component)
+
+    text_field = output.at_css('.c-formatic-string__input')
+
+    assert_equal 'value', text_field['data-custom']
+  end
+
   # The Wrapper already has intensive tests for hints,
   # but the integration with the Wrapper is tested here.
   test 'test_hint' do
