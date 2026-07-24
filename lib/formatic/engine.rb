@@ -58,6 +58,8 @@ module Formatic
         require_relative '../../app/components/formatic/stepper'
         require_relative '../../app/components/formatic/textarea'
         require_relative '../../app/components/formatic/time'
+        require_relative '../../app/components/formatic/file'
+        require_relative '../../app/components/formatic/files'
       end
     end
   end
