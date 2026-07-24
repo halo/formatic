@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.12] 2026-07-24
+
+- Add data attribute to every input
+
 ## [0.2.11] 2026-07-22
 
 - More robust vscode snippet symlinking
