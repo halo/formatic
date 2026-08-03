@@ -27,6 +27,12 @@ module Formatic
             </div>
 
             <%= f.file_field attribute_name, class: "js-formatic-file__input", direct_upload:, multiple:, accept:, data: %>
+
+            <%- if (file = current_file) -%>
+              <div class="c-formatic-file__current">
+                <%= link_to 'Download', file, target: :_blank %>
+              </div>
+            <%- end -%>
           </div>
         <% end %>
       <% end %>
@@ -65,6 +71,16 @@ module Formatic
           }
         }
       end.to_json
+    end
+
+    # The currently attached file, if there is exactly one.
+    # Multiple files are not shown here, see `Formatic::Files`.
+    def current_file
+      return if multiple
+      return unless attachments.size == 1
+
+      attachment = attachments.first
+      attachment if attachment.present?
     end
   end
 end

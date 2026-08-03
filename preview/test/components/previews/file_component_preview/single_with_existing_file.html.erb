@@ -1,0 +1,4 @@
+<%= form_for(@user, url: '#') do |f| %>
+  <%= render Formatic::File.new(f:, attribute_name: :avatar) %>
+  <%= f.submit %>
+<% end %>

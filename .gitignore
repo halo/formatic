@@ -10,4 +10,4 @@
 /node_modules/
 *.gem
 /.rubocop-http*
-*.sqlite
+*.sqlite3
