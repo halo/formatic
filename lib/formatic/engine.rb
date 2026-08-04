@@ -28,8 +28,7 @@ module Formatic
         target = vscode_dir.join('formatic.code-snippets')
         source = Engine.root.join('vscode/formatic.code-snippets')
 
-        FileUtils.rm_f(target.to_s)
-        FileUtils.ln_s(source, target, force: true)
+        VscodeSnippets.install(target, source)
       end
     end
 

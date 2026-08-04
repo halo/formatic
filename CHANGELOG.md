@@ -1,4 +1,6 @@
-## [Unreleased]
+## [0.3.0] 2026-08-04
+
+- Make VS Code snippet symlinking atomic so concurrent app boots no longer race into `Errno::EEXIST`
 
 ## [0.2.12] 2026-07-24
 
