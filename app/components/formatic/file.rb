@@ -42,7 +42,26 @@ module Formatic
       { entries: entries_json }.merge(manual_data)
     end
 
+    def before_render
+      validate_attribute_name!
+    end
+
     private
+
+    def validate_attribute_name!
+      # A manually passed value means `attribute_name` is just a param name,
+      # not necessarily a method on the model.
+      return if manual_value != :_fetch_from_record
+      return if f.nil? || f.object.nil?
+
+      # Only enforce this for real ActiveModel/ActiveRecord records.
+      # Custom objects (e.g. slugs) are not expected to respond to it.
+      return unless f.object.respond_to?(:model_name)
+      return if f.object.respond_to?(attribute_name)
+
+      raise ArgumentError,
+            "attribute `#{attribute_name}` does not exist on #{f.object.class}."
+    end
 
     def attachments
       return [] if value.blank?

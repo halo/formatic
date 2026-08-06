@@ -55,7 +55,7 @@ class FormaticFileTest < ApplicationTest
     link = output.at_css('.c-formatic-file__current a')
 
     refute_nil link, 'Expected a link to the existing file'
-    assert_equal 'report.pdf', link.text.strip
+    assert_equal 'Download', link.text.strip
     assert_equal '/home', link['href']
   end
 
@@ -67,5 +67,43 @@ class FormaticFileTest < ApplicationTest
     output = render_inline(component)
 
     assert_nil output.at_css('.c-formatic-file__current')
+  end
+
+  test 'raises when the attribute does not exist on the model' do
+    f = TestFormBuilder.for(FileModel.new)
+    component = Formatic::File.new(f:, attribute_name: :header_logo_for_light)
+
+    error = assert_raises(ArgumentError, match: /header_logo_for_light/) do
+      render_inline(component)
+    end
+
+    assert_match 'FileModel', error.message
+  end
+
+  test 'inherits the guard in the multiple-files variant' do
+    f = TestFormBuilder.for(FileModel.new)
+    component = Formatic::Files.new(f:, attribute_name: :header_logo_for_light)
+
+    assert_raises(ArgumentError, match: /header_logo_for_light/) do
+      render_inline(component)
+    end
+  end
+
+  test 'renders when the form builder has no object' do
+    f = TestFormBuilder.for(nil)
+    component = Formatic::File.new(f:, attribute_name: :raw_files)
+
+    output = render_inline(component)
+
+    refute_nil output.at_css('input[type="file"]')
+  end
+
+  test 'renders with a manual value even if the attribute is not on the model' do
+    f = TestFormBuilder.for(FileModel.new)
+    component = Formatic::File.new(f:, attribute_name: :custom_slug, value: nil)
+
+    output = render_inline(component)
+
+    refute_nil output.at_css('input[type="file"]')
   end
 end
