@@ -98,19 +98,21 @@
   display: none;
 }
 .c-formatic-date__flick {
-  background-color: rgb(244.8, 244.8, 244.8);
+  background-color: rgb(96%, 96%, 96%);
   text-align: center;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #222;
 }
 .c-formatic-date__flick {
   margin-right: 0.5714rem;
 }
 .c-formatic-date__flick {
   padding: 0.2857rem;
+}
+.c-formatic-date__flick, .c-formatic-date__flick:hover, .c-formatic-date__flick:active, .c-formatic-date__flick:visited {
+  color: #222;
 }
 .c-formatic-date__clear {
   font-size: 1.0714rem;
@@ -140,18 +142,20 @@
   font-size: 0.7857rem;
 }
 .c-formatic-date .is-saturday {
-  background-color: rgb(178.5, 178.5, 178.5);
+  background-color: rgb(70%, 70%, 70%);
 }
 .c-formatic-date .is-sunday {
-  background-color: rgb(127.5, 127.5, 127.5);
+  background-color: #666666;
+}
+.c-formatic-date .is-sunday, .c-formatic-date .is-sunday:hover, .c-formatic-date .is-sunday:active, .c-formatic-date .is-sunday:visited {
   color: #fff;
 }
-.c-formatic-date .is-holiday {
+.c-formatic-date .is-holiday, .c-formatic-date .is-holiday:hover, .c-formatic-date .is-holiday:active, .c-formatic-date .is-holiday:visited {
   color: rgb(240, 30, 80);
 }
 .c-formatic-date .is-today {
-  border: 3px solid #222;
   font-weight: bold;
+  background-image: linear-gradient(43deg, transparent 44%, rgb(240, 30, 80) 47%, rgb(240, 30, 80) 53%, transparent 53%), linear-gradient(133deg, transparent 47%, rgb(240, 30, 80) 47%, rgb(240, 30, 80) 53%, transparent 55%);
 }
 
 .c-formatic-wrapper.is-required .c-formatic-select {
@@ -182,7 +186,7 @@
 }
 .c-formatic-stepper__step {
   display: inline-block;
-  border: 1px solid rgb(197.5, 197.5, 197.5);
+  border: 1px solid rgb(77.4509803922%, 77.4509803922%, 77.4509803922%);
   vertical-align: middle;
   padding-right: 1em;
   padding-left: 1em;
@@ -212,7 +216,7 @@
   margin-bottom: 0.8571rem;
 }
 .c-formatic-stepper ::placeholder {
-  color: rgb(197.5, 197.5, 197.5);
+  color: rgb(77.4509803922%, 77.4509803922%, 77.4509803922%);
 }
 
 .c-formatic-string__input.is-terminal {
@@ -299,7 +303,7 @@
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
-  background: rgb(197.5, 197.5, 197.5);
+  background: rgb(77.4509803922%, 77.4509803922%, 77.4509803922%);
 }
 .c-formatic-toggle i:before {
   display: block;
@@ -380,7 +384,7 @@
   width: 100%;
   outline-offset: 0;
   outline-color: #ffd400;
-  border: 1px solid rgb(197.5, 197.5, 197.5);
+  border: 1px solid rgb(77.4509803922%, 77.4509803922%, 77.4509803922%);
   height: 2em;
   padding-top: 0.2em;
   padding-right: 0.4em;

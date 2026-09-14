@@ -3,6 +3,7 @@
 @use "iglu/spacing"
 @use "formatic/settings/colors"
 @use "formatic/tools/terminal"
+@use "formatic/tools/link"
 @use "formatic/tools/mandatory"
 
 .c-formatic-date
@@ -34,9 +35,10 @@
     display: flex
     flex-direction: column
     justify-content: center
-    color: colors.$black
     +spacing.margin-right--smaller
     +spacing.padding--tiny
+    +link.states
+      color: colors.$black
 
   &__clear
     +font-size.large
@@ -59,12 +61,14 @@
     background-color: color.adjust(#000, $lightness: 70%)
 
   & .is-sunday
-    background-color: color.adjust(#000, $lightness: 50%)
-    color: colors.$white
+    background-color: color.adjust(#000, $lightness: 40%)
+    +link.states
+      color: colors.$white
 
   & .is-holiday
-    color: colors.$paradise-pink
+    +link.states
+      color: colors.$paradise-pink
 
   & .is-today
-    border: 3px solid colors.$black
     font-weight: bold
+    background-image: linear-gradient(43deg, transparent 44%, colors.$paradise-pink 47%, colors.$paradise-pink 53%, transparent 53%), linear-gradient(133deg, transparent 47%, colors.$paradise-pink 47%, colors.$paradise-pink 53%, transparent 55%)
