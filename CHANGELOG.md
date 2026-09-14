@@ -1,3 +1,7 @@
+## [0.4.2] 2026-09-14
+
+- Even more clearly mark today
+
 ## [0.4.1] 2026-09-14
 
 - Clearly mark today
