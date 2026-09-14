@@ -1,3 +1,8 @@
+## [0.4.1] 2026-09-14
+
+- Clearly mark today
+- Set text color for all link states
+
 ## [0.4.0] 2026-08-05
 
 - `Formatic::File` now raises at render time when `attribute_name` does not exist on the model, so typos like `header_logo_for_light` (instead of the model's `header_logo_for_dark`) surface immediately instead of silently dropping the upload. The check is skipped when a manual `value:` is passed, the form builder has no object, or the object is not an ActiveModel/ActiveRecord record.
