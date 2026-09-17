@@ -1,3 +1,9 @@
+## [0.4.3] 2026-09-17
+
+- Add `skip_past` option to `Formatic::Date` to start calendar at today instead of 5 days ago
+- Hide clear (X) calendar flick when the attribute is mandatory
+- Fix `calendar` start date to be relative to `now` param
+
 ## [0.4.2] 2026-09-14
 
 - Even more clearly mark today
