@@ -43,13 +43,15 @@ module Formatic
               </div>
               <% if calendar? %>
                 <div class="c-formatic-date__calendar">
-                  <a class="c-formatic-date__flick c-formatic-date__clear js-formatic-date__shortcut" href="#"
-                     data-day=""
-                     data-month=""
-                     data-year=""
-                  >
-                    X
-                  </a>
+                  <% if wrapper.optional? %>
+                    <a class="c-formatic-date__flick c-formatic-date__clear js-formatic-date__shortcut" href="#"
+                       data-day=""
+                       data-month=""
+                       data-year=""
+                    >
+                      X
+                    </a>
+                  <% end %>
                   <% calendar.each do |day| %>
                     <a class="c-formatic-date__flick <%= day.classes %> js-formatic-date__shortcut"
                       href='#'

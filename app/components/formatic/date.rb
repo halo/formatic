@@ -6,6 +6,7 @@ module Formatic
   # Date/calendar
   class Date < ::Formatic::Base
     option :calendar, as: :show_calendar, default: -> { true }
+    option :skip_past, default: -> { false }
 
     # Represents one element in the calendar.
     class Day
@@ -87,7 +88,7 @@ module Formatic
     end
 
     def calendar(now: ::Time.current)
-      from = 5.days.ago.to_date
+      from = skip_past ? now.to_date : (now.to_date - 5.days)
       till = now.beginning_of_month.advance(months: 2).end_of_month.to_date
 
       (from..till).map do |date|
