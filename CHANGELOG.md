@@ -1,3 +1,7 @@
+## [0.4.4] 2026-09-18
+
+- Restrict year select to current year and later when `skip_past` is true
+
 ## [0.4.3] 2026-09-17
 
 - Add `skip_past` option to `Formatic::Date` to start calendar at today instead of 5 days ago
