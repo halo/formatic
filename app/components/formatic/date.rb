@@ -111,7 +111,8 @@ module Formatic
     end
 
     def collection_for_year
-      result = (30.years.ago.year..10.years.from_now.year)
+      lower = skip_past ? ::Time.current.year : 30.years.ago.year
+      result = (lower..10.years.from_now.year)
       return result if wrapper.required?
 
       result.to_a.prepend nil

@@ -24,6 +24,7 @@ class OptionalDateModel
 end
 
 class DateTest < ApplicationTest
+  include ActiveSupport::Testing::TimeHelpers
   test '#data - with custom value - is on selects' do
     f = TestFormBuilder.for(DateModel.new(the_date: Date.new(2025, 6, 15)))
     component = Formatic::Date.new(f:, attribute_name: :the_date, data: { custom: 'value' })
@@ -101,6 +102,62 @@ class DateTest < ApplicationTest
     component = Formatic::Date.new(f:, attribute_name: :the_date)
 
     assert_equal false, component.skip_past
+  end
+
+  test '#collection_for_year - with skip_past true - excludes years before current' do
+    now = Time.new(2025, 6, 15, 12, 0, 0)
+    f = TestFormBuilder.for(DateModel.new)
+    component = Formatic::Date.new(f:, attribute_name: :the_date, skip_past: true)
+
+    travel_to now do
+      years = component.send(:collection_for_year).to_a.compact
+
+      assert_includes years, 2025
+      assert_includes years, 2026
+      assert_includes years, 2035
+      refute_includes years, 2024
+      refute_includes years, 1995
+    end
+  end
+
+  test '#collection_for_year - with skip_past false - includes prior years' do
+    now = Time.new(2025, 6, 15, 12, 0, 0)
+    f = TestFormBuilder.for(DateModel.new)
+    component = Formatic::Date.new(f:, attribute_name: :the_date, skip_past: false)
+
+    travel_to now do
+      years = component.send(:collection_for_year).to_a.compact
+
+      assert_includes years, 2024
+      assert_includes years, 1995
+      assert_includes years, 2025
+    end
+  end
+
+  test '#collection_for_year - with skip_past true and required - excludes prior years' do
+    now = Time.new(2025, 6, 15, 12, 0, 0)
+    f = TestFormBuilder.for(RequiredDateModel.new(the_date: nil))
+    component = Formatic::Date.new(f:, attribute_name: :the_date, skip_past: true)
+
+    travel_to now do
+      years = component.send(:collection_for_year).to_a
+
+      assert_includes years, 2025
+      refute_includes years, 2024
+      assert_equal 2025, years.first
+    end
+  end
+
+  test '#collection_for_year - with skip_past true - ends at 10 years from now' do
+    now = Time.new(2025, 6, 15, 12, 0, 0)
+    f = TestFormBuilder.for(DateModel.new)
+    component = Formatic::Date.new(f:, attribute_name: :the_date, skip_past: true)
+
+    travel_to now do
+      years = component.send(:collection_for_year).to_a.compact
+
+      assert_equal 2035, years.last
+    end
   end
 
   test '#calendar - when optional - shows clear flick' do
